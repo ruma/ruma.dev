@@ -1,3 +1,12 @@
+// Set chartype
 @charset 'utf-8';
+
+// Get fonts first
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,400italic);
+
+// Document CSS
 @import 'normalize';
-@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,400italic);
+@import 'typography';
+
+// Component CSS
+@import 'header';
