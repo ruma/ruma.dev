@@ -2,6 +2,7 @@
   ul {
     display: flex;
     justify-content: center;
+    padding: 0;
 
     @media screen and (max-width: 640px) {
       display: block;
@@ -16,6 +17,7 @@
 
     @media screen and (max-width: 640px) {
       max-width: 100%;
+      padding: 1rem 2rem;
     }
   }
 
