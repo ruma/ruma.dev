@@ -20,6 +20,7 @@
   font-weight: 300;
   font-size: 4rem;
   letter-spacing: .2rem;
+  margin-bottom: 2rem;
   padding: 1rem 3rem 2rem;
 
   .char1 {
@@ -41,4 +42,8 @@
     animation: drop-in 1.6s ease;
     position: relative;
   }
+}
+
+.page-subheading {
+  color: #444;
 }
