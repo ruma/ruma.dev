@@ -1,3 +1,15 @@
+@keyframes drop-in {
+  from {
+    opacity: 0;
+    top: -7rem;
+  }
+
+  to {
+    opacity: 1;
+    top: 0;
+  }
+}
+
 .page-header {
   text-align: center;
 }
@@ -9,4 +21,24 @@
   font-size: 4rem;
   letter-spacing: .2rem;
   padding: 1rem 3rem 2rem;
+
+  .char1 {
+    animation: drop-in 1s ease;
+    position: relative;
+  }
+
+  .char2 {
+    animation: drop-in 1.2s ease;
+    position: relative;
+  }
+
+  .char3 {
+    animation: drop-in 1.4s ease;
+    position: relative;
+  }
+
+  .char4 {
+    animation: drop-in 1.6s ease;
+    position: relative;
+  }
 }
