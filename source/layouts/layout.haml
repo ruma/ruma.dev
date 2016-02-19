@@ -1,0 +1,10 @@
+!!! 5
+%html
+  %head
+    %meta{ content: 'IE=edge', http_equiv: 'X-UA-Compatible' }
+    %meta{ charset: 'utf-8' }
+    %meta{ content: 'width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no', name: 'viewport' }
+    %title= current_page.data.title || "Ruma - Matrix.org components written in Rust."
+    %meta{ content: 'Ruma is a suite of applications and libraries that implement all the major components of the Matrix specification in Rust.', name: 'description' }
+    = stylesheet_link_tag :site
+  %body{ class: page_classes }= yield
