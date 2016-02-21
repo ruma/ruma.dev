@@ -1,16 +1,6 @@
-@keyframes drop-in {
-  from {
-    opacity: 0;
-    top: -7rem;
-  }
-
-  to {
-    opacity: 1;
-    top: 0;
-  }
-}
-
 .page-header {
+  background: rgb(255, 208, 0);
+  padding: 3rem;
   text-align: center;
 }
 
@@ -20,30 +10,15 @@
   font-weight: 300;
   font-size: 4rem;
   letter-spacing: .2rem;
-  margin-bottom: 2rem;
-  padding: 1rem 3rem 2rem;
+  margin: 0;
+  padding: 1rem 1.5rem 2rem 2rem;
 
-  .char1 {
-    animation: drop-in 1s ease;
-    position: relative;
-  }
-
-  .char2 {
-    animation: drop-in 1.2s ease;
-    position: relative;
-  }
-
-  .char3 {
-    animation: drop-in 1.4s ease;
-    position: relative;
-  }
-
-  .char4 {
-    animation: drop-in 1.6s ease;
-    position: relative;
+  @media screen and (max-width: 640px) {
+    background-size: 13rem 7rem;
   }
 }
 
 .page-subheading {
   color: #444;
+  margin: 1rem 0 0;
 }
