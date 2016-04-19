@@ -1,0 +1,6 @@
+%article.news{ itemscope: true, itemtype: "http://schema.org/BlogPosting" }
+  %meta{ itemprop: "author", content: "Jimmy Cuadra" }
+  %header
+    %h2{ itemprop: "headline" }= link_to news.title, news.url, title: news.title
+    %data{ itemprop: "datePublished", value: news.date.strftime("%Y-%m-%d") }= news.date.strftime("%B %d, %Y")
+  ~ news.body

@@ -1,0 +1,14 @@
+---
+pageable: true
+title: This Week in Ruma
+---
+
+.content
+  %section.news
+    - page_articles.each do |news|
+      = partial "news", locals: { news: news }
+
+%p.pagination
+  %span= link_to '← Previous', prev_page, rel: 'prev' if prev_page
+  %span= "Page #{page_number}"
+  %span= link_to 'Next →', next_page, rel: 'next' if next_page
