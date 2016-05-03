@@ -9,3 +9,5 @@ gem 'tzinfo-data', platforms: [:mswin, :mingw, :jruby]
 gem 'middleman'
 gem 'middleman-blog'
 gem 'middleman-livereload'
+
+gem 'builder'

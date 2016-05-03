@@ -6,7 +6,8 @@
     %meta{ content: 'width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no', name: 'viewport' }
     %title= "This Week in Ruma, #{current_article.date.strftime('%Y-%m-%d')}"
     %meta{ content: 'Ruma is a suite of applications and libraries that implement all the major components of the Matrix specification in Rust.', name: 'description' }
-    %link{ rel: 'canonical', href: "https://www.ruma.io#{current_page.url}" }
+    %link{ rel: 'canonical', href: full_url_for(current_page.url) }
+    %link{ rel: 'alternate', type: 'application/atom+xml', href: url_for('/news/feed.atom') }
     = stylesheet_link_tag :site
   %body{ class: page_classes }
     = partial "nav"
