@@ -1,17 +1,74 @@
 // Set chartype
 @charset 'utf-8';
 
-// Get fonts first
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,400italic);
+$body-bg: rgb(234, 234, 234);
+$link-color: rgb(180, 145, 0);
+$link-hover-color: rgb(180, 145, 0);
+$navbar-inverse-bg: rgb(0, 0, 0);
+$navbar-inverse-link-color: rgb(255, 208, 0);
+$navbar-inverse-link-hover-color: lighten($navbar-inverse-link-color, 15%);
 
-// Document CSS
-@import 'normalize';
-@import 'typography';
-@import 'background';
 
-// Component CSS
-@import 'features-block';
-@import 'nav';
-@import 'news';
-@import 'page-header';
-@import 'project-links';
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+
+.navbar {
+  margin-bottom: 0;
+}
+
+.ruma-header {
+  background: rgb(255, 208, 0);
+  color: #444;
+  margin-bottom: 2rem;
+  padding: 4rem;
+  text-align: center;
+}
+
+.ruma-title {
+  background: image-url('/images/ruma-chat-bubble.svg') no-repeat center;
+  background-size: 14rem 7rem;
+  font-weight: 300;
+  font-size: 4rem;
+  letter-spacing: .2rem;
+  margin: 0;
+  padding: 1rem 1.5rem 2rem 2rem;
+
+  @media screen and (max-width: 640px) {
+    background-size: 13rem 7rem;
+  }
+}
+
+.ruma-subheading {
+  color: #444;
+  margin: 1rem 0 0;
+}
+
+.ruma-footer {
+  background: rgb(200, 200, 200);
+  margin: 4rem 0;
+  padding: 1rem 0;
+  text-align: center;
+
+  a {
+    border-radius: $border-radius-large;
+    color: rgb(50, 50, 50);
+  }
+
+  li {
+    display: inline-block;
+  }
+}
+
+.ruma-news {
+  padding: 4rem 0;
+}
+
+.ruma-pagination {
+  margin-top: 4rem;
+  text-align: center;
+
+  li {
+    display: inline-block;
+    margin: 1rem;
+  }
+}

@@ -1,15 +1,5 @@
-!!! 5
-%html
-  %head
-    %meta{ content: 'IE=edge', http_equiv: 'X-UA-Compatible' }
-    %meta{ charset: 'utf-8' }
-    %meta{ content: 'width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no', name: 'viewport' }
-    %title= "This Week in Ruma, #{current_article.date.strftime('%Y-%m-%d')}"
-    %meta{ content: 'Ruma is a Matrix homeserver written in the Rust programming language. This Week in Ruma is a weekly update on the latest developments.', name: 'description' }
-    %link{ rel: 'canonical', href: full_url_for(current_page.url) }
-    %link{ rel: 'alternate', type: 'application/atom+xml', href: url_for('/news/feed.atom') }
-    = stylesheet_link_tag :site
-  %body{ class: page_classes }
-    = partial "nav"
-    .content
-      %section.news= partial "news", locals: { news: current_article }
+= wrap_layout 'layout' do
+  .container
+    .row
+      .col-md-8.col-md-offset-2
+        = partial "news", locals: { news: current_article }

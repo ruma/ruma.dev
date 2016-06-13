@@ -3,7 +3,7 @@
   %head
     %meta{ content: 'IE=edge', http_equiv: 'X-UA-Compatible' }
     %meta{ charset: 'utf-8' }
-    %meta{ content: 'width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no', name: 'viewport' }
+    %meta{ content: 'width=device-width,initial-scale=1', name: 'viewport' }
     %title= current_page.data.title || "Ruma - A Matrix homeserver written in Rust."
     %meta{ content: 'Ruma is a Matrix homeserver written in the Rust programming language.', name: 'description' }
     %link{ rel: 'canonical', href: full_url_for(current_page.url) }
@@ -12,3 +12,15 @@
   %body{ class: page_classes }
     = partial "nav"
     = yield
+    %footer.ruma-footer
+      .container-fluid
+        %ul.nav
+          %li= link_to 'GitHub', 'https://github.com/ruma'
+          %li= link_to 'Twitter', 'https://twitter.com/ruma_io'
+          %li= link_to 'Matrix room', 'https://vector.im/beta/#/room/#ruma:matrix.org'
+
+    .container-fluid
+      %p.text-center
+        %small
+          The source code and content of this website are free and available under the MIT license:
+          = link_to 'www.ruma.io', 'https://github.com/ruma/www.ruma.io'

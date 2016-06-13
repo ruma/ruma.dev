@@ -11,3 +11,5 @@ gem 'middleman-blog'
 gem 'middleman-livereload'
 
 gem 'builder'
+
+gem 'bootstrap-sass'

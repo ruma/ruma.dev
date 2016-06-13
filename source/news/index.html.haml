@@ -3,12 +3,20 @@ pageable: true
 title: This Week in Ruma
 ---
 
-.content
-  %section.news
-    - page_articles.each do |news|
-      = partial "news", locals: { news: news }
+.container
+  .row
+    .col-md-8.col-md-offset-2
+      - page_articles.each do |news|
+        = partial "news", locals: { news: news }
 
-%p.pagination
-  %span= link_to '← Previous', prev_page, rel: 'prev' if prev_page
-  %span= "Page #{page_number}"
-  %span= link_to 'Next →', next_page, rel: 'next' if next_page
+      %nav
+        %ul.ruma-pagination
+          - if prev_page
+            %li
+              %span &larr;
+              = link_to 'Previous', prev_page, rel: 'prev'
+          %li= "Page #{page_number}"
+          - if next_page
+            %li
+              = link_to 'Next', next_page, rel: 'next'
+              %span &rarr;
