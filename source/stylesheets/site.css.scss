@@ -7,7 +7,7 @@ $link-hover-color: rgb(180, 145, 0);
 $navbar-inverse-bg: rgb(0, 0, 0);
 $navbar-inverse-link-color: rgb(255, 208, 0);
 $navbar-inverse-link-hover-color: lighten($navbar-inverse-link-color, 15%);
-
+$page-header-border-color: lighten(#000, 46.7%);
 
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
