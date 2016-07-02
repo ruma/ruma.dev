@@ -50,7 +50,7 @@ On the homeserver side, Matrix offers choices to both the user and operator of t
 
 Users can decide who runs their homeserver:
 
-* A large commercial organization that provides a public homeserver: For example, the team behind Matrix offers a public homeserver on matrix.org.
+* A large organization that provides a public homeserver: For example, the team behind Matrix offers a public homeserver on matrix.org.
 * A friend, family, or community group: This could be for a club or professional organization.
 * Yourself: You can run the homeserver software on your own computer.
 
@@ -94,7 +94,9 @@ The table shows the protocol each system uses, examples of resources you'd acces
       <th>You use…</th>
       <td>Chrome, Firefox</td>
       <td>Gmail web app, Apple Mail</td>
-      <td>Vector</td>
+      <td>Vector, WeeChat</td>
     </tr>
   </table>
 </div>
+
+Next, read about [Matrix features](/docs/matrix/features/).

@@ -23,7 +23,7 @@ Listed below are just a few of them.
 * **Push notifications:**
   Get a notification on your mobile device when you receive a message.
 * **End-to-end encryption:**
-  Keep your conversation private. 
+  Keep your conversation private.
   Instant messages and groups chats can be encrypted from end to end, meaning no one can read the contents of the messages, including the operators of your homeserver and passive surveillance.
 * **Media sharing:**
   Upload images, videos, documents, and other files to share with others.
@@ -35,3 +35,5 @@ Listed below are just a few of them.
   Get confirmation that someone's read your messages.
 * **Presence notifications:**
   See who is available to chat and who is away from their computer.
+
+Next, read about [why Matrix matters](/docs/matrix/why/).
