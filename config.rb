@@ -3,6 +3,8 @@ Time.zone = "UTC"
 set :base_url, ""
 
 page "/news/feed.atom", layout: false
+page '/docs/index.html', layout: :layout
+page '/docs/*', layout: :docs
 
 activate :blog do |blog|
   blog.default_extension = ".md"
