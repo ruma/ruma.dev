@@ -25,16 +25,19 @@ $page-header-border-color: lighten(#000, 46.7%);
 }
 
 .ruma-title {
-  background: image-url('/images/ruma-chat-bubble.svg') no-repeat center;
-  background-size: 14rem 7rem;
-  font-weight: 300;
-  font-size: 4rem;
-  letter-spacing: .2rem;
-  margin: 0;
-  padding: 1rem 1.5rem 2rem 2rem;
+  background-image: image-url('/images/ruma.png');
+  background-size: 280px 125px;
+  background-repeat: no-repeat;
+  color: transparent;
+  display: block;
+  height: 125px;
+  margin: 0 auto;
+  width: 280px;
 
-  @media screen and (max-width: 640px) {
-    background-size: 13rem 7rem;
+  @media screen and (max-width: 320px) {
+  background-size: 187px 83px;
+    height: 83px;
+    width: 187px;
   }
 }
 
