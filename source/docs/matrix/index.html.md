@@ -44,7 +44,7 @@ With Matrix, you can do the same for messaging, phone, and video calls.
 
 You can pick any Matrix client, and you can switch at any time.
 Whatever you choose, it'll work with your homeserver.
-Currently, the most widely used Matrix client is the web app Vector.
+Currently, the most widely used Matrix client is [Riot](https://riot.im/), which has versions available for the web, iOS, Android, macOS, Windows, and more.
 
 On the homeserver side, Matrix offers choices to both the user and operator of the homeserver.
 
@@ -94,7 +94,7 @@ The table shows the protocol each system uses, examples of resources you'd acces
       <th>You use…</th>
       <td>Chrome, Firefox</td>
       <td>Gmail web app, Apple Mail</td>
-      <td>Vector, WeeChat</td>
+      <td>Riot, WeeChat</td>
     </tr>
   </table>
 </div>
