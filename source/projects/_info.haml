@@ -1,0 +1,17 @@
+%dl.dl-horizontal
+  %dt Releases
+  %dd
+    - if current_page.data.releases
+      = link_to current_page.data.releases, current_page.data.releases
+    - else
+      Unreleased
+  %dt Source code
+  %dd= link_to "https://github.com/ruma/#{current_page.data.project}", "https://github.com/ruma/#{current_page.data.project}"
+  %dt Documentation
+  %dd
+    - if !current_page.data.documentation.nil?
+      = link_to current_page.data.documentation, current_page.data.documentation
+    - else
+      Not yet available
+  %dt Bug reports
+  %dd= link_to "https://github.com/ruma/#{current_page.data.project}/issues", "https://github.com/ruma/#{current_page.data.project}/issues"
