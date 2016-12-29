@@ -13,3 +13,7 @@ gem 'middleman-livereload'
 gem 'builder'
 
 gem 'bootstrap-sass'
+
+gem 'octokit'
+gem 'pry'
+gem 'rake'
