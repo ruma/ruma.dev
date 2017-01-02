@@ -3,5 +3,5 @@
   %header
     %h1{ itemprop: "headline" }
       = link_to news.title, news.url, title: news.title
-      %small{ itemprop: "datePublished", value: news.date.strftime("%Y-%m-%d") }= news.date.strftime("%B %d, %Y")
+      %small{ itemprop: "datePublished", value: news.date.strftime("%Y-%m-%d") }= news.date.strftime(news.metadata[:page]["type"] == "year" ? "%Y" : "%B %d, %Y")
   ~ news.body

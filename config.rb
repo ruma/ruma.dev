@@ -16,9 +16,9 @@ activate :blog do |blog|
   blog.layout = "news"
   blog.paginate = true
   blog.per_page = 3
-  blog.permalink = "this-week-in-ruma-{year}-{month}-{day}.html"
+  blog.permalink = "{title}-{year}-{month}-{day}.html"
   blog.prefix = "news"
-  blog.sources = "{year}-{month}-{day}.html"
+  blog.sources = "{type}-{year}-{month}-{day}.html"
 end
 
 activate :directory_indexes
