@@ -3,7 +3,8 @@ title: Ruma - ruma
 project: ruma
 ---
 
-`ruma` is the primary component of the Ruma homeserver.
-It serves Matrix's client-server API, which is what Matrix clients of all kinds use to communicate with their homeserver.
-When run by itself without [ruma-federation](/projects/ruma-federation/), a user is able to run a completely private Matrix homeserver that doesn't participate in federation at all.
-Even when both components are run together, the separation of the two APIs into two applications allows them to be horizontally scaled separately based on demand.
+`ruma` is the entire Ruma homeserver compiled into a single executable.
+It serves Matrix's client-server API, federation API, and extra APIs which are specific to Ruma and not part of the Matrix specification.
+
+`ruma` is intended to be used for small-scale deployments such as personal homeservers for individuals or small groups of people.
+For large-scale deployments, it's recommended to use the separate executables provided for each component of the homeserver so they can be scaled independently based on demand.
