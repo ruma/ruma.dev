@@ -5,5 +5,5 @@
       = link_to news.title, news.url, title: news.title
       %small{ itemprop: "datePublished", value: news.date.strftime("%Y-%m-%d") }= news.date.strftime(news.metadata[:page]["type"] == "year" ? "%Y" : "%B %d, %Y")
   - if news.metadata[:page]["type"] == "week"
-    %p <strong>Ruma</strong> is a collection of <a href="https://matrix.org">Matrix</a> applications and libraries written in the <a href="https://www.rust-lang.org/">Rust</a> programming language. Matrix is an open specification for an online communication protocol. For an overview of the project, visit the <a href="/">home page</a>. <strong>This Week in Ruma</strong> is a weekly summary of the development of Ruma, published on Sunday nights.
+    %p <strong>Ruma</strong> is a <a href="https://matrix.org">Matrix</a> homeserver, client, and supporting libraries written in the <a href="https://www.rust-lang.org/">Rust</a> programming language. Matrix is an open specification for an online communication protocol. For an overview of the project, visit the <a href="/">home page</a>. <strong>This Week in Ruma</strong> is a weekly summary of the development of Ruma, published on Sunday nights.
   ~ news.body
