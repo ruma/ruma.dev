@@ -22,7 +22,6 @@ namespace :contributors do
       ruma-client
       ruma-client-api
       ruma-events
-      ruma-federation
       ruma-identifiers
       ruma-signatures
     ).each do |repo|
