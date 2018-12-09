@@ -1,6 +1,8 @@
 ---
 title: Ruma - ruma-client
 project: ruma-client
+releases: https://crates.io/crates/ruma-client
+documentation: https://docs.rs/ruma-client
 ---
 
 `ruma-client` is a high-level client for Matrix's client-server API.
