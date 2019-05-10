@@ -6,6 +6,7 @@ page "/news/feed.atom", layout: false
 page '/docs/index.html', layout: :layout
 page '/docs/*', layout: :docs
 page '/projects/*', layout: :projects
+page '/status/*', layout: :status
 
 activate :blog do |blog|
   blog.default_extension = ".md"
