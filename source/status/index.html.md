@@ -2,7 +2,7 @@
 title: Project Status
 ---
 
-The Ruma project is still active, but has largely been on a development hiatus.
+The Ruma project is still active, but has largely been on a development status.
 The team has been waiting for some specific developments in both Matrix and Rust.
 
 For Matrix, the primary developments we were waiting for were stable releases of each Matrix specification.
