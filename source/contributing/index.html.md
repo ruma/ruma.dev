@@ -26,4 +26,8 @@ The second major area where code contributions would help would be to work on eq
 ruma-client-api is the library that defines the Rust interface for all the HTTP endpoints in the Matrix client-server API.
 An equivalent library will eventually be needed for the other Matrix APIs.
 
+GitHub issues across all of Ruma's repositories are tagged with "effort" levels, so looking for issues tagged with "effort/easy" is also a good way to find smaller, entry-level issues to take on.
+
+Lastly, if you want to offer financial support to the developers of Ruma, you can [donate to Ruma on Liberapay](https://liberapay.com/ruma/).
+
 Thank you for your interest in contributing to Ruma!
