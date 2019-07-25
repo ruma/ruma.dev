@@ -2,7 +2,12 @@
 title: Project Status
 ---
 
-The Ruma project is still active, but has largely been on a development hiatus.
+Ruma is in early development and only certain components of it are currently in a state of practical usability.
+The client-side components are more likely to be useful in building software that works with Matrix at this point.
+The homeserver is still in early stages and is not usable for anything but further development and testing.
+To see details of which APIs are supported in the homeserver, see the [status document](https://github.com/ruma/ruma/blob/master/STATUS.md).
+
+Ruma development is active in general, but development of the homeserver component is currently on hold.
 The team has been waiting for some specific developments in both Matrix and Rust.
 
 For Matrix, the primary developments we were waiting for were stable releases of each Matrix specification.
