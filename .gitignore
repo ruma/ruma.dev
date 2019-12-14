@@ -10,6 +10,8 @@
 # Ignore the build directory
 /build
 
+/vendor
+
 # Ignore cache
 /.sass-cache
 /.cache
