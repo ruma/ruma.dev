@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content='IE=edge' http_equiv='X-UA-Compatible'>
+<meta charset='utf-8'>
+<meta content='width=device-width,initial-scale=1' name='viewport'>
+<link href='/images/apple-touch-icon-57x57-4fdb8100.png' rel='apple-touch-icon-precomposed' sizes='57x57'>
+<link href='/images/apple-touch-icon-114x114-0ba5c2b3.png' rel='apple-touch-icon-precomposed' sizes='114x114'>
+<link href='/images/apple-touch-icon-72x72-d9371b56.png' rel='apple-touch-icon-precomposed' sizes='72x72'>
+<link href='/images/apple-touch-icon-144x144-bd467b10.png' rel='apple-touch-icon-precomposed' sizes='144x144'>
+<link href='/images/apple-touch-icon-60x60-9165d8af.png' rel='apple-touch-icon-precomposed' sizes='60x60'>
+<link href='/images/apple-touch-icon-120x120-63f5f0ae.png' rel='apple-touch-icon-precomposed' sizes='120x120'>
+<link href='/images/apple-touch-icon-76x76-1025d1ab.png' rel='apple-touch-icon-precomposed' sizes='76x76'>
+<link href='/images/apple-touch-icon-152x152-a2a52576.png' rel='apple-touch-icon-precomposed' sizes='152x152'>
+<link href='/images/favicon-196x196-0b47bb9f.png' rel='icon' sizes='196x196' type='image/png'>
+<link href='/images/favicon-96x96-d739a671.png' rel='icon' sizes='96x96' type='image/png'>
+<link href='/images/favicon-32x32-77e1cfca.png' rel='icon' sizes='32x32' type='image/png'>
+<link href='/images/favicon-16x16-4aa60318.png' rel='icon' sizes='16x16' type='image/png'>
+<link href='/images/favicon-128-6e4707f8.png' rel='icon' sizes='128x128' type='image/png'>
+<meta content='Ruma' name='application-name'>
+<meta content='#FFFFFF' name='msapplication-TileColor'>
+<meta content='/images/mstile-144x144-bd467b10.png' name='msapplication-TileImage'>
+<meta content='/images/mstile-70x70-6e4707f8.png' name='msapplication-square70x70logo'>
+<meta content='/images/mstile-150x150-d5f0b5e6.png' name='msapplication-square150x150logo'>
+<meta content='/images/mstile-310x150-e8749e81.png' name='msapplication-wide310x150logo'>
+<meta content='/images/mstile-310x310-ed20b880.png' name='msapplication-square310x310logo'>
+<title>New releases</title>
+<meta content='Ruma is a collection of Matrix applications and libraries written in the Rust programming language.' name='description'>
+<link href='https://www.ruma.io/news/new-releases-2019-11-05/' rel='canonical'>
+<link href='/news/feed.atom' rel='alternate' type='application/atom+xml'>
+<link href="/stylesheets/site-21a986c4.css" rel="stylesheet" />
+</head>
+<body class='news news_new-releases-2019-11-05 news_new-releases-2019-11-05_index'>
+<nav class='navbar navbar-inverse navbar-static-top'>
+<div class='container-fluid'>
+<ul class='nav navbar-nav navbar-right'>
+<li><a href="/" title="Home">Home</a></li>
+<li><a href="/news/" title="News">News</a></li>
+<li><a href="/status/" title="Project Status">Project Status</a></li>
+<li><a href="/projects/" title="Projects">Projects</a></li>
+<li><a href="/contributing/" title="How to Contribute">How to Contribute</a></li>
+<li><a href="https://liberapay.com/ruma/" title="Donate to Ruma">Donate on Liberapay</a></li>
+<li><a href="/docs/" title="Documentation">Documentation</a></li>
+</ul>
+</div>
+</nav>
+
+<div class='container'>
+<div class='row'>
+<div class='col-md-8 col-md-offset-2'>
+<article class='ruma-news' itemscope itemtype='http://schema.org/BlogPosting'>
+<meta content='Jonas Platte' itemprop='author'>
+<header>
+<h1 itemprop='headline'>
+<a href="/news/new-releases-2019-11-05/" title="New releases">New releases</a>
+<small itemprop='datePublished' value='2019-11-05'>November 05, 2019</small>
+</h1>
+<p>
+<small>by Jonas Platte</small>
+</p>
+<p>
+<strong>Ruma</strong> is a <a href="https://matrix.org">Matrix</a> homeserver, client, and supporting libraries written in the <a href="https://www.rust-lang.org/">Rust</a> programming language. Matrix is an open specification for an online communication protocol. For an overview of the project, visit the <a href="/">home page</a>.
+</p>
+</header>
+<p>Last week, we uploaded 7 (!) new versions of our crates to crates.io:</p>
+
+<ul>
+  <li>ruma-events-macros 0.2.0</li>
+  <li>ruma-events 0.15.0</li>
+  <li>ruma-events 0.15.1 (bugfix release because ruma-events 0.15.0 was released a tad too early)</li>
+  <li>ruma-api-macros 0.8.0</li>
+  <li>ruma-api 0.11.0</li>
+  <li>ruma-client-api 0.4.0</li>
+  <li>ruma-client 0.3.0-beta.1</li>
+</ul>
+
+<h2 id="what-changed">What changed?</h2>
+
+<p>A quick overview:</p>
+
+<ul>
+  <li>ruma-events 0.15 improves event deserialization and validation</li>
+  <li>the latest ruma-api &amp; ruma-client-api are only useable for implementing client-side stuff, server-side functionality will be added back in a later release</li>
+  <li>ruma-client 0.3.0-beta.1 supports async/await, the final version will be published after its dependencies are final too</li>
+</ul>
+
+<p>And now to the technical details…</p>
+
+<h2 id="fallible-event-deserialization">Fallible event deserialization</h2>
+
+<p>The most important change is one in ruma-events, and it is <em>the</em> reason all of the other crates saw a new release too. ruma-events 0.15.0 introduces a type <code>EventResult&lt;T&gt;</code>, which is almost the same as <code>Result&lt;T, ruma_events::InvalidEvent&gt;</code> (and it is in fact convertible to that) but with one important difference: It implements <code>serde::Deserialize</code> in a different way. Deserializing an <code>EventResult&lt;T&gt;</code> almost always succeeds. It tries to deserialize the <code>T</code>, and if that fails, falls back to <code>serde_json::Value</code> deserialization. However, in contrast to the fallback one would get with <code>Result&lt;T, serde_json::Value&gt;</code> deserialization which is supported by serde directly, we also capture the error message from <code>T</code>s deserialization… or validation:</p>
+
+<h2 id="event-validation">Event validation</h2>
+
+<p>I left out one detail in the previous section, and that is that the <code>T</code> in <code>EventResult&lt;T&gt;</code> doesn't actually need to implement <code>Deserialize</code>. Instead, it needs to implement <code>TryFromRaw</code>. This trait is very similar to <code>TryFrom</code> from the standard library, and in fact we would have used <code>TryFrom</code> directly, were it not for coherence issues¹. This trait is implemented for every event (content) type in ruma-events and allows conversion of a private raw version of that type, which does implement <code>Deserialize</code>, to the actual event (content) type. All of this is done to enable validation of events during deserialization, without having to write the actual deserialization code manually. There are currently few events that need this validation step after deserialization (most of the constraints the matrix spec puts on json fields beyond their types are captured in their Rust types, e.g. using <code>UserId</code> instead of <code>String</code>), but it is nevertheless useful to have the required mechanisms in place.</p>
+
+<p>¹ <a href="https://github.com/rust-lang/rust/issues/55437">RFC 2451</a> "Re-Rebalancing Coherence" might allow us to switch to <code>TryFrom</code> in a future release, though I have not tested this yet</p>
+
+<h2 id="temporary-non-support-of-server-side-usage">Temporary non-support of server-side usage</h2>
+
+<p>Because of the whole fallible deserialization thing, we might not be able to use the same Rust types on both client &amp; server anymore. Due to that and the server not being worked on currently, we decided to temporarily remove request deserialization and response serialization from ruma-api and ruma-api-macros, leaving request serialization and response deserialization, as needed for the client use case. This affects ruma-client-api as well, through its use of the aforementioned crates.</p>
+
+<h2 id="asyncawait-in-ruma-client">Async/await in ruma-client</h2>
+
+<p>As listed at the beginning, we published ruma-client 0.3.0-beta.1. This release supports <code>async</code> / <code>await</code> syntax in addition to using all the latest lower-level ruma crates. While <code>async</code> / <code>await</code> will become stable with Rust 1.39.0 on 2019-11-09, tokio 0.2.0 is expected to take some more time to come out, which will in turn affect hyper 0.13.0's final release and thus our 0.3.0 release. Nevertheless, ruma-client 0.3.0-beta.1 can be used today on Rust beta or nightly.</p>
+
+
+</article>
+
+</div>
+</div>
+</div>
+
+<footer class='ruma-footer'>
+<div class='container-fluid'>
+<ul class='nav'>
+<li><a href="https://github.com/ruma">GitHub</a></li>
+<li><a href="https://twitter.com/ruma_io">Twitter</a></li>
+<li><a href="https://matrix.to/#/#ruma:matrix.org">Matrix room</a></li>
+</ul>
+</div>
+</footer>
+<div class='container-fluid'>
+<p class='text-center'>
+<small>
+The source code and content of this website are free and available under the MIT license:
+<a href="https://github.com/ruma/www.ruma.io">www.ruma.io</a>
+</small>
+</p>
+</div>
+</body>
+</html>

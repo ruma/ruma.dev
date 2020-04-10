@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content='IE=edge' http_equiv='X-UA-Compatible'>
+<meta charset='utf-8'>
+<meta content='width=device-width,initial-scale=1' name='viewport'>
+<link href='/images/apple-touch-icon-57x57-4fdb8100.png' rel='apple-touch-icon-precomposed' sizes='57x57'>
+<link href='/images/apple-touch-icon-114x114-0ba5c2b3.png' rel='apple-touch-icon-precomposed' sizes='114x114'>
+<link href='/images/apple-touch-icon-72x72-d9371b56.png' rel='apple-touch-icon-precomposed' sizes='72x72'>
+<link href='/images/apple-touch-icon-144x144-bd467b10.png' rel='apple-touch-icon-precomposed' sizes='144x144'>
+<link href='/images/apple-touch-icon-60x60-9165d8af.png' rel='apple-touch-icon-precomposed' sizes='60x60'>
+<link href='/images/apple-touch-icon-120x120-63f5f0ae.png' rel='apple-touch-icon-precomposed' sizes='120x120'>
+<link href='/images/apple-touch-icon-76x76-1025d1ab.png' rel='apple-touch-icon-precomposed' sizes='76x76'>
+<link href='/images/apple-touch-icon-152x152-a2a52576.png' rel='apple-touch-icon-precomposed' sizes='152x152'>
+<link href='/images/favicon-196x196-0b47bb9f.png' rel='icon' sizes='196x196' type='image/png'>
+<link href='/images/favicon-96x96-d739a671.png' rel='icon' sizes='96x96' type='image/png'>
+<link href='/images/favicon-32x32-77e1cfca.png' rel='icon' sizes='32x32' type='image/png'>
+<link href='/images/favicon-16x16-4aa60318.png' rel='icon' sizes='16x16' type='image/png'>
+<link href='/images/favicon-128-6e4707f8.png' rel='icon' sizes='128x128' type='image/png'>
+<meta content='Ruma' name='application-name'>
+<meta content='#FFFFFF' name='msapplication-TileColor'>
+<meta content='/images/mstile-144x144-bd467b10.png' name='msapplication-TileImage'>
+<meta content='/images/mstile-70x70-6e4707f8.png' name='msapplication-square70x70logo'>
+<meta content='/images/mstile-150x150-d5f0b5e6.png' name='msapplication-square150x150logo'>
+<meta content='/images/mstile-310x150-e8749e81.png' name='msapplication-wide310x150logo'>
+<meta content='/images/mstile-310x310-ed20b880.png' name='msapplication-square310x310logo'>
+<title>This Week in Ruma</title>
+<meta content='Ruma is a collection of Matrix applications and libraries written in the Rust programming language.' name='description'>
+<link href='https://www.ruma.io/news/this-week-in-ruma-2016-10-02/' rel='canonical'>
+<link href='/news/feed.atom' rel='alternate' type='application/atom+xml'>
+<link href="/stylesheets/site-21a986c4.css" rel="stylesheet" />
+</head>
+<body class='news news_this-week-in-ruma-2016-10-02 news_this-week-in-ruma-2016-10-02_index'>
+<nav class='navbar navbar-inverse navbar-static-top'>
+<div class='container-fluid'>
+<ul class='nav navbar-nav navbar-right'>
+<li><a href="/" title="Home">Home</a></li>
+<li><a href="/news/" title="News">News</a></li>
+<li><a href="/status/" title="Project Status">Project Status</a></li>
+<li><a href="/projects/" title="Projects">Projects</a></li>
+<li><a href="/contributing/" title="How to Contribute">How to Contribute</a></li>
+<li><a href="https://liberapay.com/ruma/" title="Donate to Ruma">Donate on Liberapay</a></li>
+<li><a href="/docs/" title="Documentation">Documentation</a></li>
+</ul>
+</div>
+</nav>
+
+<div class='container'>
+<div class='row'>
+<div class='col-md-8 col-md-offset-2'>
+<article class='ruma-news' itemscope itemtype='http://schema.org/BlogPosting'>
+<meta content='Jimmy Cuadra' itemprop='author'>
+<header>
+<h1 itemprop='headline'>
+<a href="/news/this-week-in-ruma-2016-10-02/" title="This Week in Ruma">This Week in Ruma</a>
+<small itemprop='datePublished' value='2016-10-02'>October 02, 2016</small>
+</h1>
+<p>
+<small>by Jimmy Cuadra</small>
+</p>
+<p>
+<strong>Ruma</strong> is a <a href="https://matrix.org">Matrix</a> homeserver, client, and supporting libraries written in the <a href="https://www.rust-lang.org/">Rust</a> programming language. Matrix is an open specification for an online communication protocol. For an overview of the project, visit the <a href="/">home page</a>.
+<strong>This Week in Ruma</strong> is a weekly summary of the development of Ruma, published on Sunday nights.
+</p>
+</header>
+<p>Ruma had some major progress this week.
+We're getting ever closer to the first alpha release.
+Ruma's fantastic community contributed implementations for several new API endpoints, with more on the way.</p>
+
+<p>On Friday I did my second live stream of Ruma development.
+If you missed it, you can <a href="https://www.youtube.com/watch?v=gApgMPEwvSc">watch the recording</a>.
+In it, I work on a new crate, ruma-client-api, the purpose of which is to separate the request and response data types for each API endpoint from the homeserver so that the same types can be used by client code.
+The general structure of the API has changed since the Friday screencast, and is coming together very nicely now.</p>
+
+<p>And finally, a milestone was reached with ruma-events by converting the <code>Event</code>, <code>RoomEvent</code>, and <code>StateEvent</code> types from structs to traits, greatly simplifying the overall API, and paving the way for better generic treatment of the different event kinds in the Ruma homeserver.
+Initially I thought it would require language support for <a href="https://github.com/rust-lang/rfcs/pull/1546">fields in traits</a>, but I managed to get almost the same effect with macros.
+At least ergonomic enough that I'm comfortable stabilizing the current API without fields in traits, at least once I verify that it works well in the homeserver code.</p>
+
+<h2 id="notable-changes-to-rumahttpsgithubcomrumaruma">Notable changes to <a href="https://github.com/ruma/ruma">ruma</a></h2>
+
+<ul>
+  <li>Added support for deactivating an account.</li>
+  <li>Added support for joining a room.</li>
+  <li>Added support for listing the members of a room.</li>
+  <li>Cleaned up the way variable URL path parameters are handled, moving all the logic in to Iron middleware, and reducing the volume of code in each API's handler function.</li>
+  <li>Squashed all database migrations into a single "prerelease" migration to make it easier for contributors to work on features requiring new tables concurrently, and because there is no need to have more than one migration per released version of Ruma.</li>
+</ul>
+
+<h2 id="notable-changes-to-ruma-client-apihttpsgithubcomrumaruma-client-api">Notable changes to <a href="https://github.com/ruma/ruma-client-api">ruma-client-api</a></h2>
+
+<ul>
+  <li>Added this new crate to share the request and response types between client and server.</li>
+  <li>Overall API designed and types added for about a third of the Matrix client API functionality so far.</li>
+</ul>
+
+<h2 id="notable-changes-to-ruma-eventshttpsgithubcomrumaruma-events">Notable changes to <a href="https://github.com/ruma/ruma-events">ruma-events</a></h2>
+
+<ul>
+  <li><code>Event</code>, <code>RoomEvent</code>, and <code>StateEvent</code> are now traits, which unifies and simplifies the crate's overall API.</li>
+  <li>Enums now implement <code>Display</code> and <code>FromStr</code>.</li>
+</ul>
+
+
+</article>
+
+</div>
+</div>
+</div>
+
+<footer class='ruma-footer'>
+<div class='container-fluid'>
+<ul class='nav'>
+<li><a href="https://github.com/ruma">GitHub</a></li>
+<li><a href="https://twitter.com/ruma_io">Twitter</a></li>
+<li><a href="https://matrix.to/#/#ruma:matrix.org">Matrix room</a></li>
+</ul>
+</div>
+</footer>
+<div class='container-fluid'>
+<p class='text-center'>
+<small>
+The source code and content of this website are free and available under the MIT license:
+<a href="https://github.com/ruma/www.ruma.io">www.ruma.io</a>
+</small>
+</p>
+</div>
+</body>
+</html>

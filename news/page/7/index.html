@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content='IE=edge' http_equiv='X-UA-Compatible'>
+<meta charset='utf-8'>
+<meta content='width=device-width,initial-scale=1' name='viewport'>
+<link href='/images/apple-touch-icon-57x57-4fdb8100.png' rel='apple-touch-icon-precomposed' sizes='57x57'>
+<link href='/images/apple-touch-icon-114x114-0ba5c2b3.png' rel='apple-touch-icon-precomposed' sizes='114x114'>
+<link href='/images/apple-touch-icon-72x72-d9371b56.png' rel='apple-touch-icon-precomposed' sizes='72x72'>
+<link href='/images/apple-touch-icon-144x144-bd467b10.png' rel='apple-touch-icon-precomposed' sizes='144x144'>
+<link href='/images/apple-touch-icon-60x60-9165d8af.png' rel='apple-touch-icon-precomposed' sizes='60x60'>
+<link href='/images/apple-touch-icon-120x120-63f5f0ae.png' rel='apple-touch-icon-precomposed' sizes='120x120'>
+<link href='/images/apple-touch-icon-76x76-1025d1ab.png' rel='apple-touch-icon-precomposed' sizes='76x76'>
+<link href='/images/apple-touch-icon-152x152-a2a52576.png' rel='apple-touch-icon-precomposed' sizes='152x152'>
+<link href='/images/favicon-196x196-0b47bb9f.png' rel='icon' sizes='196x196' type='image/png'>
+<link href='/images/favicon-96x96-d739a671.png' rel='icon' sizes='96x96' type='image/png'>
+<link href='/images/favicon-32x32-77e1cfca.png' rel='icon' sizes='32x32' type='image/png'>
+<link href='/images/favicon-16x16-4aa60318.png' rel='icon' sizes='16x16' type='image/png'>
+<link href='/images/favicon-128-6e4707f8.png' rel='icon' sizes='128x128' type='image/png'>
+<meta content='Ruma' name='application-name'>
+<meta content='#FFFFFF' name='msapplication-TileColor'>
+<meta content='/images/mstile-144x144-bd467b10.png' name='msapplication-TileImage'>
+<meta content='/images/mstile-70x70-6e4707f8.png' name='msapplication-square70x70logo'>
+<meta content='/images/mstile-150x150-d5f0b5e6.png' name='msapplication-square150x150logo'>
+<meta content='/images/mstile-310x150-e8749e81.png' name='msapplication-wide310x150logo'>
+<meta content='/images/mstile-310x310-ed20b880.png' name='msapplication-square310x310logo'>
+<title>This Week in Ruma</title>
+<meta content='Ruma is a collection of Matrix applications and libraries written in the Rust programming language.' name='description'>
+<link href='https://www.ruma.io/news/page/7/' rel='canonical'>
+<link href='/news/feed.atom' rel='alternate' type='application/atom+xml'>
+<link href="/stylesheets/site-21a986c4.css" rel="stylesheet" />
+</head>
+<body class='news news_page news_page_7 news_page_7_index'>
+<nav class='navbar navbar-inverse navbar-static-top'>
+<div class='container-fluid'>
+<ul class='nav navbar-nav navbar-right'>
+<li><a href="/" title="Home">Home</a></li>
+<li><a href="/news/" title="News">News</a></li>
+<li><a href="/status/" title="Project Status">Project Status</a></li>
+<li><a href="/projects/" title="Projects">Projects</a></li>
+<li><a href="/contributing/" title="How to Contribute">How to Contribute</a></li>
+<li><a href="https://liberapay.com/ruma/" title="Donate to Ruma">Donate on Liberapay</a></li>
+<li><a href="/docs/" title="Documentation">Documentation</a></li>
+</ul>
+</div>
+</nav>
+
+<div class='container'>
+<div class='row'>
+<div class='col-md-8 col-md-offset-2'>
+<article class='ruma-news' itemscope itemtype='http://schema.org/BlogPosting'>
+<meta content='Jimmy Cuadra' itemprop='author'>
+<header>
+<h1 itemprop='headline'>
+<a href="/news/this-week-in-ruma-2016-12-11/" title="This Week in Ruma">This Week in Ruma</a>
+<small itemprop='datePublished' value='2016-12-11'>December 11, 2016</small>
+</h1>
+<p>
+<small>by Jimmy Cuadra</small>
+</p>
+<p>
+<strong>Ruma</strong> is a <a href="https://matrix.org">Matrix</a> homeserver, client, and supporting libraries written in the <a href="https://www.rust-lang.org/">Rust</a> programming language. Matrix is an open specification for an online communication protocol. For an overview of the project, visit the <a href="/">home page</a>.
+<strong>This Week in Ruma</strong> is a weekly summary of the development of Ruma, published on Sunday nights.
+</p>
+</header>
+<h2 id="from-the-editor">From the editor</h2>
+
+<p>Another big milestone was reached this week: <a href="https://github.com/ruma/ruma-signatures">ruma-signatures</a> became the second Ruma crate to be published to crates.io.
+ruma-signatures is a stand-alone library for working with digital signatures used by the Matrix system.
+It can be used by either client or server code, and is not specific to the Ruma homeserver, so anyone writing clients, servers, bots, or integrations for Matrix can use it.
+One feature, the ability to sign Matrix events, is notably absent from this first release, mostly because Matrix's federation specification is still unstable.
+However, the library should still be useful as is.
+Check out the <a href="https://docs.rs/ruma-signatures">documentation</a> to learn how to use it.</p>
+
+<p>The release of ruma-signatures also makes it possible to finish the last remaining task in <a href="https://github.com/ruma/ruma-events">ruma-events</a>, which was to update a struct field to use one of the types from ruma-signatures. ruma-events should see its first release to crates.io next week, further expanding Ruma's contribution of independent Matrix libraries for the Rust ecosystem.
+In turn, ruma-events's release will unblock <a href="https://github.com/ruma/ruma-client-api">ruma-client-api</a>, which in turn will make it possible to begin implementing <a href="https://github.com/ruma/ruma-client">ruma-client</a>, which will be great for anyone looking to write a Matrix program in Rust.</p>
+
+<p>Back in the Ruma homeserver, there are several pull requests waiting for review, so more API endpoints will be implemented soon!</p>
+
+<h2 id="notable-changes-to-rumahttpsgithubcomrumaruma">Notable changes to <a href="https://github.com/ruma/ruma">ruma</a></h2>
+
+<ul>
+  <li>Ruma's internal error type's API was improved using the <a href="http://www.suspectsemantics.com/blog/2016/11/29/the-into-trick/">Into&lt;Option&gt; trick</a> by a new contributor.</li>
+  <li>Another new contributor fixed a bug in the <code>GET /_matrix/client/versions</code> endpoint, and made the crate's manifest consistent with the program's CLI.</li>
+</ul>
+
+<h2 id="notable-changes-to-ruma-eventshttpsgithubcomrumaruma-events">Notable changes to <a href="https://github.com/ruma/ruma-events">ruma-events</a></h2>
+
+<ul>
+  <li>New types were added to support heterogeneous collections of events.</li>
+  <li>The types for the <em>m.room.member</em> event now use the <code>Signatures</code> type from ruma-signatures.</li>
+</ul>
+
+<h2 id="notable-changes-to-ruma-identifiershttpsgithubcomrumaruma-identifiers">Notable changes to <a href="https://github.com/ruma/ruma-identifiers">ruma-identifiers</a></h2>
+
+<ul>
+  <li>Released crate version 0.5.0, with supports the new 0.9 release of Diesel.</li>
+</ul>
+
+<h2 id="new-contributors">New contributors</h2>
+
+<ul>
+  <li><a href="https://github.com/anuragsoni">Anurag Soni</a></li>
+  <li><a href="https://github.com/jstnlef">Justin LeFebvre</a></li>
+  <li><a href="https://github.com/kyrias">Johannes Löthberg</a></li>
+</ul>
+
+<p>And a belated contribution attribution to my coworker and friend, <a href="https://github.com/rjfranco">Ramiro Jr. Franco</a>, who did a bunch of work to get Ruma's website started a while back.</p>
+
+<h2 id="call-for-participation">Call for participation</h2>
+
+<p>Last week I included this new section, and intend to include it every week from now on, to highlight ways people interested in the project can contribute.
+Writing code is not the only way to contribute.
+Adding or improving documentation, doing code review, and participating in discussions are helpful too!</p>
+
+<ul>
+  <li>[discussion] <a href="https://github.com/ruma/ruma/issues/110">Implementing Event storage/search with a timeseries database or a lucene indexed database</a></li>
+  <li>[bug] <a href="https://github.com/ruma/ruma/issues/121">Deadlock error while running test suite</a></li>
+  <li>[feature] <a href="https://github.com/ruma/ruma/issues/107">Implement a rate-limiting middleware</a></li>
+</ul>
+
+<p>There are also plenty of API endpoints that still need to be implemented.
+Check the <a href="https://github.com/ruma/ruma/blob/master/STATUS.md">status document</a> for a list.</p>
+
+</article>
+
+<article class='ruma-news' itemscope itemtype='http://schema.org/BlogPosting'>
+<meta content='Jimmy Cuadra' itemprop='author'>
+<header>
+<h1 itemprop='headline'>
+<a href="/news/this-week-in-ruma-2016-12-04/" title="This Week in Ruma">This Week in Ruma</a>
+<small itemprop='datePublished' value='2016-12-04'>December 04, 2016</small>
+</h1>
+<p>
+<small>by Jimmy Cuadra</small>
+</p>
+<p>
+<strong>Ruma</strong> is a <a href="https://matrix.org">Matrix</a> homeserver, client, and supporting libraries written in the <a href="https://www.rust-lang.org/">Rust</a> programming language. Matrix is an open specification for an online communication protocol. For an overview of the project, visit the <a href="/">home page</a>.
+<strong>This Week in Ruma</strong> is a weekly summary of the development of Ruma, published on Sunday nights.
+</p>
+</header>
+<h2 id="from-the-editor">From the editor</h2>
+
+<p>We had a very productive week, landing several pull requests, including a major revamp of ruma-events and new APIs.</p>
+
+<p>A very important milestone was reached: The number of unstable Rust features Ruma uses was reduced from six to two!
+Ruma was migrated to the new Macros 1.1 approach for custom derive, which meant we were able to drop the <code>custom_attribute</code>, <code>custom_derive</code>, and <code>plugin</code> features.
+As part of the integration of the ruma-events revamp, <code>specialization</code> was also removed.
+With <code>question_mark</code> now stable, Ruma uses only <code>proc_macro</code> (Macros 1.1, which will be stable in a few more releases) and <code>try_from</code>, which I hope to see movement on soon.
+The day that Ruma can target stable Rust is approaching!</p>
+
+<p>The revamp of ruma-events changed the design of the library, so each of the kinds of event in Matrix (events, room events, and state events) are now traits rather than structs with two generic parameters.
+This change took quite a while, so I'm happy to have it finally integrated into Ruma.</p>
+
+<h2 id="notable-changes-to-rumahttpsgithubcomrumaruma">Notable changes to <a href="https://github.com/ruma/ruma">ruma</a></h2>
+
+<ul>
+  <li>Added support for local room invitations.</li>
+  <li>Removed unstable features: <code>custom_attribute</code>, <code>custom_derive</code>, <code>plugin</code>, and <code>specialization</code>.</li>
+  <li>Updated to Macros 1.1 versions of Serde and Diesel.</li>
+</ul>
+
+<h2 id="notable-changes-to-ruma-eventshttpsgithubcomrumaruma-events">Notable changes to <a href="https://github.com/ruma/ruma-events">ruma-events</a></h2>
+
+<ul>
+  <li><code>Event</code>, <code>RoomEvent</code>, and <code>StateEvent</code> are now traits.</li>
+</ul>
+
+<h2 id="notable-changes-to-ruma-identifiershttpsgithubcomrumaruma-identifiers">Notable changes to <a href="https://github.com/ruma/ruma-identifiers">ruma-identifiers</a></h2>
+
+<ul>
+  <li>Released crate version 0.4.3, a small bump to update dependencies.</li>
+</ul>
+
+<h2 id="call-for-participation">Call for participation</h2>
+
+<p>Here are a couple of items to check out if you're interested in contributing to the project:</p>
+
+<ul>
+  <li>For implementation: <a href="https://github.com/ruma/ruma/issues/115">Implement the Into&lt;Option&gt; trick for ApiError.</a>.</li>
+  <li>For review and discussion: <a href="https://github.com/ruma/ruma-events/pull/5">Add types to support heterogeneous collections of events</a>.</li>
+</ul>
+
+</article>
+
+<article class='ruma-news' itemscope itemtype='http://schema.org/BlogPosting'>
+<meta content='Jimmy Cuadra' itemprop='author'>
+<header>
+<h1 itemprop='headline'>
+<a href="/news/this-week-in-ruma-2016-11-27/" title="This Week in Ruma">This Week in Ruma</a>
+<small itemprop='datePublished' value='2016-11-27'>November 27, 2016</small>
+</h1>
+<p>
+<small>by Jimmy Cuadra</small>
+</p>
+<p>
+<strong>Ruma</strong> is a <a href="https://matrix.org">Matrix</a> homeserver, client, and supporting libraries written in the <a href="https://www.rust-lang.org/">Rust</a> programming language. Matrix is an open specification for an online communication protocol. For an overview of the project, visit the <a href="/">home page</a>.
+<strong>This Week in Ruma</strong> is a weekly summary of the development of Ruma, published on Sunday nights.
+</p>
+</header>
+<h2 id="from-the-editor">From the editor</h2>
+
+<p>It's been several weeks since I published an update to This Week in Ruma.
+I've been out of town for a lot of that time and too busy to give Ruma the time it deserves.
+This hasn't stopped Ruma's contributors from moving forward, however!
+There are several pull requests in various stages of completion and review.
+It will likely to continue to be on the quiet side for Ruma through the remainder of the year, but don't worry.
+The project is not going away.</p>
+
+<h2 id="notable-changes-to-rumahttpsgithubcomrumaruma">Notable changes to <a href="https://github.com/ruma/ruma">ruma</a></h2>
+
+<ul>
+  <li>Added support for user profiles.</li>
+  <li>New room aliases now properly generate an m.room.aliases event.</li>
+  <li>The construction of API endpoints and the various middleware they use has been refactored to use a trait and a macro.</li>
+</ul>
+
+</article>
+
+<nav>
+<ul class='ruma-pagination'>
+<li>
+<span>&larr;</span>
+<a href="/news/page/6/" rel="prev">Previous</a>
+</li>
+<li>Page 7</li>
+<li>
+<a href="/news/page/8/" rel="next">Next</a>
+<span>&rarr;</span>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+
+<footer class='ruma-footer'>
+<div class='container-fluid'>
+<ul class='nav'>
+<li><a href="https://github.com/ruma">GitHub</a></li>
+<li><a href="https://twitter.com/ruma_io">Twitter</a></li>
+<li><a href="https://matrix.to/#/#ruma:matrix.org">Matrix room</a></li>
+</ul>
+</div>
+</footer>
+<div class='container-fluid'>
+<p class='text-center'>
+<small>
+The source code and content of this website are free and available under the MIT license:
+<a href="https://github.com/ruma/www.ruma.io">www.ruma.io</a>
+</small>
+</p>
+</div>
+</body>
+</html>

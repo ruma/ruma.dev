@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content='IE=edge' http_equiv='X-UA-Compatible'>
+<meta charset='utf-8'>
+<meta content='width=device-width,initial-scale=1' name='viewport'>
+<link href='/images/apple-touch-icon-57x57-4fdb8100.png' rel='apple-touch-icon-precomposed' sizes='57x57'>
+<link href='/images/apple-touch-icon-114x114-0ba5c2b3.png' rel='apple-touch-icon-precomposed' sizes='114x114'>
+<link href='/images/apple-touch-icon-72x72-d9371b56.png' rel='apple-touch-icon-precomposed' sizes='72x72'>
+<link href='/images/apple-touch-icon-144x144-bd467b10.png' rel='apple-touch-icon-precomposed' sizes='144x144'>
+<link href='/images/apple-touch-icon-60x60-9165d8af.png' rel='apple-touch-icon-precomposed' sizes='60x60'>
+<link href='/images/apple-touch-icon-120x120-63f5f0ae.png' rel='apple-touch-icon-precomposed' sizes='120x120'>
+<link href='/images/apple-touch-icon-76x76-1025d1ab.png' rel='apple-touch-icon-precomposed' sizes='76x76'>
+<link href='/images/apple-touch-icon-152x152-a2a52576.png' rel='apple-touch-icon-precomposed' sizes='152x152'>
+<link href='/images/favicon-196x196-0b47bb9f.png' rel='icon' sizes='196x196' type='image/png'>
+<link href='/images/favicon-96x96-d739a671.png' rel='icon' sizes='96x96' type='image/png'>
+<link href='/images/favicon-32x32-77e1cfca.png' rel='icon' sizes='32x32' type='image/png'>
+<link href='/images/favicon-16x16-4aa60318.png' rel='icon' sizes='16x16' type='image/png'>
+<link href='/images/favicon-128-6e4707f8.png' rel='icon' sizes='128x128' type='image/png'>
+<meta content='Ruma' name='application-name'>
+<meta content='#FFFFFF' name='msapplication-TileColor'>
+<meta content='/images/mstile-144x144-bd467b10.png' name='msapplication-TileImage'>
+<meta content='/images/mstile-70x70-6e4707f8.png' name='msapplication-square70x70logo'>
+<meta content='/images/mstile-150x150-d5f0b5e6.png' name='msapplication-square150x150logo'>
+<meta content='/images/mstile-310x150-e8749e81.png' name='msapplication-wide310x150logo'>
+<meta content='/images/mstile-310x310-ed20b880.png' name='msapplication-square310x310logo'>
+<title>Ruma - Why Matrix Matters</title>
+<meta content='Ruma is a collection of Matrix applications and libraries written in the Rust programming language.' name='description'>
+<link href='https://www.ruma.io/docs/matrix/why/' rel='canonical'>
+<link href='/news/feed.atom' rel='alternate' type='application/atom+xml'>
+<link href="/stylesheets/site-21a986c4.css" rel="stylesheet" />
+</head>
+<body class='docs docs_matrix docs_matrix_why docs_matrix_why_index'>
+<nav class='navbar navbar-inverse navbar-static-top'>
+<div class='container-fluid'>
+<ul class='nav navbar-nav navbar-right'>
+<li><a href="/" title="Home">Home</a></li>
+<li><a href="/news/" title="News">News</a></li>
+<li><a href="/status/" title="Project Status">Project Status</a></li>
+<li><a href="/projects/" title="Projects">Projects</a></li>
+<li><a href="/contributing/" title="How to Contribute">How to Contribute</a></li>
+<li><a href="https://liberapay.com/ruma/" title="Donate to Ruma">Donate on Liberapay</a></li>
+<li><a href="/docs/" title="Documentation">Documentation</a></li>
+</ul>
+</div>
+</nav>
+
+<div class='container'>
+<div class='page-header'>
+<h1>Introduction to Matrix</h1>
+</div>
+<div class='row'>
+<div class='col-md-3'><nav>
+<ul class='nav nav-stacked'>
+<li><a href="/docs/matrix/">Overview</a></li>
+<li><a href="/docs/matrix/features/">Features</a></li>
+<li><a href="/docs/matrix/why/">Why Matrix Matters</a></li>
+</ul>
+</nav>
+</div>
+<div class='col-md-9'>
+<div class='page-header first-heading'>
+<h2>Why Matrix Matters</h2>
+</div>
+<p>Today's online communication systems have several serious issues: fragmentation, limited software choice, corporate control, and lack of privacy. This section describes how Matrix addresses all these issues.</p>
+
+<h3 id="fragmentation">Fragmentation</h3>
+
+<p>Take a look at at Sameroom.io's <a href="https://sameroom.io/chat-timeline.pdf">A Brief History of Chat Services</a> to get an idea of how many systems have existed over the years in the ever-evolving online communication sphere.
+Now think about the number of systems there are to choose from today.
+You may be be questioning how many will be around a couple years, or months, from now.
+As long as new and better services are continually introduced, online communication will continue to exist in a fragmented state.</p>
+
+<p>This fragmentation is a very real problem for users.
+Very few of these services are interoperable with each other, which means most people use multiple services to communicate.
+Think about how many clients you use already.
+Slack or HipChat at work.
+Facebook Messenger and Google Hangouts at home (or lunch hours).
+iMessage to say hello to your mum.
+Because the people we talk to don't use the same services, it's not uncommon to have three or four different chat programs running simultaneously on your computer, mobile phone, or tablet.</p>
+
+<p>Because Matrix is federated, like email, you can freely communicate across a global network, without having to use specific services based on which ones your friends, family, and colleagues use.</p>
+
+<h3 id="limited-software-choice">Limited Software Choice</h3>
+
+<p>Related to fragmentation, many services we use today also provide you with client software to use the service, and don't allow alternatives.
+If you don't like the client, your only choice is to not use that service.</p>
+
+<p>Because Matrix defines only the protocol for communication, anyone can write a client that allows you to chat using the Matrix network.
+This gives you the choice of using a client you prefer, not one forced upon you because of the service you use.</p>
+
+<h3 id="corporate-control">Corporate Control</h3>
+
+<p>Another major problem with online communication today is that most of the services you use are operated by commercial organizations, forcing you to trust them to manage your data.
+Do you know how the services you use manage your data?
+Even if you knew, you don't have any control over how it is done.</p>
+
+<p>Because Matrix is federated, you have control over where your data is stored and who has access to it.
+The most technically savvy and privacy-conscious users can run their own homeserver, giving up little to no control of their data to untrusted third parties.</p>
+
+<p>The majority of people will not run their own homeserver, but they still have the freedom to choose who to trust to operate one for them.
+They could choose someone they know personally, or one of many commercial providers based on good reputation and merit.
+There is no ultimatum of trusting a service provider or not using the service at all.</p>
+
+<h3 id="lack-of-privacy">Lack of Privacy</h3>
+
+<p>Most services do not offer end-to-end encryption, which means that when you chat, the company that operates the service has a complete record of everything you say.</p>
+
+<p>Many people accept this loss of privacy because the services are convenient, easy to use, and often free of charge.
+But think about what this means in another way.
+How would you feel if a corporate liaison sat in your living room every evening, listening to everything you discuss with your family?</p>
+
+<p>The problem is that we are not given a choice.
+In order to use these services, we must give up our privacy.
+Even if you trust the people who run the company not to read your messages, you are still trusting them to keep your messages safe from the outside world.
+Unfortunately, online data breaches are disturbingly common, and many large companies have fallen victim to them.
+Afterwards, companies inevitably make public statements about how they "take your security very seriously," but it's already too late.
+In the event that the company's data stores are compromised, a record of everything you've ever said on the service could end up in the hands of a complete stranger.</p>
+
+<p>With Matrix, a combination of federation and end-to-end encryption lets you communicate online without compromising your privacy.
+As mentioned, federation allows users concerned with privacy to manage their own data.
+End-to-end encryption prevents the content of messages from being stored on the homeserver at all—it is encrypted in transit and only exists in a human-readable form on the computers, mobile phones, and tablets of the people involved in the conversation.
+This protects the users against malicious attackers and passive surveillance, such as by government intelligence agencies.
+It also greatly limits the damage of sensitive data being compromised if the homeserver's data store is breached. In addition, a federated fleet of homeservers is a far less valuable target for hackers than a single, giant database from a corporate giant.</p>
+
+</div>
+</div>
+</div>
+
+<footer class='ruma-footer'>
+<div class='container-fluid'>
+<ul class='nav'>
+<li><a href="https://github.com/ruma">GitHub</a></li>
+<li><a href="https://twitter.com/ruma_io">Twitter</a></li>
+<li><a href="https://matrix.to/#/#ruma:matrix.org">Matrix room</a></li>
+</ul>
+</div>
+</footer>
+<div class='container-fluid'>
+<p class='text-center'>
+<small>
+The source code and content of this website are free and available under the MIT license:
+<a href="https://github.com/ruma/www.ruma.io">www.ruma.io</a>
+</small>
+</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content='IE=edge' http_equiv='X-UA-Compatible'>
+<meta charset='utf-8'>
+<meta content='width=device-width,initial-scale=1' name='viewport'>
+<link href='/images/apple-touch-icon-57x57-4fdb8100.png' rel='apple-touch-icon-precomposed' sizes='57x57'>
+<link href='/images/apple-touch-icon-114x114-0ba5c2b3.png' rel='apple-touch-icon-precomposed' sizes='114x114'>
+<link href='/images/apple-touch-icon-72x72-d9371b56.png' rel='apple-touch-icon-precomposed' sizes='72x72'>
+<link href='/images/apple-touch-icon-144x144-bd467b10.png' rel='apple-touch-icon-precomposed' sizes='144x144'>
+<link href='/images/apple-touch-icon-60x60-9165d8af.png' rel='apple-touch-icon-precomposed' sizes='60x60'>
+<link href='/images/apple-touch-icon-120x120-63f5f0ae.png' rel='apple-touch-icon-precomposed' sizes='120x120'>
+<link href='/images/apple-touch-icon-76x76-1025d1ab.png' rel='apple-touch-icon-precomposed' sizes='76x76'>
+<link href='/images/apple-touch-icon-152x152-a2a52576.png' rel='apple-touch-icon-precomposed' sizes='152x152'>
+<link href='/images/favicon-196x196-0b47bb9f.png' rel='icon' sizes='196x196' type='image/png'>
+<link href='/images/favicon-96x96-d739a671.png' rel='icon' sizes='96x96' type='image/png'>
+<link href='/images/favicon-32x32-77e1cfca.png' rel='icon' sizes='32x32' type='image/png'>
+<link href='/images/favicon-16x16-4aa60318.png' rel='icon' sizes='16x16' type='image/png'>
+<link href='/images/favicon-128-6e4707f8.png' rel='icon' sizes='128x128' type='image/png'>
+<meta content='Ruma' name='application-name'>
+<meta content='#FFFFFF' name='msapplication-TileColor'>
+<meta content='/images/mstile-144x144-bd467b10.png' name='msapplication-TileImage'>
+<meta content='/images/mstile-70x70-6e4707f8.png' name='msapplication-square70x70logo'>
+<meta content='/images/mstile-150x150-d5f0b5e6.png' name='msapplication-square150x150logo'>
+<meta content='/images/mstile-310x150-e8749e81.png' name='msapplication-wide310x150logo'>
+<meta content='/images/mstile-310x310-ed20b880.png' name='msapplication-square310x310logo'>
+<title>This Week in Ruma</title>
+<meta content='Ruma is a collection of Matrix applications and libraries written in the Rust programming language.' name='description'>
+<link href='https://www.ruma.io/news/this-week-in-ruma-2016-05-22/' rel='canonical'>
+<link href='/news/feed.atom' rel='alternate' type='application/atom+xml'>
+<link href="/stylesheets/site-21a986c4.css" rel="stylesheet" />
+</head>
+<body class='news news_this-week-in-ruma-2016-05-22 news_this-week-in-ruma-2016-05-22_index'>
+<nav class='navbar navbar-inverse navbar-static-top'>
+<div class='container-fluid'>
+<ul class='nav navbar-nav navbar-right'>
+<li><a href="/" title="Home">Home</a></li>
+<li><a href="/news/" title="News">News</a></li>
+<li><a href="/status/" title="Project Status">Project Status</a></li>
+<li><a href="/projects/" title="Projects">Projects</a></li>
+<li><a href="/contributing/" title="How to Contribute">How to Contribute</a></li>
+<li><a href="https://liberapay.com/ruma/" title="Donate to Ruma">Donate on Liberapay</a></li>
+<li><a href="/docs/" title="Documentation">Documentation</a></li>
+</ul>
+</div>
+</nav>
+
+<div class='container'>
+<div class='row'>
+<div class='col-md-8 col-md-offset-2'>
+<article class='ruma-news' itemscope itemtype='http://schema.org/BlogPosting'>
+<meta content='Jimmy Cuadra' itemprop='author'>
+<header>
+<h1 itemprop='headline'>
+<a href="/news/this-week-in-ruma-2016-05-22/" title="This Week in Ruma">This Week in Ruma</a>
+<small itemprop='datePublished' value='2016-05-22'>May 22, 2016</small>
+</h1>
+<p>
+<small>by Jimmy Cuadra</small>
+</p>
+<p>
+<strong>Ruma</strong> is a <a href="https://matrix.org">Matrix</a> homeserver, client, and supporting libraries written in the <a href="https://www.rust-lang.org/">Rust</a> programming language. Matrix is an open specification for an online communication protocol. For an overview of the project, visit the <a href="/">home page</a>.
+<strong>This Week in Ruma</strong> is a weekly summary of the development of Ruma, published on Sunday nights.
+</p>
+</header>
+<h2 id="from-the-editor">From the editor</h2>
+
+<p>Lots of progress this week!
+As expected, I finished the <code>/login</code> endpoint, so I can now move on to the real stuff: rooms and the event stream.
+This week also saw two nice milestones:
+Ruma's first pull request was merged, and I successfully registered an account with a locally running Ruma server via a locally running <a href="https://vector.im/">Vector</a> client.
+(The latter also uncovered an undocumented API that Vector was attempting to use which I've brought up with the Matrix team.)</p>
+
+<p>Before taking the plunge into rooms and events, I'm taking some time to think and plan about how to structure the data, and have been talking with the Matrix team about how Synapse handles things, lessons learned, and the trade offs of different approaches.
+A few months ago, Erik Johnston of the core team wrote up some <a href="https://gist.github.com/erikjohnston/ae60767679278c0c4519">notes on data storage in Matrix</a> which has been very useful in this planning stage.
+It's a great read if you're interested in some of the tricky issues in Matrix development.</p>
+
+<p>There was also a little discussion on how difficult it is to represent certain JSON structures in the API as Rust types.
+There are several data structures in the API that are effectively enums, but can't be automatically deserialized by Serde because of two things:
+<a href="https://github.com/serde-rs/serde/issues/251">how Serde currently handles enums</a> and the fact that variants can only be determined by examining the values of some of their fields.
+The latter currently requires manual implementation of deserialization, which gets cumbersome very quickly.
+The way I'm probably going to address this is to deserialize these types of data structures to an intermediate type so simple deserialization from JSON can be separated from higher level detection and validation logic.
+To that end, I built the <a href="https://github.com/jimmycuadra/validations">validations</a> library, which provides both an interface for validating a type, and types for representing validation errors.</p>
+
+<h2 id="notable-changes-to-ruma">Notable changes to <code>ruma</code></h2>
+
+<ul>
+  <li>Finished a simple working version of the <code>/login</code> API endpoint.</li>
+  <li>Added <a href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing">CORS</a> support to all endpoints.</li>
+  <li>Reexported the Iron handlers for API endpoints from their parent module to make imports a little less verbose.</li>
+  <li>Renamed the <code>FinalConfig</code> type to <code>Config</code>, and the previously named <code>Config</code> to the now private <code>RawConfig</code> type.</li>
+  <li>Revised the README with full documentation of the configuration file's format along with some other improvements.</li>
+</ul>
+
+<h2 id="new-contributors">New contributors</h2>
+
+<ul>
+  <li><a href="https://github.com/jooert">Johannes Oertel</a></li>
+</ul>
+
+</article>
+
+</div>
+</div>
+</div>
+
+<footer class='ruma-footer'>
+<div class='container-fluid'>
+<ul class='nav'>
+<li><a href="https://github.com/ruma">GitHub</a></li>
+<li><a href="https://twitter.com/ruma_io">Twitter</a></li>
+<li><a href="https://matrix.to/#/#ruma:matrix.org">Matrix room</a></li>
+</ul>
+</div>
+</footer>
+<div class='container-fluid'>
+<p class='text-center'>
+<small>
+The source code and content of this website are free and available under the MIT license:
+<a href="https://github.com/ruma/www.ruma.io">www.ruma.io</a>
+</small>
+</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content='IE=edge' http_equiv='X-UA-Compatible'>
+<meta charset='utf-8'>
+<meta content='width=device-width,initial-scale=1' name='viewport'>
+<link href='/images/apple-touch-icon-57x57-4fdb8100.png' rel='apple-touch-icon-precomposed' sizes='57x57'>
+<link href='/images/apple-touch-icon-114x114-0ba5c2b3.png' rel='apple-touch-icon-precomposed' sizes='114x114'>
+<link href='/images/apple-touch-icon-72x72-d9371b56.png' rel='apple-touch-icon-precomposed' sizes='72x72'>
+<link href='/images/apple-touch-icon-144x144-bd467b10.png' rel='apple-touch-icon-precomposed' sizes='144x144'>
+<link href='/images/apple-touch-icon-60x60-9165d8af.png' rel='apple-touch-icon-precomposed' sizes='60x60'>
+<link href='/images/apple-touch-icon-120x120-63f5f0ae.png' rel='apple-touch-icon-precomposed' sizes='120x120'>
+<link href='/images/apple-touch-icon-76x76-1025d1ab.png' rel='apple-touch-icon-precomposed' sizes='76x76'>
+<link href='/images/apple-touch-icon-152x152-a2a52576.png' rel='apple-touch-icon-precomposed' sizes='152x152'>
+<link href='/images/favicon-196x196-0b47bb9f.png' rel='icon' sizes='196x196' type='image/png'>
+<link href='/images/favicon-96x96-d739a671.png' rel='icon' sizes='96x96' type='image/png'>
+<link href='/images/favicon-32x32-77e1cfca.png' rel='icon' sizes='32x32' type='image/png'>
+<link href='/images/favicon-16x16-4aa60318.png' rel='icon' sizes='16x16' type='image/png'>
+<link href='/images/favicon-128-6e4707f8.png' rel='icon' sizes='128x128' type='image/png'>
+<meta content='Ruma' name='application-name'>
+<meta content='#FFFFFF' name='msapplication-TileColor'>
+<meta content='/images/mstile-144x144-bd467b10.png' name='msapplication-TileImage'>
+<meta content='/images/mstile-70x70-6e4707f8.png' name='msapplication-square70x70logo'>
+<meta content='/images/mstile-150x150-d5f0b5e6.png' name='msapplication-square150x150logo'>
+<meta content='/images/mstile-310x150-e8749e81.png' name='msapplication-wide310x150logo'>
+<meta content='/images/mstile-310x310-ed20b880.png' name='msapplication-square310x310logo'>
+<title>This Week in Ruma</title>
+<meta content='Ruma is a collection of Matrix applications and libraries written in the Rust programming language.' name='description'>
+<link href='https://www.ruma.io/news/this-week-in-ruma-2016-08-28/' rel='canonical'>
+<link href='/news/feed.atom' rel='alternate' type='application/atom+xml'>
+<link href="/stylesheets/site-21a986c4.css" rel="stylesheet" />
+</head>
+<body class='news news_this-week-in-ruma-2016-08-28 news_this-week-in-ruma-2016-08-28_index'>
+<nav class='navbar navbar-inverse navbar-static-top'>
+<div class='container-fluid'>
+<ul class='nav navbar-nav navbar-right'>
+<li><a href="/" title="Home">Home</a></li>
+<li><a href="/news/" title="News">News</a></li>
+<li><a href="/status/" title="Project Status">Project Status</a></li>
+<li><a href="/projects/" title="Projects">Projects</a></li>
+<li><a href="/contributing/" title="How to Contribute">How to Contribute</a></li>
+<li><a href="https://liberapay.com/ruma/" title="Donate to Ruma">Donate on Liberapay</a></li>
+<li><a href="/docs/" title="Documentation">Documentation</a></li>
+</ul>
+</div>
+</nav>
+
+<div class='container'>
+<div class='row'>
+<div class='col-md-8 col-md-offset-2'>
+<article class='ruma-news' itemscope itemtype='http://schema.org/BlogPosting'>
+<meta content='Jimmy Cuadra' itemprop='author'>
+<header>
+<h1 itemprop='headline'>
+<a href="/news/this-week-in-ruma-2016-08-28/" title="This Week in Ruma">This Week in Ruma</a>
+<small itemprop='datePublished' value='2016-08-28'>August 28, 2016</small>
+</h1>
+<p>
+<small>by Jimmy Cuadra</small>
+</p>
+<p>
+<strong>Ruma</strong> is a <a href="https://matrix.org">Matrix</a> homeserver, client, and supporting libraries written in the <a href="https://www.rust-lang.org/">Rust</a> programming language. Matrix is an open specification for an online communication protocol. For an overview of the project, visit the <a href="/">home page</a>.
+<strong>This Week in Ruma</strong> is a weekly summary of the development of Ruma, published on Sunday nights.
+</p>
+</header>
+<p>Recently, types from the ruma-identifiers crate were integrated into ruma-events and ruma, so that values representing a Matrix ID can guarantee some important invariants.
+Previously these values were just strings.
+There was still a source of confusion and errors in that the ID types had to be converted to and from strings for the structs that represent database records using the Diesel ORM.
+To fix this, I added the necessary implementations to ruma-identifiers (under the "diesel" feature) so that the ID types can serve directly as the database columns' data types.
+Of course, these are still stored as text in the database, but the conversion happens only during data serialization and deserialization, and so cannot be broken by application logic.
+This was a pretty hairy change and it took a while to get it all working and to get the test suite updated and passing.
+Big thanks to Sean Griffin (author of Diesel) for helping me figure out how to achieve this.</p>
+
+<h2 id="notable-changes-to-rumahttpsgithubcomrumaruma">Notable changes to <a href="https://github.com/ruma/ruma">ruma</a></h2>
+
+<ul>
+  <li>Increase the portability of the Cargo wrapper script.</li>
+  <li>Use ruma-identifiers ID types for relevant database columns.</li>
+</ul>
+
+<h2 id="notable-changes-to-ruma-identifiershttpsgithubcomrumaruma-identifiers">Notable changes to <a href="https://github.com/ruma/ruma-identifiers">ruma-identifiers</a></h2>
+
+<ul>
+  <li>Crate version 0.4.0 and then 0.4.1 were released, adding Diesel integration and a bug fix for case-sensitivity in user IDs.</li>
+</ul>
+
+<h2 id="new-contributors">New contributors</h2>
+
+<ul>
+  <li><a href="https://github.com/SShrike">Severen Redwood</a></li>
+</ul>
+
+<h2 id="rust-at-large">Rust at large</h2>
+
+<ul>
+  <li>Sean Griffin shared <a href="https://gist.github.com/sgrif/92809819185a4077e919aaf0a607c6ef">some details</a> of generic implementations that don't work right now, but ideally could help make it easier for apps to create their own custom Diesel data types.</li>
+  <li>An important step for the future prospects of moving Ruma to stable Rust, the <a href="https://github.com/rust-lang/rust/pull/35957">implementation for macros 1.1</a> will land soon.
+This will allow Diesel and Serde to use custom derive without requiring nightly features, which is one of the main reasons Ruma targets nightly Rust.</li>
+</ul>
+
+</article>
+
+</div>
+</div>
+</div>
+
+<footer class='ruma-footer'>
+<div class='container-fluid'>
+<ul class='nav'>
+<li><a href="https://github.com/ruma">GitHub</a></li>
+<li><a href="https://twitter.com/ruma_io">Twitter</a></li>
+<li><a href="https://matrix.to/#/#ruma:matrix.org">Matrix room</a></li>
+</ul>
+</div>
+</footer>
+<div class='container-fluid'>
+<p class='text-center'>
+<small>
+The source code and content of this website are free and available under the MIT license:
+<a href="https://github.com/ruma/www.ruma.io">www.ruma.io</a>
+</small>
+</p>
+</div>
+</body>
+</html>

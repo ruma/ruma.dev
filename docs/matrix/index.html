@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content='IE=edge' http_equiv='X-UA-Compatible'>
+<meta charset='utf-8'>
+<meta content='width=device-width,initial-scale=1' name='viewport'>
+<link href='/images/apple-touch-icon-57x57-4fdb8100.png' rel='apple-touch-icon-precomposed' sizes='57x57'>
+<link href='/images/apple-touch-icon-114x114-0ba5c2b3.png' rel='apple-touch-icon-precomposed' sizes='114x114'>
+<link href='/images/apple-touch-icon-72x72-d9371b56.png' rel='apple-touch-icon-precomposed' sizes='72x72'>
+<link href='/images/apple-touch-icon-144x144-bd467b10.png' rel='apple-touch-icon-precomposed' sizes='144x144'>
+<link href='/images/apple-touch-icon-60x60-9165d8af.png' rel='apple-touch-icon-precomposed' sizes='60x60'>
+<link href='/images/apple-touch-icon-120x120-63f5f0ae.png' rel='apple-touch-icon-precomposed' sizes='120x120'>
+<link href='/images/apple-touch-icon-76x76-1025d1ab.png' rel='apple-touch-icon-precomposed' sizes='76x76'>
+<link href='/images/apple-touch-icon-152x152-a2a52576.png' rel='apple-touch-icon-precomposed' sizes='152x152'>
+<link href='/images/favicon-196x196-0b47bb9f.png' rel='icon' sizes='196x196' type='image/png'>
+<link href='/images/favicon-96x96-d739a671.png' rel='icon' sizes='96x96' type='image/png'>
+<link href='/images/favicon-32x32-77e1cfca.png' rel='icon' sizes='32x32' type='image/png'>
+<link href='/images/favicon-16x16-4aa60318.png' rel='icon' sizes='16x16' type='image/png'>
+<link href='/images/favicon-128-6e4707f8.png' rel='icon' sizes='128x128' type='image/png'>
+<meta content='Ruma' name='application-name'>
+<meta content='#FFFFFF' name='msapplication-TileColor'>
+<meta content='/images/mstile-144x144-bd467b10.png' name='msapplication-TileImage'>
+<meta content='/images/mstile-70x70-6e4707f8.png' name='msapplication-square70x70logo'>
+<meta content='/images/mstile-150x150-d5f0b5e6.png' name='msapplication-square150x150logo'>
+<meta content='/images/mstile-310x150-e8749e81.png' name='msapplication-wide310x150logo'>
+<meta content='/images/mstile-310x310-ed20b880.png' name='msapplication-square310x310logo'>
+<title>Ruma - Introduction to Matrix</title>
+<meta content='Ruma is a collection of Matrix applications and libraries written in the Rust programming language.' name='description'>
+<link href='https://www.ruma.io/docs/matrix/' rel='canonical'>
+<link href='/news/feed.atom' rel='alternate' type='application/atom+xml'>
+<link href="/stylesheets/site-21a986c4.css" rel="stylesheet" />
+</head>
+<body class='docs docs_matrix docs_matrix_index'>
+<nav class='navbar navbar-inverse navbar-static-top'>
+<div class='container-fluid'>
+<ul class='nav navbar-nav navbar-right'>
+<li><a href="/" title="Home">Home</a></li>
+<li><a href="/news/" title="News">News</a></li>
+<li><a href="/status/" title="Project Status">Project Status</a></li>
+<li><a href="/projects/" title="Projects">Projects</a></li>
+<li><a href="/contributing/" title="How to Contribute">How to Contribute</a></li>
+<li><a href="https://liberapay.com/ruma/" title="Donate to Ruma">Donate on Liberapay</a></li>
+<li><a href="/docs/" title="Documentation">Documentation</a></li>
+</ul>
+</div>
+</nav>
+
+<div class='container'>
+<div class='page-header'>
+<h1>Introduction to Matrix</h1>
+</div>
+<div class='row'>
+<div class='col-md-3'><nav>
+<ul class='nav nav-stacked'>
+<li><a href="/docs/matrix/">Overview</a></li>
+<li><a href="/docs/matrix/features/">Features</a></li>
+<li><a href="/docs/matrix/why/">Why Matrix Matters</a></li>
+</ul>
+</nav>
+</div>
+<div class='col-md-9'>
+<div class='page-header first-heading'>
+<h2>Overview</h2>
+</div>
+<p>Ruma is a Matrix homeserver.
+In order to understand what that means, you first need to understand Matrix.</p>
+
+<p>Matrix is a protocol for communicating online.</p>
+
+<p>Matrix-powered apps, called Matrix clients, have all the features you'd want and expect from a modern chat app: instant messaging, group chats, audio and video calls, searchable message history, synchronization across all your devices, and more.</p>
+
+<p>To use a Matrix client, you create an account on a Matrix homeserver.
+Your Matrix homeserver is your hub into the Matrix network.
+It stores your account information and all your conversations.
+You can communicate with people on your own homeserver or people on other homeservers.
+When you communicate with people on other homeservers, your homeserver and the other homeservers involved synchronize the conversation history.
+This allows you to communicate with anyone in the Matrix network seamlessly, without ever thinking about which homeserver they connect to.</p>
+
+<p>What separates the Matrix protocol from other, similar communication protocols is that you can:</p>
+
+<ul>
+  <li>Communicate with anyone, even if they aren't using Matrix yet.</li>
+  <li>Choose where your communication data is stored and who has access to it.</li>
+</ul>
+
+<h3 id="talk-to-anyone">Talk to Anyone</h3>
+
+<p>You communicate with people outside of the Matrix network through bridges, which connect previously established communication networks, such as Slack and IRC, to the Matrix network.</p>
+
+<p>With bridges you don't have to use different apps to talk to different people.
+Whatever Matrix client you choose, you can talk to anyone inside or outside of the Matrix network.
+This bridging is invisible to users outside of the Matrix network. Your friends don't need to switch networks or software.
+They don't even need to know anything about Matrix.</p>
+
+<h3 id="get-more-choices">Get More Choices</h3>
+
+<p>Matrix gives you choices for both the software you use to chat and where your communication data is stored.</p>
+
+<p>Remember that to use Matrix, you need a Matrix client.
+A client can be a web, phone, or desktop app–or even an Internet-connected appliance in your home.
+Think of how you can access your email from Gmail in your browser, Microsoft Outlook on your laptop, or the Mail app on your iPhone.
+With Matrix, you can do the same for messaging, phone, and video calls.</p>
+
+<p>You can pick any Matrix client, and you can switch at any time.
+Whatever you choose, it'll work with your homeserver.
+Currently, the most widely used Matrix client is <a href="https://riot.im/">Riot</a>, which has versions available for the web, iOS, Android, macOS, Windows, and more.</p>
+
+<p>On the homeserver side, Matrix offers choices to both the user and operator of the homeserver.</p>
+
+<p>Users can decide who runs their homeserver:</p>
+
+<ul>
+  <li>A large organization that provides a public homeserver: For example, the team behind Matrix offers a public homeserver on matrix.org.</li>
+  <li>A friend, family, or community group: This could be for a club or professional organization.</li>
+  <li>Yourself: You can run the homeserver software on your own computer.</li>
+</ul>
+
+<p>As a homeserver operator, you can choose your homeserver implementation.
+The team that developed Matrix provides an implementation called Synapse.
+Ruma is another option.</p>
+
+<h3 id="putting-it-all-together">Putting It All Together</h3>
+
+<p>So far, you've learned about the Matrix protocol, client, and homeserver.
+The following table illustrates how those three components form a relationship similar to email or the web.
+The table shows the protocol each system uses, examples of resources you'd access, and examples of the software used to do it.</p>
+
+<div class="table-responsive">
+  <table class="table table-bordered">
+    <tr>
+      <th></th>
+      <th>Web</th>
+      <th>Email</th>
+      <th>Matrix</th>
+    </tr>
+    <tr>
+      <th>Is built on…</th>
+      <td>HTTP</td>
+      <td>IMAP, SMTP</td>
+      <td>HTTP</td>
+    </tr>
+    <tr>
+      <th>You want to access…</th>
+      <td>youtube.com, facebook.com</td>
+      <td>Gmail, Yahoo Mail</td>
+      <td>matrix.org public homeserver</td>
+    </tr>
+    <tr>
+      <th>The provider uses…</th>
+      <td>Apache, Nginx</td>
+      <td>sendmail, postfix</td>
+      <td>Ruma, Synapse</td>
+    </tr>
+    <tr>
+      <th>You use…</th>
+      <td>Chrome, Firefox</td>
+      <td>Gmail web app, Apple Mail</td>
+      <td>Riot, WeeChat</td>
+    </tr>
+  </table>
+</div>
+
+<p>Next, read about <a href="/docs/matrix/features/">Matrix features</a>.</p>
+
+</div>
+</div>
+</div>
+
+<footer class='ruma-footer'>
+<div class='container-fluid'>
+<ul class='nav'>
+<li><a href="https://github.com/ruma">GitHub</a></li>
+<li><a href="https://twitter.com/ruma_io">Twitter</a></li>
+<li><a href="https://matrix.to/#/#ruma:matrix.org">Matrix room</a></li>
+</ul>
+</div>
+</footer>
+<div class='container-fluid'>
+<p class='text-center'>
+<small>
+The source code and content of this website are free and available under the MIT license:
+<a href="https://github.com/ruma/www.ruma.io">www.ruma.io</a>
+</small>
+</p>
+</div>
+</body>
+</html>
