@@ -52,6 +52,49 @@
 <meta content='Jimmy Cuadra' itemprop='author'>
 <header>
 <h1 itemprop='headline'>
+<a href="/news/this-week-in-ruma-2016-09-25/" title="This Week in Ruma">This Week in Ruma</a>
+<small itemprop='datePublished' value='2016-09-25'>September 25, 2016</small>
+</h1>
+<p>
+<small>by Jimmy Cuadra</small>
+</p>
+<p>
+<strong>Ruma</strong> is a <a href="https://matrix.org">Matrix</a> homeserver, client, and supporting libraries written in the <a href="https://www.rust-lang.org/">Rust</a> programming language. Matrix is an open specification for an online communication protocol. For an overview of the project, visit the <a href="/">home page</a>.
+<strong>This Week in Ruma</strong> is a weekly summary of the development of Ruma, published on Sunday nights.
+</p>
+</header>
+<p>On Friday, I live streamed myself working on Ruma for the first time.
+I tweeted about it from my <a href="https://twitter.com/jimmycuadra">personal account</a> and mentioned it in <a href="https://matrix.to/#/#ruma:matrix.org">#ruma:matrix.org</a>, but otherwise didn't publicize it.
+A few people watched and helped work out the kinks with audio and video quality.
+(Thank you to those who watched!)
+I walked through the API endpoint for creating message events, explaining more or less line by line how the code works, then worked on implementing the API endpoint for creating state events.
+The people who watched gave me good feedback, and I had a good time doing it, so I think I'll start to stream some of my Ruma development regularly.
+It will be at 1:00 PM Pacific Time on my <a href="https://www.twitch.tv/jimmy_cuadra">Twitch channel</a>.
+I will start tweeting about it from <a href="https://twitter.com/ruma_io">Ruma's Twitter account</a> to remind everyone.
+I'd love to get some questions during the stream, so if you're interested in learning about Matrix, Rust, or both, please come watch and tell me what you want to know!</p>
+
+<h2 id="notable-changes-to-rumahttpsgithubcomrumaruma">Notable changes to <a href="https://github.com/ruma/ruma">ruma</a></h2>
+
+<ul>
+  <li>Added initial support for the state event creation API endpoint.</li>
+  <li>Filled in missing functionality and fixed a few issues with the room alias API endpoints, which checks those off the list completely.</li>
+  <li>A new contributor is working on the API endpoint for joining a room, and in the process added a new Iron middleware for extracting a <code>ruma_identifiers::RoomId</code> from the URL path parameter wherever it's required.</li>
+  <li>A small quality of life fix: <code>script/cargo</code> now passed the value of <code>RUST_LOG</code> to the Docker environment when developing.</li>
+  <li>The project's README now includes some more information about how to determine which version of nightly Rust Ruma is built against for those not using Docker for development.</li>
+</ul>
+
+<h2 id="new-contributors">New contributors</h2>
+
+<ul>
+  <li><a href="https://github.com/farodin91">Jan Jansen</a></li>
+</ul>
+
+</article>
+
+<article class='ruma-news' itemscope itemtype='http://schema.org/BlogPosting'>
+<meta content='Jimmy Cuadra' itemprop='author'>
+<header>
+<h1 itemprop='headline'>
 <a href="/news/this-week-in-ruma-2016-09-18/" title="This Week in Ruma">This Week in Ruma</a>
 <small itemprop='datePublished' value='2016-09-18'>September 18, 2016</small>
 </h1>
@@ -149,73 +192,6 @@ Big thanks to Sean Griffin (author of Diesel) for helping me figure out how to a
   <li>Sean Griffin shared <a href="https://gist.github.com/sgrif/92809819185a4077e919aaf0a607c6ef">some details</a> of generic implementations that don't work right now, but ideally could help make it easier for apps to create their own custom Diesel data types.</li>
   <li>An important step for the future prospects of moving Ruma to stable Rust, the <a href="https://github.com/rust-lang/rust/pull/35957">implementation for macros 1.1</a> will land soon.
 This will allow Diesel and Serde to use custom derive without requiring nightly features, which is one of the main reasons Ruma targets nightly Rust.</li>
-</ul>
-
-</article>
-
-<article class='ruma-news' itemscope itemtype='http://schema.org/BlogPosting'>
-<meta content='Jimmy Cuadra' itemprop='author'>
-<header>
-<h1 itemprop='headline'>
-<a href="/news/this-week-in-ruma-2016-08-21/" title="This Week in Ruma">This Week in Ruma</a>
-<small itemprop='datePublished' value='2016-08-21'>August 21, 2016</small>
-</h1>
-<p>
-<small>by Jimmy Cuadra</small>
-</p>
-<p>
-<strong>Ruma</strong> is a <a href="https://matrix.org">Matrix</a> homeserver, client, and supporting libraries written in the <a href="https://www.rust-lang.org/">Rust</a> programming language. Matrix is an open specification for an online communication protocol. For an overview of the project, visit the <a href="/">home page</a>.
-<strong>This Week in Ruma</strong> is a weekly summary of the development of Ruma, published on Sunday nights.
-</p>
-</header>
-<p>Apologies for the missed update last week!
-I was sick and didn't get a chance to write it.
-However, there was work on the project last week.
-I will just include those changes in this update.</p>
-
-<h2 id="notable-changes-to-rumahttpsgithubcomrumaruma">Notable changes to <a href="https://github.com/ruma/ruma">ruma</a></h2>
-
-<ul>
-  <li>Previous work to update Diesel and Serde to the latest versions have been completed.</li>
-  <li>Ruma now uses the types from <a href="https://github.com/ruma/ruma-identifiers">ruma-identifiers</a> to represent Matrix IDs instead of strings.</li>
-  <li>Ruma now uses the latest version of <a href="https://github.com/ruma/ruma-events">ruma-events</a> which also uses ruma-identifiers.</li>
-  <li>The Docker Compose file now locks the Ruma development image to a specific version, so breaking changes to the image are now coordinated with Ruma.
-As part of the same change, the image is now locked to a specific version of the nightly compiler.</li>
-  <li>Database migrations are now embedded in the ruma binary, which means a check out of the source code is no longer necessary.</li>
-  <li>Add initial support for the message event creation API.
-This is a big milestone and one of the core APIs that makes Matrix work!</li>
-</ul>
-
-<h2 id="notable-changes-to-ruma-eventshttpsgithubcomrumaruma-events">Notable changes to <a href="https://github.com/ruma/ruma-events">ruma-events</a></h2>
-
-<ul>
-  <li>Added simple type aliases for custom events of each kind (basic, room, and state events).</li>
-  <li>I'm experimenting again with a version of the API where the event kinds are traits instead of generic structs.
-They really feel like they should be traits, but the actual usage pattern for the events in the main ruma application may not work well like this.</li>
-</ul>
-
-<h2 id="notable-changes-to-ruma-identifiershttpsgithubcomrumaruma-identifiers">Notable changes to <a href="https://github.com/ruma/ruma-identifiers">ruma-identifiers</a></h2>
-
-<ul>
-  <li>Crate version 0.3.0 was released, which implements <code>Clone</code> for the ID types and <code>Copy</code> for the error type.</li>
-  <li>I'm working on a change that would allow the ID types to be used directly as struct fields for Diesel table types.
-Right now it seems like more trouble than it's worth, but I'm following the issue on <a href="https://github.com/diesel-rs/diesel/issues/348">user-defined <code>FromSql</code>/<code>ToSql</code> types</a>.</li>
-</ul>
-
-<h2 id="matrix-at-large">Matrix at large</h2>
-
-<ul>
-  <li>Paul Evans of the Matrix team is working on testing Ruma with <a href="https://github.com/matrix-org/sytest">SyTest</a>, a blackbox integration testing framework for Matrix homeservers.
-Even though few of the APIs are complete in Ruma so far, there are already a few tests passing!</li>
-  <li><a href="https://matrix.org/jira/browse/SPEC-442">SPEC-442</a>: Explain requirements and guarantees around transaction IDs</li>
-  <li><a href="https://matrix.org/jira/browse/SPEC-444">SPEC-444</a>: Add an API for getting auth flows
-The May 22, 2016 news update mentioned that Vector and Synapse use unspecified APIs for negotiating authentication flows, but an issue was never filed for improving that.</li>
-</ul>
-
-<h2 id="rust-at-large">Rust at large</h2>
-
-<ul>
-  <li>Starting to think about how permissions checks will work in Ruma, I opened an issue for <a href="https://github.com/diesel-rs/diesel/issues/408">transaction isolation support</a> in Diesel as a possible way to prevent ToCToU errors.</li>
 </ul>
 
 </article>

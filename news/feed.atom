@@ -4,10 +4,62 @@
   <id>https://www.ruma.io/news</id>
   <link href="https://www.ruma.io/news"/>
   <link href="https://www.ruma.io/news/feed.atom" rel="self"/>
-  <updated>2019-12-14T17:30:00Z</updated>
+  <updated>2020-04-10T17:50:00Z</updated>
   <author>
     <name>Jimmy Cuadra</name>
   </author>
+  <entry>
+    <title>Ruma is dead, long live Ruma!</title>
+    <link rel="alternate" href="https://www.ruma.io/news/ruma-is-dead-long-live-ruma-2020-04-10/"/>
+    <id>https://www.ruma.io/news/ruma-is-dead-long-live-ruma-2020-04-10/</id>
+    <published>2020-04-10T17:50:00Z</published>
+    <updated>2020-04-10T17:50:00Z</updated>
+    <author>
+      <name>Jimmy Cuadra</name>
+    </author>
+    <content type="html">&lt;p&gt;Today, I have a bit of a sad announcement to make:&lt;/p&gt;
+
+&lt;h2 id="ruma-the-homeserver-wont-be-developed-anymore"&gt;Ruma, the homeserver, won't be developed anymore&lt;/h2&gt;
+
+&lt;p&gt;To those who have actively been following the project, this probably won't be a
+big surprise, given the homeserver's readme file was already update do note the
+missing maintenance and people interested in contributing to the homeserver have
+now gathered around a new homeserver project by the name of &lt;a href="https://conduit.rs/"&gt;Conduit&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The main reason for ending homeserver development is that nobody who has
+previously worked on its codebase is currently able to guide and review work on
+it. The codebase has also bit-rotted a lot, with the web framework it uses being
+almost un-maintained and a number of its other dependencies having seen major
+new releases since the most recent commit; it also doesn't build on
+ruma-client-api, for the simple reason that ruma-client-api simply didn't exist
+yet when most of the homeserver work happened.&lt;/p&gt;
+
+&lt;p&gt;However, the end of the homeserver does not at all mean the end of Ruma, the
+overall project.&lt;/p&gt;
+
+&lt;h2 id="the-future-of-ruma-the-project"&gt;The future of Ruma, the project&lt;/h2&gt;
+
+&lt;p&gt;We will be continuing work on our library crates, making sure they are usable
+for all kinds of applications, including homeservers. The new homeserver project
+mentioned at the beginning is based on them and some other folks are currently
+working on &lt;a href="https://github.com/matrix-org/matrix-rust-sdk"&gt;a highlevel client library&lt;/a&gt;, also using many of
+Ruma's library crates.&lt;/p&gt;
+
+&lt;p&gt;I am planning to replace the current website with a new one, mostly for
+technical reasons, but the new one will also reflect our changed focus. This
+work hasn't started yet, but in the interim I will likely update parts of the
+current site. Other than that, nothing will really be different compared to last
+year.&lt;/p&gt;
+
+&lt;h2 id="if-you-are-still-interested-in-a-rust-homeserver"&gt;If you are still interested in a Rust homeserver&lt;/h2&gt;
+
+&lt;p&gt;… then check out &lt;a href="https://conduit.rs/"&gt;Conduit&lt;/a&gt;. It is a Matrix homeserver, written in Rust using
+Ruma's library crates. It is focused on experimenting with new ideas to achieve
+better performance, for example by using &lt;a href="https://sled.rs/"&gt;sled&lt;/a&gt; as its database. The goal is
+to make it as easy as possible to set up your own homeserver.&lt;/p&gt;
+
+</content>
+  </entry>
   <entry>
     <title>These Weeks in Ruma</title>
     <link rel="alternate" href="https://www.ruma.io/news/these-weeks-in-ruma-2019-12-14/"/>
@@ -218,30 +270,6 @@ Both of these features are highly requested and bring Riot in line with other hi
 &lt;p&gt;Other notable news is the announcement to get &lt;a href="https://github.com/matrix-org/dendrite"&gt;Dendrite&lt;/a&gt;, a Matrix homeserver written in Go, into a state where it can have some practical use for Matrix users.
 The first goal is for it to support enough functionality to be used for Matrix bots.
 Read more about this announcement on &lt;a href="https://matrix.org/blog/2019/07/19/this-week-in-matrix-2019-07-19"&gt;the lastest This Week in Matrix&lt;/a&gt;.&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>This Week in Ruma</title>
-    <link rel="alternate" href="https://www.ruma.io/news/this-week-in-ruma-2019-07-14/"/>
-    <id>https://www.ruma.io/news/this-week-in-ruma-2019-07-14/</id>
-    <published>2019-07-14T00:00:00Z</published>
-    <updated>2019-07-14T00:00:00Z</updated>
-    <author>
-      <name>Jimmy Cuadra</name>
-    </author>
-    <content type="html">&lt;h2 id="from-the-editor"&gt;From the editor&lt;/h2&gt;
-
-&lt;p&gt;In the &lt;a href="/news/this-week-in-ruma-2019-07-07/"&gt;last update&lt;/a&gt;, I mentioned that the ongoing ruma-events revamp was impeded by an issue with types from &lt;em&gt;ring&lt;/em&gt; which don't implement &lt;code&gt;Clone&lt;/code&gt; and &lt;code&gt;PartialEq&lt;/code&gt;.
-It turns out that there is &lt;a href="https://github.com/briansmith/ring/pull/727"&gt;a reasonable explanation for this&lt;/a&gt;, and so it was decided to work around it.
-I restructured the ruma-signatures types in question so that they don't contain &lt;em&gt;ring&lt;/em&gt; types, but simply construct them and use them as-needed in the relevant methods.&lt;/p&gt;
-
-&lt;p&gt;While I was working on ruma-signatures, I decided to fill in the missing functionality—signing and verifying events.
-In the process of doing that, I ended up with a significantly revised API for the crate, which has now been released as &lt;a href="https://github.com/ruma/ruma-signatures/releases/tag/0.5.0"&gt;version 0.5.0&lt;/a&gt;.
-In a somewhat amusing development, the new ruma-signatures API doesn't include the &lt;code&gt;Signatures&lt;/code&gt; and &lt;code&gt;SignatureSet&lt;/code&gt; types that were causing the issue in ruma-events in the first place.
-As a result, ruma-events is not only unblocked, but doesn't have depend on ruma-signatures at all.&lt;/p&gt;
-
-&lt;p&gt;I made a little bit more progress on ruma-events.
-There is only one module remaining to be updated to the new API, so we're on the home stretch for a new ruma-events release.&lt;/p&gt;
 </content>
   </entry>
 </feed>

@@ -52,6 +52,53 @@
 <meta content='Jimmy Cuadra' itemprop='author'>
 <header>
 <h1 itemprop='headline'>
+<a href="/news/this-week-in-ruma-2016-06-26/" title="This Week in Ruma">This Week in Ruma</a>
+<small itemprop='datePublished' value='2016-06-26'>June 26, 2016</small>
+</h1>
+<p>
+<small>by Jimmy Cuadra</small>
+</p>
+<p>
+<strong>Ruma</strong> is a <a href="https://matrix.org">Matrix</a> homeserver, client, and supporting libraries written in the <a href="https://www.rust-lang.org/">Rust</a> programming language. Matrix is an open specification for an online communication protocol. For an overview of the project, visit the <a href="/">home page</a>.
+<strong>This Week in Ruma</strong> is a weekly summary of the development of Ruma, published on Sunday nights.
+</p>
+</header>
+<p>There was a lot of work on documentation and code this week, but almost nothing landed on master, so unfortunately there is little to show.
+An initial draft of the Introduction to Matrix overview document has been pushed to a branch, but a few changes are still planned before it is released.
+On Ruma itself, a lot of work happened on a branch (currently unpublished) to add support for events to the system.
+Events are the primary object in the Matrix system, so the addition of this foundational layer will open the gates for all the other major features.
+The event system is not simple, however, and it's taking some time to figure out a good architecture for data persistence.
+Because events are involved in both the client-server and federation APIs, and the federation API has not yet had a stable release, it's very difficult to design the system properly.
+One issue (noted below) has been opened on the Matrix spec requesting clarification that may help to decide on a suitable architecture.</p>
+
+<h2 id="notable-changes-to-ruma">Notable changes to <code>ruma</code></h2>
+
+<ul>
+  <li>Add <code>PUT /directory/room/:room_alias</code> endpoint. (Contributed by Johannes Oertel.)</li>
+</ul>
+
+<h2 id="notable-changes-to-ruma-events">Notable changes to <code>ruma-events</code></h2>
+
+<ul>
+  <li>Use generic types for <code>Event</code>, <code>RoomEvent</code>, and <code>StateEvent</code>.</li>
+  <li>Add unsigned field to <code>RoomEvent</code> and <code>StateEvent</code>.</li>
+  <li>Add <code>EventKind</code> trait.
+(The event kinds are basic events, room events, and state events.
+This trait can be useful to constrain a generic parameter that must be a Matrix event.)</li>
+</ul>
+
+<h2 id="matrix-at-large">Matrix at large</h2>
+
+<ul>
+  <li><a href="https://matrix.org/jira/browse/SPEC-416">SPEC-416</a>: Document all event keys shown in examples</li>
+</ul>
+
+</article>
+
+<article class='ruma-news' itemscope itemtype='http://schema.org/BlogPosting'>
+<meta content='Jimmy Cuadra' itemprop='author'>
+<header>
+<h1 itemprop='headline'>
 <a href="/news/this-week-in-ruma-2016-06-19/" title="This Week in Ruma">This Week in Ruma</a>
 <small itemprop='datePublished' value='2016-06-19'>June 19, 2016</small>
 </h1>
@@ -163,60 +210,6 @@ We had some good discussions about Matrix, especially about how to address the r
     <p>(I later learned this was already reported in <a href="https://matrix.org/jira/browse/SPEC-370">SPEC-370</a>: We need to spec the new /directory/room/list API)</p>
   </li>
 </ul>
-
-</article>
-
-<article class='ruma-news' itemscope itemtype='http://schema.org/BlogPosting'>
-<meta content='Jimmy Cuadra' itemprop='author'>
-<header>
-<h1 itemprop='headline'>
-<a href="/news/this-week-in-ruma-2016-06-05/" title="This Week in Ruma">This Week in Ruma</a>
-<small itemprop='datePublished' value='2016-06-05'>June 05, 2016</small>
-</h1>
-<p>
-<small>by Jimmy Cuadra</small>
-</p>
-<p>
-<strong>Ruma</strong> is a <a href="https://matrix.org">Matrix</a> homeserver, client, and supporting libraries written in the <a href="https://www.rust-lang.org/">Rust</a> programming language. Matrix is an open specification for an online communication protocol. For an overview of the project, visit the <a href="/">home page</a>.
-<strong>This Week in Ruma</strong> is a weekly summary of the development of Ruma, published on Sunday nights.
-</p>
-</header>
-<h2 id="notable-changes-to-ruma">Notable changes to <code>ruma</code></h2>
-
-<ul>
-  <li>
-    <p>Add initial version of the <code>/createRoom</code> endpoint.</p>
-
-    <p>This preliminary version of room creation takes no parameters and just returns the ID of the newly created room.</p>
-  </li>
-</ul>
-
-<h2 id="notable-changes-to-ruma-events">Notable changes to <code>ruma-events</code></h2>
-
-<ul>
-  <li>
-    <p>Remove event traits.</p>
-
-    <p><code>Event</code>, <code>RoomEvent</code>, and <code>StateEvent</code> are no longer traits.
-Instead, each event type just has the necessary fields.
-This will be revised to use <a href="https://github.com/rust-lang/rfcs/pull/1546">RFC #1546</a> if it is accepted.</p>
-  </li>
-  <li>
-    <p>Make all event type fields public.</p>
-  </li>
-  <li>
-    <p>Derive <code>Debug</code>, <code>Deserialize</code>, and <code>Serialize</code> for all types.</p>
-  </li>
-  <li>
-    <p>Add types for all <em>m.room.message</em> and all its subtypes.</p>
-  </li>
-</ul>
-
-<h2 id="matrix-at-large">Matrix at large</h2>
-
-<p>Next week, some of the Matrix core team will be visiting San Francisco (from London) for <a href="http://www.decentralizedweb.net/">Decentralized Web Summit</a>.
-Some bay area Matrix developers are planning to get together to meet in person and chat about Matrix.
-If you live in the bay area and would like to join us, please come chat in <a href="https://vector.im/beta/#/room/#sv:matrix.org">#sv:matrix.org</a> and help pick a time and place!</p>
 
 </article>
 

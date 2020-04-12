@@ -52,6 +52,64 @@
 <meta content='Jonas Platte' itemprop='author'>
 <header>
 <h1 itemprop='headline'>
+<a href="/news/ruma-is-dead-long-live-ruma-2020-04-10/" title="Ruma is dead, long live Ruma!">Ruma is dead, long live Ruma!</a>
+<small itemprop='datePublished' value='2020-04-10'>April 10, 2020</small>
+</h1>
+<p>
+<small>by Jonas Platte</small>
+</p>
+<p>
+<strong>Ruma</strong> is a <a href="https://matrix.org">Matrix</a> homeserver, client, and supporting libraries written in the <a href="https://www.rust-lang.org/">Rust</a> programming language. Matrix is an open specification for an online communication protocol. For an overview of the project, visit the <a href="/">home page</a>.
+</p>
+</header>
+<p>Today, I have a bit of a sad announcement to make:</p>
+
+<h2 id="ruma-the-homeserver-wont-be-developed-anymore">Ruma, the homeserver, won't be developed anymore</h2>
+
+<p>To those who have actively been following the project, this probably won't be a
+big surprise, given the homeserver's readme file was already update do note the
+missing maintenance and people interested in contributing to the homeserver have
+now gathered around a new homeserver project by the name of <a href="https://conduit.rs/">Conduit</a>.</p>
+
+<p>The main reason for ending homeserver development is that nobody who has
+previously worked on its codebase is currently able to guide and review work on
+it. The codebase has also bit-rotted a lot, with the web framework it uses being
+almost un-maintained and a number of its other dependencies having seen major
+new releases since the most recent commit; it also doesn't build on
+ruma-client-api, for the simple reason that ruma-client-api simply didn't exist
+yet when most of the homeserver work happened.</p>
+
+<p>However, the end of the homeserver does not at all mean the end of Ruma, the
+overall project.</p>
+
+<h2 id="the-future-of-ruma-the-project">The future of Ruma, the project</h2>
+
+<p>We will be continuing work on our library crates, making sure they are usable
+for all kinds of applications, including homeservers. The new homeserver project
+mentioned at the beginning is based on them and some other folks are currently
+working on <a href="https://github.com/matrix-org/matrix-rust-sdk">a highlevel client library</a>, also using many of
+Ruma's library crates.</p>
+
+<p>I am planning to replace the current website with a new one, mostly for
+technical reasons, but the new one will also reflect our changed focus. This
+work hasn't started yet, but in the interim I will likely update parts of the
+current site. Other than that, nothing will really be different compared to last
+year.</p>
+
+<h2 id="if-you-are-still-interested-in-a-rust-homeserver">If you are still interested in a Rust homeserver</h2>
+
+<p>… then check out <a href="https://conduit.rs/">Conduit</a>. It is a Matrix homeserver, written in Rust using
+Ruma's library crates. It is focused on experimenting with new ideas to achieve
+better performance, for example by using <a href="https://sled.rs/">sled</a> as its database. The goal is
+to make it as easy as possible to set up your own homeserver.</p>
+
+
+</article>
+
+<article class='ruma-news' itemscope itemtype='http://schema.org/BlogPosting'>
+<meta content='Jonas Platte' itemprop='author'>
+<header>
+<h1 itemprop='headline'>
 <a href="/news/these-weeks-in-ruma-2019-12-14/" title="These Weeks in Ruma">These Weeks in Ruma</a>
 <small itemprop='datePublished' value='2019-12-14'>December 14, 2019</small>
 </h1>
@@ -159,37 +217,6 @@ derive macro</a>.</p>
 
 <p>As listed at the beginning, we published ruma-client 0.3.0-beta.1. This release supports <code>async</code> / <code>await</code> syntax in addition to using all the latest lower-level ruma crates. While <code>async</code> / <code>await</code> will become stable with Rust 1.39.0 on 2019-11-09, tokio 0.2.0 is expected to take some more time to come out, which will in turn affect hyper 0.13.0's final release and thus our 0.3.0 release. Nevertheless, ruma-client 0.3.0-beta.1 can be used today on Rust beta or nightly.</p>
 
-
-</article>
-
-<article class='ruma-news' itemscope itemtype='http://schema.org/BlogPosting'>
-<meta content='Jimmy Cuadra' itemprop='author'>
-<header>
-<h1 itemprop='headline'>
-<a href="/news/this-week-in-ruma-2019-08-11/" title="This Week in Ruma">This Week in Ruma</a>
-<small itemprop='datePublished' value='2019-08-11'>August 11, 2019</small>
-</h1>
-<p>
-<small>by Jimmy Cuadra</small>
-</p>
-<p>
-<strong>Ruma</strong> is a <a href="https://matrix.org">Matrix</a> homeserver, client, and supporting libraries written in the <a href="https://www.rust-lang.org/">Rust</a> programming language. Matrix is an open specification for an online communication protocol. For an overview of the project, visit the <a href="/">home page</a>.
-<strong>This Week in Ruma</strong> is a weekly summary of the development of Ruma, published on Sunday nights.
-</p>
-</header>
-<h2 id="from-the-editor">From the editor</h2>
-
-<p>I did another live stream of Ruma development on <a href="https://www.twitch.tv/jimmycuadra">my Twitch channel</a> this past week.
-If you missed it, you can watch <a href="https://www.youtube.com/watch?v=vfMvGWCBkVI">the recording on YouTube</a>.
-In the stream, I worked on another revision to the <a href="https://github.com/ruma/ruma-events">ruma-events</a> API in which a special result type was introduced to handle deserialization/validation errors.
-<a href="https://github.com/jplatte">Jonas</a> quickly discovered, upon trying to update <a href="https://github.com/ruma/ruma-client-api">ruma-client-api</a> to ruma-events 0.10, that the new deserialization API didn't quite work and that further changes were needed.
-I updated all the manually events to the <em>new</em> new API, but the events generated by <a href="https://github.com/ruma/ruma-events-macros">ruma-events-macros</a> still need to be updated.
-I will do that on the next stream in the coming week.</p>
-
-<p>A couple weeks ago I recorded an interview with the <a href="https://rustacean-station.org/">Rustacean Station</a> podcast, and today the episode was released.
-You can find it here: <a href="https://rustacean-station.org/episode/001-ruma/">Ruma and the Matrix Communication Protocol: An Interview with Jimmy Cuadra</a>.
-A huge thanks to Ben Striegel and Jon Gjengset for starting the podcast, and to Ben and Abdou Seck for taking the time to record this episode with me.
-It was a good time, and I hope it gets some new people interested in Matrix and/or Ruma.</p>
 
 </article>
 

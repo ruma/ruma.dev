@@ -52,6 +52,37 @@
 <meta content='Jimmy Cuadra' itemprop='author'>
 <header>
 <h1 itemprop='headline'>
+<a href="/news/this-week-in-ruma-2019-07-14/" title="This Week in Ruma">This Week in Ruma</a>
+<small itemprop='datePublished' value='2019-07-14'>July 14, 2019</small>
+</h1>
+<p>
+<small>by Jimmy Cuadra</small>
+</p>
+<p>
+<strong>Ruma</strong> is a <a href="https://matrix.org">Matrix</a> homeserver, client, and supporting libraries written in the <a href="https://www.rust-lang.org/">Rust</a> programming language. Matrix is an open specification for an online communication protocol. For an overview of the project, visit the <a href="/">home page</a>.
+<strong>This Week in Ruma</strong> is a weekly summary of the development of Ruma, published on Sunday nights.
+</p>
+</header>
+<h2 id="from-the-editor">From the editor</h2>
+
+<p>In the <a href="/news/this-week-in-ruma-2019-07-07/">last update</a>, I mentioned that the ongoing ruma-events revamp was impeded by an issue with types from <em>ring</em> which don't implement <code>Clone</code> and <code>PartialEq</code>.
+It turns out that there is <a href="https://github.com/briansmith/ring/pull/727">a reasonable explanation for this</a>, and so it was decided to work around it.
+I restructured the ruma-signatures types in question so that they don't contain <em>ring</em> types, but simply construct them and use them as-needed in the relevant methods.</p>
+
+<p>While I was working on ruma-signatures, I decided to fill in the missing functionality—signing and verifying events.
+In the process of doing that, I ended up with a significantly revised API for the crate, which has now been released as <a href="https://github.com/ruma/ruma-signatures/releases/tag/0.5.0">version 0.5.0</a>.
+In a somewhat amusing development, the new ruma-signatures API doesn't include the <code>Signatures</code> and <code>SignatureSet</code> types that were causing the issue in ruma-events in the first place.
+As a result, ruma-events is not only unblocked, but doesn't have depend on ruma-signatures at all.</p>
+
+<p>I made a little bit more progress on ruma-events.
+There is only one module remaining to be updated to the new API, so we're on the home stretch for a new ruma-events release.</p>
+
+</article>
+
+<article class='ruma-news' itemscope itemtype='http://schema.org/BlogPosting'>
+<meta content='Jimmy Cuadra' itemprop='author'>
+<header>
+<h1 itemprop='headline'>
 <a href="/news/this-week-in-ruma-2019-07-07/" title="This Week in Ruma">This Week in Ruma</a>
 <small itemprop='datePublished' value='2019-07-07'>July 07, 2019</small>
 </h1>
@@ -120,95 +151,6 @@ ruma-events will instead expose variants of each event to ensure they can only b
 <p>To reduce the boilerplate that this approach necessarily causes (because for many events there will now be two structures: the public one and the private one used for converting to and from JSON), I started a new procedural macro, <a href="https://github.com/ruma/ruma-events-macros">ruma-events-macros</a>, to make the most common cases require minimal code in ruma-events.
 It's been a lot of work, and there's still probably another week or more to go to finish implementing ruma-events using the new approach.
 But when it's done, the result will be a Rust library for Matrix events that leaves less room for users to accidentally do the wrong thing, while also supporting interoperation with other Matrix software that isn't so strict.</p>
-
-</article>
-
-<article class='ruma-news' itemscope itemtype='http://schema.org/BlogPosting'>
-<meta content='Jimmy Cuadra' itemprop='author'>
-<header>
-<h1 itemprop='headline'>
-<a href="/news/this-week-in-ruma-2019-06-16/" title="This Week in Ruma">This Week in Ruma</a>
-<small itemprop='datePublished' value='2019-06-16'>June 16, 2019</small>
-</h1>
-<p>
-<small>by Jimmy Cuadra</small>
-</p>
-<p>
-<strong>Ruma</strong> is a <a href="https://matrix.org">Matrix</a> homeserver, client, and supporting libraries written in the <a href="https://www.rust-lang.org/">Rust</a> programming language. Matrix is an open specification for an online communication protocol. For an overview of the project, visit the <a href="/">home page</a>.
-<strong>This Week in Ruma</strong> is a weekly summary of the development of Ruma, published on Sunday nights.
-</p>
-</header>
-<h2 id="from-the-editor">From the editor</h2>
-
-<p>Work is underway to bring Ruma up to date with <a href="https://matrix.org/docs/spec/client_server/r0.5.0">version r0.5.0</a> of the Matrix specification.
-Starting with the most foundational libraries and working up towards the higher-level ruma-client, this work should be done in the next week or two.
-The bulk of the work since the last update has been on <a href="https://github.com/ruma/ruma-events">ruma-events</a>, adding all of the events that were previously missing, and doing a full pass through existing events to make sure our definitions match the specification.</p>
-
-<p>In addition, community members Florian and Luca identified <a href="https://github.com/ruma/ruma-events/issues/27">an issue</a> regarding the use of Rust's <code>u64</code> and <code>i64</code> for numeric values and potential interoperability problems with JavaScript.
-After some discussion, Ruma team member jplatte created a new crate called <a href="https://github.com/jplatte/js_int">js_int</a> to address this.
-It has already been integrated with ruma-client-api and ruma-events, and will be used for all integer values in Ruma from now on.</p>
-
-<h2 id="notable-changes-to-ruma-apihttpsgithubcomrumaruma-api">Notable changes to <a href="https://github.com/ruma/ruma-api">ruma-api</a></h2>
-
-<ul>
-  <li>Released <a href="https://github.com/ruma/ruma-api/releases/tag/0.8.0">version 0.8.0</a>.
-    <ul>
-      <li>Simplified the <code>Error</code> type.</li>
-      <li>Updated to the latest ruma-identifiers (0.13).</li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="notable-changes-to-ruma-api-macroshttpsgithubcomrumaruma-api-macros">Notable changes to <a href="https://github.com/ruma/ruma-api-macros">ruma-api-macros</a></h2>
-
-<ul>
-  <li>Released <a href="https://github.com/ruma/ruma-api-macros">version 0.5.0</a>
-    <ul>
-      <li>Generated documentation now includes the names and descriptions of API endpoints.</li>
-      <li>Updated to the latest ruma-api (0.5).</li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="notable-changes-to-ruma-client-apihttpsgithubcomrumaruma-client-api">Notable changes to <a href="https://github.com/ruma/ruma-client-api">ruma-client-api</a></h2>
-
-<ul>
-  <li>Integrated the new <a href="https://github.com/jplatte/js_int">js_int</a> crate to ensure numeric types conform to the requirements stated in the specification.</li>
-</ul>
-
-<h2 id="notable-changes-to-ruma-eventshttpsgithubcomrumaruma-events">Notable changes to <a href="https://github.com/ruma/ruma-events">ruma-events</a></h2>
-
-<ul>
-  <li>Added new events and updated existing events to cover everything in version r0.5.0 of the client-server specification.
-Notably, this includes events for end-to-end encryption and push notifications.</li>
-  <li>Integrated the new <a href="https://github.com/jplatte/js_int">js_int</a> crate to ensure numeric types conform to the requirements stated in the specification.</li>
-</ul>
-
-<h2 id="notable-changes-to-ruma-identifiershttpsgithubcomrumaruma-identifiers">Notable changes to <a href="https://github.com/ruma/ruma-identifiers">ruma-identifiers</a></h2>
-
-<ul>
-  <li>Released <a href="https://github.com/ruma/ruma-identifiers/releases/tag/0.13.0">version 0.13.0</a>
-    <ul>
-      <li><code>EventId::hostname</code> and <code>EventId::port</code> now return <code>Option</code> because they are only applicable for the original event ID format.</li>
-      <li>All methods named <code>opaque_id</code> are now named <code>localpart</code>.</li>
-      <li><code>EventId</code> now supports multiple formats according to the different <a href="https://matrix.org/docs/spec/#room-versions">room versions</a>.</li>
-      <li><code>RoomVersionId</code> was added.</li>
-      <li><code>DeviceId</code> and a function for generating a <code>DeviceId</code> were added.</li>
-    </ul>
-  </li>
-  <li>Released <a href="https://github.com/ruma/ruma-identifiers/releases/tag/0.13.1">version 0.13.1</a>
-    <ul>
-      <li>Added support for room version 5 with <code>RoomVersionId::version_5</code> and <code>RoomVersionId::is_version_5</code>.</li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="matrix-at-large">Matrix at large</h2>
-
-<p>In the last post I mentioned that Matrix 1.0 was coming soon, and it has now happened!
-A hearty congratulations to everyone who works on Matrix!
-This is a huge milestone.
-You can read the details about Matrix 1.0, as well as the new Matrix.org Foundation, over on the Matrix blog: <a href="https://matrix.org/blog/2019/06/11/introducing-matrix-1-0-and-the-matrix-org-foundation">Introducing Matrix 1.0 and the Matrix.org Foundation</a>.</p>
 
 </article>
 

@@ -52,6 +52,40 @@
 <meta content='Jimmy Cuadra' itemprop='author'>
 <header>
 <h1 itemprop='headline'>
+<a href="/news/this-week-in-ruma-2016-11-27/" title="This Week in Ruma">This Week in Ruma</a>
+<small itemprop='datePublished' value='2016-11-27'>November 27, 2016</small>
+</h1>
+<p>
+<small>by Jimmy Cuadra</small>
+</p>
+<p>
+<strong>Ruma</strong> is a <a href="https://matrix.org">Matrix</a> homeserver, client, and supporting libraries written in the <a href="https://www.rust-lang.org/">Rust</a> programming language. Matrix is an open specification for an online communication protocol. For an overview of the project, visit the <a href="/">home page</a>.
+<strong>This Week in Ruma</strong> is a weekly summary of the development of Ruma, published on Sunday nights.
+</p>
+</header>
+<h2 id="from-the-editor">From the editor</h2>
+
+<p>It's been several weeks since I published an update to This Week in Ruma.
+I've been out of town for a lot of that time and too busy to give Ruma the time it deserves.
+This hasn't stopped Ruma's contributors from moving forward, however!
+There are several pull requests in various stages of completion and review.
+It will likely to continue to be on the quiet side for Ruma through the remainder of the year, but don't worry.
+The project is not going away.</p>
+
+<h2 id="notable-changes-to-rumahttpsgithubcomrumaruma">Notable changes to <a href="https://github.com/ruma/ruma">ruma</a></h2>
+
+<ul>
+  <li>Added support for user profiles.</li>
+  <li>New room aliases now properly generate an m.room.aliases event.</li>
+  <li>The construction of API endpoints and the various middleware they use has been refactored to use a trait and a macro.</li>
+</ul>
+
+</article>
+
+<article class='ruma-news' itemscope itemtype='http://schema.org/BlogPosting'>
+<meta content='Jimmy Cuadra' itemprop='author'>
+<header>
+<h1 itemprop='headline'>
 <a href="/news/this-week-in-ruma-2016-10-09/" title="This Week in Ruma">This Week in Ruma</a>
 <small itemprop='datePublished' value='2016-10-09'>October 09, 2016</small>
 </h1>
@@ -136,49 +170,6 @@ At least ergonomic enough that I'm comfortable stabilizing the current API witho
   <li>Enums now implement <code>Display</code> and <code>FromStr</code>.</li>
 </ul>
 
-
-</article>
-
-<article class='ruma-news' itemscope itemtype='http://schema.org/BlogPosting'>
-<meta content='Jimmy Cuadra' itemprop='author'>
-<header>
-<h1 itemprop='headline'>
-<a href="/news/this-week-in-ruma-2016-09-25/" title="This Week in Ruma">This Week in Ruma</a>
-<small itemprop='datePublished' value='2016-09-25'>September 25, 2016</small>
-</h1>
-<p>
-<small>by Jimmy Cuadra</small>
-</p>
-<p>
-<strong>Ruma</strong> is a <a href="https://matrix.org">Matrix</a> homeserver, client, and supporting libraries written in the <a href="https://www.rust-lang.org/">Rust</a> programming language. Matrix is an open specification for an online communication protocol. For an overview of the project, visit the <a href="/">home page</a>.
-<strong>This Week in Ruma</strong> is a weekly summary of the development of Ruma, published on Sunday nights.
-</p>
-</header>
-<p>On Friday, I live streamed myself working on Ruma for the first time.
-I tweeted about it from my <a href="https://twitter.com/jimmycuadra">personal account</a> and mentioned it in <a href="https://matrix.to/#/#ruma:matrix.org">#ruma:matrix.org</a>, but otherwise didn't publicize it.
-A few people watched and helped work out the kinks with audio and video quality.
-(Thank you to those who watched!)
-I walked through the API endpoint for creating message events, explaining more or less line by line how the code works, then worked on implementing the API endpoint for creating state events.
-The people who watched gave me good feedback, and I had a good time doing it, so I think I'll start to stream some of my Ruma development regularly.
-It will be at 1:00 PM Pacific Time on my <a href="https://www.twitch.tv/jimmy_cuadra">Twitch channel</a>.
-I will start tweeting about it from <a href="https://twitter.com/ruma_io">Ruma's Twitter account</a> to remind everyone.
-I'd love to get some questions during the stream, so if you're interested in learning about Matrix, Rust, or both, please come watch and tell me what you want to know!</p>
-
-<h2 id="notable-changes-to-rumahttpsgithubcomrumaruma">Notable changes to <a href="https://github.com/ruma/ruma">ruma</a></h2>
-
-<ul>
-  <li>Added initial support for the state event creation API endpoint.</li>
-  <li>Filled in missing functionality and fixed a few issues with the room alias API endpoints, which checks those off the list completely.</li>
-  <li>A new contributor is working on the API endpoint for joining a room, and in the process added a new Iron middleware for extracting a <code>ruma_identifiers::RoomId</code> from the URL path parameter wherever it's required.</li>
-  <li>A small quality of life fix: <code>script/cargo</code> now passed the value of <code>RUST_LOG</code> to the Docker environment when developing.</li>
-  <li>The project's README now includes some more information about how to determine which version of nightly Rust Ruma is built against for those not using Docker for development.</li>
-</ul>
-
-<h2 id="new-contributors">New contributors</h2>
-
-<ul>
-  <li><a href="https://github.com/farodin91">Jan Jansen</a></li>
-</ul>
 
 </article>
 
