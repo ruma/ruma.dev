@@ -1,0 +1,15 @@
+{% extends "skel.html" %}
+{% block html_title %}{{ section.title }} | Ruma{% endblock html_title %}
+{% block content %}
+
+<h1 class="section-title">{{ section.title }}</h1>
+
+<div class="section-nav-content-wrap">
+    {% include "includes/section_nav.html" %}
+
+    <main class="content">
+        {{ section.content | safe }}
+    </main>
+</div>
+
+{% endblock content %}

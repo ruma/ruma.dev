@@ -1,0 +1,8 @@
+<aside class="section-nav">
+    <ul>
+        <li><a href="{{ section.permalink }}">Overview</a></li>
+    {% for page in section.pages %}
+        <li><a href="{{ page.permalink }}">{{ page.title }}</a></li>
+    {% endfor %}
+    </ul>
+</aside>

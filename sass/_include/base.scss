@@ -1,0 +1,70 @@
+:root {
+    --body-bg: #eaeaea;
+
+    --text-color: #222;
+    --link-color: #b49100;
+
+    --code-text-color: #393939;
+    --code-bg: #ddd;
+    --code-border: #bbb;
+
+    --navbar-bg: #111;
+    --navbar-link-color: #ffd000;
+    --navbar-link-hover-color: #ffde4d;
+}
+
+// TODO: Dark theme
+//@media (prefers-color-scheme: dark) {
+//    :root {
+//    }
+//}
+
+// Change CSS' stupid default box sizing model
+// See https://css-tricks.com/box-sizing/
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    line-height: 1.3;
+    font-family: Metropolis, sans-serif;
+    // Bootstrap and others use #333, but since Metropolis is rather thin, we
+    // use a default color that's a bit darker
+    color: var(--text-color);
+    background-color: var(--body-bg);
+}
+
+.page {
+    padding-bottom: 1em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+}
+
+a, a:hover {
+    color: var(--link-color);
+}
+
+pre, code {
+    font-family: VeraMono, monospace;
+    // Adjust font size to look more like Metropolis' size
+    font-size: 96.5%;
+    // Bitstream Vera Sans Mono isn't as thin, use a lighter color
+    color: var(--code-text-color);
+}
+
+:not(pre) > code {
+    display: inline-block;
+    margin: .2em 0;
+    padding: .1em .3em;
+}
+
+pre, :not(pre) > code {
+    background-color: var(--code-bg);
+    border-bottom: 1px solid var(--code-border);
+}

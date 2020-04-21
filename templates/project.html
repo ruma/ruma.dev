@@ -1,0 +1,25 @@
+{% extends "skel.html" %}
+{% block html_title %}{{ page.title }} | Ruma{% endblock html_title %}
+{% block content %}
+
+{% set section = get_section(path = page.ancestors | last) %}
+
+<h1 class="section-title">{{ section.title }}</h1>
+
+<div class="section-nav-content-wrap">
+    {% include "includes/section_nav.html" %}
+
+    <main class="content">
+        <h2 class="page-title">{{ page.title }}</h2>
+        {{ page.content | safe }}
+        <p>Links:</p>
+        <ul>
+            <li><a href="https://crates.io/crates/{{ page.extra.crate }}">crates.io page</a></li>
+            <li><a href="https://docs.rs/{{ page.extra.crate }}">Documentation on docs.rs</a></li>
+            <li><a href="https://github.com/ruma/{{ page.extra.crate }}">GitHub repository</a></li>
+            <li><a href="https://github.com/ruma/{{ page.extra.crate }}/issues">GitHub Issues</a></li>
+        </dl>
+    </main>
+</div>
+
+{% endblock content %}

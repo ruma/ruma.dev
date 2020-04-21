@@ -1,0 +1,47 @@
+.section-title {
+    max-width: 980px; // width of sidebar + content - padding
+    margin: 0.67em auto;
+}
+
+.page > .section-title {
+    padding-bottom: .1em;
+    border-bottom: 2px solid #555;
+}
+
+.section-nav-content-wrap {
+    display: flex;
+    justify-content: center;
+
+    .content {
+        margin: 0;
+
+        p:first-child, h2:first-child {
+            margin-top: .5rem;
+        }
+    }
+}
+
+.section-nav {
+    padding: 0 15px;
+    min-width: 230px;
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        margin: .5em 0;
+    }
+
+    a {
+        display: block;
+        padding: .5em .75em;
+        background-color: #fcfcfc;
+
+        &:hover {
+            background-color: #f4f4f4;
+        }
+    }
+}

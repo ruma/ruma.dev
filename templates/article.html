@@ -1,0 +1,12 @@
+{% extends "skel.html" %}
+{% block html_title %}{{ page.title }} | Ruma{% endblock html_title %}
+{% block content %}
+
+<article class="content">
+    {% include "includes/post_header.html" %}
+    {{ page.content | safe }}
+</article>
+
+{# TODO: ealier / later post links? #}
+
+{% endblock content %}

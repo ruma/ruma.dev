@@ -1,0 +1,7 @@
+<nav class="site-nav">
+    <ul>
+    {% for link in config.extra.nav_links %}
+        <li><a href="{{ link.href }}">{{ link.title }}</a></li>
+    {% endfor %}
+    </ul>
+</nav>

@@ -1,0 +1,21 @@
+.content {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.post-header {
+    margin-bottom: 1.5em;
+
+    small {
+        font-size: 90%;
+    }
+
+    time, .author {
+        font-weight: 500;
+    }
+}
+
+.post-title {
+    margin-bottom: .2em;
+}

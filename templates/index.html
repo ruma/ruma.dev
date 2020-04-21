@@ -1,0 +1,13 @@
+{% extends "skel.html" %}
+{% block html_title %}Ruma - Your home in Matrix{% endblock html_title %}
+{% block content %}
+
+<header class="frontpage-header">
+    <h2><img src="/images/ruma.png" alt="Ruma"></h2>
+    <h3>Your home in Matrix.</h3>
+</header>
+<main class="content">
+    {{ section.content | safe }}
+</main>
+
+{% endblock content %}

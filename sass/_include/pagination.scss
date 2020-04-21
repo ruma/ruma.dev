@@ -1,0 +1,10 @@
+
+.pagination {
+    margin-top: 4rem;
+    text-align: center;
+
+    .prev, .next {
+        display: inline-block;
+        margin: 1rem;
+    }
+}

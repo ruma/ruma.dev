@@ -1,0 +1,29 @@
+.frontpage-header {
+    width: 100%;
+    margin-bottom: 2rem;
+    padding: 3rem;
+
+    text-align: center;
+    color: #444;
+    background: rgb(255, 208, 0);
+
+    h2 {
+        margin: 0;
+    }
+
+    img {
+        margin: 0 auto;
+        width: 280px;
+        display: block;
+
+        @media screen and (max-width: 320px) {
+            width: 187px;
+        }
+    }
+
+    h3 {
+        margin: 1rem 0 0;
+        font-weight: 500;
+        color: #393939;
+    }
+}
