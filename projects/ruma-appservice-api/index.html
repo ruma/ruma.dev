@@ -24,13 +24,13 @@
 <meta content='/images/mstile-150x150-d5f0b5e6.png' name='msapplication-square150x150logo'>
 <meta content='/images/mstile-310x150-e8749e81.png' name='msapplication-wide310x150logo'>
 <meta content='/images/mstile-310x310-ed20b880.png' name='msapplication-square310x310logo'>
-<title>Ruma - ruma-federation-server</title>
+<title>Ruma - ruma-appservice-api</title>
 <meta content='Ruma is a set of Rust library crates for working with the Matrix protocol.' name='description'>
-<link href='https://www.ruma.io/projects/ruma-federation-server/' rel='canonical'>
+<link href='https://www.ruma.io/projects/ruma-appservice-api/' rel='canonical'>
 <link href='/news/feed.atom' rel='alternate' type='application/atom+xml'>
 <link href="/stylesheets/site-21a986c4.css" rel="stylesheet" />
 </head>
-<body class='projects projects_ruma-federation-server projects_ruma-federation-server_index'>
+<body class='projects projects_ruma-appservice-api projects_ruma-appservice-api_index'>
 <nav class='navbar navbar-inverse navbar-static-top'>
 <div class='container-fluid'>
 <ul class='nav navbar-nav navbar-right'>
@@ -54,17 +54,11 @@
 <ul class='nav nav-stacked'>
 <li><a href="/projects/">Overview</a></li>
 </ul>
-<h5>Applications</h5>
-<ul class='nav nav-stacked'>
-<li><a href="/projects/ruma/">ruma</a></li>
-<li><a href="/projects/ruma-client-server/">ruma-client-server</a></li>
-<li><a href="/projects/ruma-extra-server/">ruma-extra-server</a></li>
-<li><a href="/projects/ruma-federation-server/">ruma-federation-server</a></li>
-</ul>
 <h5>Libraries</h5>
 <ul class='nav nav-stacked'>
 <li><a href="/projects/ruma-api/">ruma-api</a></li>
 <li><a href="/projects/ruma-api-macros/">ruma-api-macros</a></li>
+<li><a href="/projects/ruma-appservice-api/">ruma-appservice-api</a></li>
 <li><a href="/projects/ruma-client/">ruma-client</a></li>
 <li><a href="/projects/ruma-client-api/">ruma-client-api</a></li>
 <li><a href="/projects/ruma-events/">ruma-events</a></li>
@@ -77,31 +71,29 @@
 </div>
 <div class='col-md-9'>
 <div class='page-header first-heading'>
-<h2>ruma-federation-server</h2>
+<h2>ruma-appservice-api</h2>
 </div>
 <dl class='dl-horizontal'>
 <dt>Releases</dt>
 <dd>
-Unreleased
+<a href="https://crates.io/crates/ruma-appservice-api">https://crates.io/crates/ruma-appservice-api</a>
 </dd>
 <dt>Source code</dt>
 <dd>
-<a href="https://github.com/ruma/ruma-federation-server">https://github.com/ruma/ruma-federation-server</a>
+<a href="https://github.com/ruma/ruma-appservice-api">https://github.com/ruma/ruma-appservice-api</a>
 </dd>
 <dt>Documentation</dt>
 <dd>
-Not yet available
+<a href="https://docs.rs/ruma-appservice-api">https://docs.rs/ruma-appservice-api</a>
 </dd>
 <dt>Bug reports</dt>
 <dd>
-<a href="https://github.com/ruma/ruma-federation-server/issues">https://github.com/ruma/ruma-federation-server/issues</a>
+<a href="https://github.com/ruma/ruma-appservice-api/issues">https://github.com/ruma/ruma-appservice-api/issues</a>
 </dd>
 </dl>
 
-<p><code>ruma-federation-server</code> is the component of the Ruma homeserver that servers Matrix's server-server API, which is used by other homeservers in the Matrix network to replicate data.</p>
-
-<p><code>ruma-federation-server</code> is intended for large-scale deployments when it is desirable to scale this component independently from the other components of the homeserver.
-For small-scale deployments, it's easier to use the all-in-one <code>ruma</code> executable.</p>
+<p><code>ruma-appservice-api</code> contains serializable types for the requests and responses for each endpoint in the Matrix appservice API.
+It implements the generic interface for Matrix APIs defined in <a href="/projects/ruma-api/">ruma-api</a>.</p>
 
 </div>
 </div>

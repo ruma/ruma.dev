@@ -54,17 +54,11 @@
 <ul class='nav nav-stacked'>
 <li><a href="/projects/">Overview</a></li>
 </ul>
-<h5>Applications</h5>
-<ul class='nav nav-stacked'>
-<li><a href="/projects/ruma/">ruma</a></li>
-<li><a href="/projects/ruma-client-server/">ruma-client-server</a></li>
-<li><a href="/projects/ruma-extra-server/">ruma-extra-server</a></li>
-<li><a href="/projects/ruma-federation-server/">ruma-federation-server</a></li>
-</ul>
 <h5>Libraries</h5>
 <ul class='nav nav-stacked'>
 <li><a href="/projects/ruma-api/">ruma-api</a></li>
 <li><a href="/projects/ruma-api-macros/">ruma-api-macros</a></li>
+<li><a href="/projects/ruma-appservice-api/">ruma-appservice-api</a></li>
 <li><a href="/projects/ruma-client/">ruma-client</a></li>
 <li><a href="/projects/ruma-client-api/">ruma-client-api</a></li>
 <li><a href="/projects/ruma-events/">ruma-events</a></li>
@@ -100,8 +94,7 @@
 
 <p><code>ruma-signatures</code> provides functionality for creating digital signatures according to the Matrix specification.
 Digital signatures are used by Matrix homeservers to verify the authenticity of events in the Matrix system, as well as requests between homeservers for federation.
-<code>ruma-signatures</code> is used by the Ruma homeserver and several of the other Ruma libraries.
-It should be used whenever a developer needs to create or verify a signature according to the specification, or simply when using a Rust type that includes a Matrix digital signature as one of its fields.</p>
+<code>ruma-signatures</code> should be used whenever a developer needs to create or verify a signature according to the specification, or simply when using a Rust type that includes a Matrix digital signature as one of its fields.</p>
 
 </div>
 </div>
