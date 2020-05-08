@@ -6,7 +6,6 @@ page "/news/feed.atom", layout: false
 page '/docs/index.html', layout: :layout
 page '/docs/*', layout: :docs
 page '/projects/*', layout: :projects
-page '/status/*', layout: :status
 page '/contributing/*', layout: :contributing
 
 activate :blog do |blog|

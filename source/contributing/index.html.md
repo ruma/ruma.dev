@@ -4,12 +4,8 @@ title: How to Contribute
 
 If you're interested in contributing to the Ruma project, this page offers some pointers on how to get started.
 
-While we wait for the async networking ecosystem in Rust to stabilize, there isn't work being done on the main homeserver component of Ruma.
-(See [project status](/status/) for more details on this.)
-The client and supporting libraries can still be improved, however.
-
 The most significant thing you can do to help the project is to try to build something using it.
-Since the homeserver is not functional at this point, this would mean building something like a bot or GUI client using the [ruma-client](https://www.ruma.io/projects/ruma-client/) library.
+Since homeserver development has ended, this means building something like a bot or GUI client using the [ruma-client](https://www.ruma.io/projects/ruma-client/) library.
 As you work, you can help by opening issues and/or pull requests on the relevant Ruma libraries as issues come up.
 This will help ensure that Ruma is suitable for real-world use cases.
 
