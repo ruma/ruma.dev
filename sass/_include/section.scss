@@ -1,11 +1,8 @@
-.section-title {
-    max-width: 980px; // width of sidebar + content - padding
-    margin: 0.67em auto;
-}
-
 .page > .section-title {
-    padding-bottom: .1em;
-    border-bottom: 2px solid #555;
+    max-width: 1010px; // width of sidebar + content
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 15px;
 }
 
 .section-nav-content-wrap {
