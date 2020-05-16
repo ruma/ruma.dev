@@ -1,7 +1,7 @@
 +++
 title = "These Weeks in Ruma"
 date = 2019-12-14
-extra.author ="Jonas Platte"
+extra.author = "Jonas Platte"
 +++
 
 There's been steady progress since the last news entry, so I thought I'd write a small progress

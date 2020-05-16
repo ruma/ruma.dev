@@ -1,7 +1,7 @@
 +++
 title = "This Week in Ruma"
 date = 2016-07-31
-extra.author ="Jimmy Cuadra"
+extra.author = "Jimmy Cuadra"
 +++
 
 This week [serde 0.8.0](https://github.com/serde-rs/serde/releases/tag/v0.8.0) was released, offering a new serialization API.

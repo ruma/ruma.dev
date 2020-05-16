@@ -1,7 +1,7 @@
 +++
 title = "This Week in Ruma"
 date = 2016-04-24
-extra.author ="Jimmy Cuadra"
+extra.author = "Jimmy Cuadra"
 +++
 
 ## From the editor

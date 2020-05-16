@@ -1,7 +1,7 @@
 +++
 title = "New releases"
 date = 2019-11-05
-extra.author ="Jonas Platte"
+extra.author = "Jonas Platte"
 +++
 
 Last week, we uploaded 7 (!) new versions of our crates to crates.io:

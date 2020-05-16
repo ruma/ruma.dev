@@ -1,7 +1,7 @@
 +++
 title = "This Week in Ruma"
 date = 2016-07-03
-extra.author ="Jimmy Cuadra"
+extra.author = "Jimmy Cuadra"
 +++
 
 Three major milestones happened for Ruma this week!

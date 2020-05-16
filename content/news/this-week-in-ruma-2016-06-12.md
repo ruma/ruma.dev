@@ -1,7 +1,7 @@
 +++
 title = "This Week in Ruma"
 date = 2016-06-12
-extra.author ="Jimmy Cuadra"
+extra.author = "Jimmy Cuadra"
 +++
 
 In addition to the bulleted highlights listed below, major work was done this week to help the community get involved in Ruma development.

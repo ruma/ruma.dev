@@ -1,7 +1,7 @@
 +++
 title = "This Week in Ruma"
 date = 2016-08-28
-extra.author ="Jimmy Cuadra"
+extra.author = "Jimmy Cuadra"
 +++
 
 Recently, types from the ruma-identifiers crate were integrated into ruma-events and ruma, so that values representing a Matrix ID can guarantee some important invariants.

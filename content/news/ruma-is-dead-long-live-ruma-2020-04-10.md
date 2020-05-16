@@ -1,7 +1,7 @@
 +++
 title = "Ruma is dead, long live Ruma!"
 date = 2020-04-10
-extra.author ="Jonas Platte"
+extra.author = "Jonas Platte"
 +++
 
 Today, I have a bit of a sad announcement to make:

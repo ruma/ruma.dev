@@ -1,7 +1,7 @@
 +++
 title = "This Year in Ruma"
 date = 2016-12-31
-extra.author ="Jimmy Cuadra"
+extra.author = "Jimmy Cuadra"
 +++
 
 2016 was a fantastic year for the Ruma project.

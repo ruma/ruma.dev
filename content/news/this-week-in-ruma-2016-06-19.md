@@ -1,7 +1,7 @@
 +++
 title = "This Week in Ruma"
 date = 2016-06-19
-extra.author ="Jimmy Cuadra"
+extra.author = "Jimmy Cuadra"
 +++
 
 The effort last week to make it easy to identify ways to contribute to Ruma has already paid off with two new API endpoints being implemented by the community this week!

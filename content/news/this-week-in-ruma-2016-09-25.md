@@ -1,7 +1,7 @@
 +++
 title = "This Week in Ruma"
 date = 2016-09-25
-extra.author ="Jimmy Cuadra"
+extra.author = "Jimmy Cuadra"
 +++
 
 On Friday, I live streamed myself working on Ruma for the first time.

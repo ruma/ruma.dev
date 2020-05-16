@@ -1,7 +1,7 @@
 +++
 title = "This Week in Ruma"
 date = 2016-06-05
-extra.author ="Jimmy Cuadra"
+extra.author = "Jimmy Cuadra"
 +++
 
 ## Notable changes to `ruma`

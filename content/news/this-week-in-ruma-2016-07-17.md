@@ -1,7 +1,7 @@
 +++
 title = "This Week in Ruma"
 date = 2016-07-17
-extra.author ="Jimmy Cuadra"
+extra.author = "Jimmy Cuadra"
 +++
 
 Ruma has a new logo!
