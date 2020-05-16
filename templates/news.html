@@ -7,7 +7,7 @@
     {{ section.content | safe }}
 
     {% for page in paginator.pages %}
-        <article>
+        <article itemscope itemtype="http://schema.org/BlogPosting">
             {% include "includes/post_header.html" %}
             {{ page.content | safe }}
         </article>

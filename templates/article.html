@@ -2,7 +2,7 @@
 {% block html_title %}{{ page.title }} | Ruma{% endblock html_title %}
 {% block content %}
 
-<article class="content">
+<article class="content" itemscope itemtype="http://schema.org/BlogPosting">
     {% include "includes/post_header.html" %}
     {{ page.content | safe }}
 </article>
