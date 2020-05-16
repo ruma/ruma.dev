@@ -18,6 +18,12 @@
     }
 }
 
+@media screen and (max-width: 699px) {
+    .section-nav-content-wrap {
+        flex-direction: column;
+    }
+}
+
 .section-nav {
     padding: 0 15px;
     min-width: 230px;
