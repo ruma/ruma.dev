@@ -1,6 +1,8 @@
 +++
 title = "Projects"
 page_template = "project.html"
+# Redirect /status to this
+aliases = ["/status"]
 +++
 
 The Ruma project is more than just a Matrix homeserver.
