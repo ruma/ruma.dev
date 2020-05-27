@@ -10,10 +10,11 @@ tasks:
       curl -L "https://github.com/getzola/zola/releases/download/${version}/${archive}" -o "$archive"
       tar xf "$archive"
   - build: |
-      PATH="$PATH:$PWD"
       cd ruma.github.io
-      zola build
+      ~/zola build
   - deploy: |
+      cd ruma.github.io/public
+
       head_rev=$(git rev-parse HEAD)
       source_rev=$(git rev-parse source)
       if [[ "$head_rev" = "$source_rev" ]]; then
@@ -22,9 +23,6 @@ tasks:
 
       echo 'Host *' >> ~/.ssh/config
       echo '    StrictHostKeyChecking=no' >> ~/.ssh/config
-
-      PATH="$PATH:$PWD"
-      cd ruma.github.io/public
 
       git config --global user.email "noreply@ruma.io"
       git config --global user.name "CI"
@@ -35,6 +33,5 @@ tasks:
   # Links can break in old articles. This should be checked in CI, but should
   # not break publishing new articles, so it is done after deploying the site.
   - check_links: |
-      PATH="$PATH:$PWD"
       cd ruma.github.io
-      zola check
+      ~/zola check
