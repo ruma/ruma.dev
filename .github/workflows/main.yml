@@ -8,7 +8,11 @@ jobs:
     name: Build and deploy the site
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - name: Check out the repository
+      env:
+        REPOSITORY: ${{ github.repository }}
+      run: |
+        git clone "https://github.com/$REPOSITORY"
     - name: Download Zola
       run: |
         version='v0.11.0'
