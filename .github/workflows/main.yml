@@ -28,6 +28,7 @@ jobs:
       env:
         DEPLOY_SECRET_KEY: ${{ secrets.DEPLOY_SECRET_KEY }}
       run: |
+        mkdir ~/.ssh
         echo "$DEPLOY_SECRET_KEY" > ~/.ssh/id_ed25519
 
         echo 'Host *' >> ~/.ssh/config
