@@ -1,9 +1,9 @@
 # The URL the site will be built for
 base_url = "https://www.ruma.io"
 
-# Generate a feed under /news/feed.atom
+# Generate a feed under /news/feed.xml
 generate_feed = true
-feed_filename = "news/feed.atom"
+feed_filename = "news/feed.xml"
 
 # Variables for the news feed
 title = "Ruma"
