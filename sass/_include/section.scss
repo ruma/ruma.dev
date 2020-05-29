@@ -5,6 +5,15 @@
     padding: 0 15px;
 }
 
+.section-title a {
+    margin-left: .25em;
+    text-decoration: none;
+}
+
+.section-title svg path {
+    fill: var(--link-color);
+}
+
 .section-nav-content-wrap {
     display: flex;
     justify-content: center;

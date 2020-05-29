@@ -3,7 +3,10 @@
 {% block content %}
 
 <main class="content">
-    <h1 class="section-title">{{ section.title }}</h1>
+    <h1 class="section-title">
+        {{ section.title }}
+        <a href="/news/feed.xml">{% include "includes/rss.svg.html" %}</a> 
+    </h1>
     {{ section.content | safe }}
 
     {% for page in paginator.pages %}
