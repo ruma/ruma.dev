@@ -12,19 +12,16 @@ jobs:
       env:
         REPOSITORY: ${{ github.repository }}
       run: |
-        echo $PWD
         ls -la
-        git clone "https://github.com/$REPOSITORY"
+        git clone "https://github.com/$REPOSITORY" .
     - name: Download Zola
       run: |
-        echo $PWD
         version='v0.11.0'
         archive="zola-${version}-x86_64-unknown-linux-gnu.tar.gz"
         curl -L "https://github.com/getzola/zola/releases/download/${version}/${archive}" -o "$archive"
         tar xf "$archive"
     - name: Build the site
       run: |
-        echo $PWD
         ./zola build
     - name: Deploy the site
       working-directory: ./public
