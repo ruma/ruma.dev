@@ -30,6 +30,7 @@ jobs:
       run: |
         mkdir ~/.ssh
         echo "$DEPLOY_SECRET_KEY" > ~/.ssh/id_ed25519
+        chmod 600 ~/.ssh/id_ed25519
 
         echo 'Host *' >> ~/.ssh/config
         echo '    StrictHostKeyChecking=no' >> ~/.ssh/config
