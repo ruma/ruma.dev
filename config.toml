@@ -1,6 +1,14 @@
 # The URL the site will be built for
 base_url = "https://www.ruma.io"
 
+# Generate a feed under /news/feed.atom
+generate_feed = true
+feed_filename = "news/feed.atom"
+
+# Variables for the news feed
+title = "Ruma"
+description = "News for the Ruma project."
+
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
 
