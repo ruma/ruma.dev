@@ -18,7 +18,7 @@ jobs:
       run: |
         ./zola build
     - name: Deploy the site
-      working_directory: ./public
+      working-directory: ./public
       env:
         DEPLOY_SECRET_KEY: ${{ secrets.DEPLOY_SECRET_KEY }}
       run: |
