@@ -53,7 +53,7 @@ a, a:hover {
 pre, code {
     font-family: VeraMono, monospace;
     // Adjust font size to look more like Metropolis' size
-    font-size: 96.5%;
+    font-size: 90%;
     // Bitstream Vera Sans Mono isn't as thin, use a lighter color
     color: var(--code-text-color);
 }
@@ -61,7 +61,7 @@ pre, code {
 :not(pre) > code {
     display: inline-block;
     margin: .2em 0;
-    padding: .1em .3em;
+    padding: .05em .3em;
 }
 
 pre, :not(pre) > code {
