@@ -3,6 +3,8 @@
 {% block content %}
 
 {% set section = get_section(path = page.ancestors | last) %}
+{% set repo = "https://github.com/ruma/ruma" %}
+{% set crate = page.extra.crate %}
 
 <h1 class="section-title">{{ section.title }}</h1>
 
@@ -14,10 +16,14 @@
         {{ page.content | safe }}
         <p>Links:</p>
         <ul>
-            <li><a href="https://crates.io/crates/{{ page.extra.crate }}">crates.io page</a></li>
-            <li><a href="https://docs.rs/{{ page.extra.crate }}">Documentation on docs.rs</a></li>
-            <li><a href="https://github.com/ruma/{{ page.extra.crate }}">GitHub repository</a></li>
-            <li><a href="https://github.com/ruma/{{ page.extra.crate }}/issues">GitHub Issues</a></li>
+            <li><a href="https://crates.io/crates/{{ crate }}">crates.io page</a></li>
+            <li><a href="https://docs.rs/{{ crate }}">Documentation</a></li>
+            <li><a href="{{ repo }}/tree/master/{{ crate }}">Code</a></li>
+            <li>
+                <a href="{{ repo }}/issues?q=is%3Aissue+is%3Aopen+label%3Acrate%2F{{ crate }}">
+                    Issues
+                </a>
+            </li>
         </dl>
     </main>
 </div>
