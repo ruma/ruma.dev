@@ -2,7 +2,7 @@ name: Build www.ruma.io
 on:
   push:
     branches:
-      - source
+      - main
 jobs:
   deploy:
     name: Build and deploy the site
