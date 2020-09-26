@@ -31,7 +31,7 @@ performance. Read and download Ruma source code on [GitHub][]. Get caught up
 with the latest developments in the [news][] and on [Twitter][]. Join the
 discussion in [#ruma:matrix.org][].
 
-[GitHub]: https://github.com/ruma
+[GitHub]: https://github.com/ruma/ruma
 [news]: /news/
 [Twitter]: https://twitter.com/ruma_io
 [#ruma:matrix.org]: https://matrix.to/#/#ruma:matrix.org
