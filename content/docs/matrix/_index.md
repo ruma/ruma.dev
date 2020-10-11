@@ -89,7 +89,7 @@ The table shows the protocol each system uses, examples of resources you'd acces
       <th>You use…</th>
       <td>Chrome, Firefox</td>
       <td>Gmail web app, Apple Mail</td>
-      <td>Element, Fractal, Daydream</td>
+      <td>Element, Fractal, WeeChat</td>
     </tr>
   </table>
 </div>
