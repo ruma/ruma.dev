@@ -39,7 +39,7 @@ With Matrix, you can do the same for messaging, phone, and video calls.
 
 You can pick any Matrix client, and you can switch at any time.
 Whatever you choose, it'll work with your homeserver.
-Currently, the most widely used Matrix client is [Riot](https://riot.im/), which has versions available for the web, iOS, Android, macOS, Windows, and more.
+Currently, the most widely used Matrix client is [Element](https://element.io/), which has versions available for the web, iOS, Android, macOS, Windows, and more.
 
 On the homeserver side, Matrix offers choices to both the user and operator of the homeserver.
 
@@ -50,8 +50,8 @@ Users can decide who runs their homeserver:
 * Yourself: You can run the homeserver software on your own computer.
 
 As a homeserver operator, you can choose your homeserver implementation.
-The team that developed Matrix provides an implementation called Synapse.
-Ruma is another option.
+The team that developed Matrix provides an implementation called [Synapse](https://matrix.org/docs/projects/server/synapse).
+[Conduit](conduit.rs) which uses Ruma is another option.
 
 ### Putting It All Together
 
@@ -83,13 +83,13 @@ The table shows the protocol each system uses, examples of resources you'd acces
       <th>The provider uses…</th>
       <td>Apache, Nginx</td>
       <td>sendmail, postfix</td>
-      <td>Ruma, Synapse</td>
+      <td>Conduit, Synapse, Dendrite</td>
     </tr>
     <tr>
       <th>You use…</th>
       <td>Chrome, Firefox</td>
       <td>Gmail web app, Apple Mail</td>
-      <td>Riot, WeeChat</td>
+      <td>Element, Fractal, Daydream</td>
     </tr>
   </table>
 </div>
