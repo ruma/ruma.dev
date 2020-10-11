@@ -51,7 +51,7 @@ Users can decide who runs their homeserver:
 
 As a homeserver operator, you can choose your homeserver implementation.
 The team that developed Matrix provides an implementation called [Synapse](https://matrix.org/docs/projects/server/synapse).
-[Conduit](conduit.rs) which uses Ruma is another option.
+[Conduit](https://conduit.rs/), which is built on Ruma, is another (experimental) option.
 
 ### Putting It All Together
 
