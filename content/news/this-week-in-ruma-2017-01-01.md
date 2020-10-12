@@ -78,4 +78,4 @@ Previously featured and still available:
 * \[discussion\] [Protect against database concurrency bugs](https://github.com/ruma/ruma/issues/132)
 
 There are also plenty of API endpoints that still need to be implemented.
-Check the [status document](https://github.com/ruma/ruma/blob/master/STATUS.md) for a list.
+Check the [status document](https://github.com/ruma/homeserver/blob/master/STATUS.md) for a list.
