@@ -5,7 +5,7 @@ title = "How to Contribute"
 If you're interested in contributing to the Ruma project, this page offers some pointers on how to get started.
 
 The most significant thing you can do to help the project is to try to build something using it.
-Since homeserver development has ended, this means building something like a bot or GUI client using the [ruma-client](https://www.ruma.io/projects/ruma-client/) library.
+Since homeserver development has ended, this means building something like a bot or GUI client using the [ruma-client](/docs/crates/ruma-client/) library.
 As you work, you can help by opening issues and/or pull requests on the relevant Ruma libraries as issues come up.
 This will help ensure that Ruma is suitable for real-world use cases.
 
@@ -18,7 +18,7 @@ One such project already exists: [olm-rs](https://crates.io/crates/olm-rs).
 olm-rs might need some additional help.
 If you're very confident in your skills with implementing cryptographic algorithms, you could attempt to port Olm to Rust directly, though it's not clear if this would be possible without any C code at all.
 
-The second major area where code contributions would help would be to work on equivalents of [ruma-client-api](https://www.ruma.io/projects/ruma-client-api/) for the other Matrix APIs (e.g. [federation](https://matrix.org/docs/spec/server_server/latest).)
+The second major area where code contributions would help would be to work on equivalents of [ruma-client-api](/docs/crates/ruma-client-api/) for the other Matrix APIs (e.g. [federation](https://matrix.org/docs/spec/server_server/latest).)
 ruma-client-api is the library that defines the Rust interface for all the HTTP endpoints in the Matrix client-server API.
 An equivalent library will eventually be needed for the other Matrix APIs.
 

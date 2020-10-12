@@ -37,4 +37,4 @@ Previously featured and still available:
 * \[feature\] [Implement a rate-limiting middleware](https://github.com/ruma/ruma/issues/107)
 
 There are also plenty of API endpoints that still need to be implemented.
-Check the [status document](https://github.com/ruma/ruma/blob/master/STATUS.md) for a list.
+Check the [status document](https://github.com/ruma/homeserver/blob/master/STATUS.md) for a list.
