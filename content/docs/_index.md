@@ -1,6 +1,6 @@
 +++
 title = "Ruma Documentation"
-template = "docs.html"
+template = "section_no_nav.html"
 +++
 
 Ruma is a set of Rust library crates for working with the Matrix protocol.
