@@ -16,7 +16,7 @@ jobs:
         git clone "https://github.com/$REPOSITORY" .
     - name: Download Zola
       run: |
-        version='v0.12.0'
+        version='v0.13.0'
         archive="zola-${version}-x86_64-unknown-linux-gnu.tar.gz"
         curl -L "https://github.com/getzola/zola/releases/download/${version}/${archive}" -o "$archive"
         tar xf "$archive"
