@@ -32,13 +32,9 @@ href = "/"
 title = "News"
 href = "/news/"
 
-#[[extra.nav_links]]
-#title = "Projects using Ruma"
-#href = "/projects/"
-
 [[extra.nav_links]]
-title = "How to Contribute"
-href = "/contributing/"
+title = "Projects using Ruma"
+href = "/projects/"
 
 [[extra.nav_links]]
 title = "Donate on Liberapay"
