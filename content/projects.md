@@ -70,8 +70,10 @@ These projects are incomplete and not actively being worked on:
   [Druid](https://github.com/linebender/druid#druid))
 * [Maelstrom]: A homeserver designed to have a pluggable storage engine, to be
   scalable and light on resources
+* [synadminctl]: A synapse admin API command line interface
 * [matrix-rocket.chat bridge]: What the name says
 
 [Maelstrom]: https://github.com/maelstrom-rs/maelstrom#readme
 [Daydream]: https://github.com/daydream-mx?type=source
+[synadminctl]: https://github.com/florianjacob/synadminctl#readme
 [matrix-rocket.chat bridge]: https://github.com/exul/matrix-rocketchat#readme
