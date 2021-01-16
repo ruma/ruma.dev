@@ -1,6 +1,5 @@
 +++
 title = "Projects using Ruma"
-template = "section_no_nav.html"
 +++
 
 This page should list most of the projects that are using Ruma. We're happy to
