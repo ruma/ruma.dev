@@ -1,0 +1,19 @@
+digraph Ruma {
+    label = "Ruma";
+
+    node [
+        shape=box
+    ];
+
+    "ruma-signatures"
+    "ruma-events" -> "ruma-identifiers"
+    "ruma-appservice-api" -> "ruma-identifiers"
+    "ruma-appservice-api" -> "ruma-events"
+    "ruma-client-api" -> "ruma-identifiers"
+    "ruma-client-api" -> "ruma-events"
+    "ruma-federation-api" -> "ruma-identifiers"
+    "ruma-federation-api" -> "ruma-events"
+    "ruma-client" -> "ruma-identifiers"
+    "ruma-client" -> "ruma-events"
+    "ruma-client" -> "ruma-client-api"
+}

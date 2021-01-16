@@ -1,0 +1,47 @@
+digraph Ruma {
+    graph [
+        dpi=192,
+        fontname="Metropolis",
+    ];
+
+    node [
+        shape=box,
+        imagepos=ml,
+        fontname="Metropolis",
+    ];
+
+    subgraph cluster {
+        color = "white";
+
+        Ruma [
+            label="",
+            image="ruma.png",
+        ];
+
+        mrsdk [label="matrix-rust-sdk"];
+        mrsdk -> Ruma
+    }
+
+    subgraph cluster_servers {
+        label = "Servers\r";
+        style = dashed;
+
+        Conduit -> Ruma
+        Maelstrom -> Ruma
+    }
+
+    subgraph cluster_clients {
+        label = Clients;
+        style = dashed;
+
+        Fractal [
+            label="Fractal\r",
+            image="fractal.png",
+            width=1.23,
+        ];
+        Fractal -> mrsdk
+        rumatui -> mrsdk
+        Daydream -> mrsdk
+        "weechat-matrix-rs" -> mrsdk
+    }
+}
