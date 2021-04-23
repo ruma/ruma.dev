@@ -20,6 +20,7 @@ client applications built with it:
 * [retrix]: A lightweight client built with [iced]
 * [Weechat-Matrix]: A plugin for weechat that adds Matrix support to it
 * [matrix-send]: A non-interactive command-line client
+* [matrix-dicebot]: Matrix dice rolling bot with basic support for the Chronicles of Darkness 2E Storytelling System and Call of Cthulhu.
 * [MRSBFH]\: Matrix-Rust-SDK-Bot-Framework-Helper
 * [Timetracking-Bot by Famedly]: A bot for tracking work times, uses MRSBFH
 
@@ -32,6 +33,7 @@ client applications built with it:
 [iced]: https://github.com/hecrj/iced#readme
 [Weechat-Matrix]: https://github.com/poljar/weechat-matrix-rs#readme
 [matrix-send]: https://github.com/tilosp/matrix-send-rs#readme
+[matrix-dicebot]: https://git.agnos.is/projectmoon/matrix-dicebot
 [MRSBFH]: https://github.com/MTRNord/mrsbfh#readme
 [Timetracking-Bot by Famedly]: https://gitlab.com/famedly/bots/timetracking
 
