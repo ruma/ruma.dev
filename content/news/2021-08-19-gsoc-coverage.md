@@ -35,10 +35,10 @@ although I was able to do the groundwork for supporting [MSC1946], secret
 storage will not be usable until those macros are reworked. 
 
 The reason for all this trouble is that [MSC1946] introduces an event
-`*m.secret_storage.profile.[key_ID]*` where `[key_ID]` is a placeholder for the
+`m.secret_storage.profile.[key_ID]` where `[key_ID]` is a placeholder for the
 ID of a key to be stored. This means there could be any number of event types
 possible, instead of the until now predefined set of event types. I thus opened
-a [PR] for this to be supported in Ruma. 
+an [issue] for this to be supported in Ruma. 
 
 Although secret storage will need to wait to be merged, secret sharing has
 already been merged. This part of [MSC1946], as its name suggests, allows
@@ -47,15 +47,15 @@ devices using the  part of the Matrix Spec introduced by this MSC. In fact,
 [`matrix-rust-sdk`] has already implemented [the gossiping of cross signing
 keys], building on top of Ruma's implementation of Secret Sharing.
 
-As I wasn't realistic to include the major macro refactor in my GSoC project, I
+As it wasn't realistic to include the major macro refactor in my GSoC project, I
 decided to move onto  [MSC2785: Event notification attributes and actions]. I
 had kept this as an extra goal for my project, and seemed to be a good fit for
 the situation. Unluckily though, when I read more into the MSC's text, I
 realized I would encounter the exact same problem as I had with Secret Storage.
-This MSC introduced the event type `*m.notifications_profile.<profile>*` where
+This MSC introduced the event type `m.notifications_profile.<profile>` where
 `<profile>` is the name of the profile to store. I still powered ahead,
 implementing the different endpoints and events, temporarily setting a fixed
-event type name for `*m.notifications_profile.<profile>`.  This allowed the
+event type name for `m.notifications_profile.<profile>`.  This allowed the
 grunt of the work to be done, meaning it would be ready for when Ruma gets
 support for variable event names. Although the MSC isn't finalized as of yet,
 all the currently laid out endpoints and events have been implemented in a
@@ -67,9 +67,9 @@ merged in the future, once variable event type names are supported:
 - [Add support for MSC2785: Event notification attributes and actions]
 - [Add secret storage]
 
-Finally, I worked on a final issue for my GSoC project:
+Finally, I also worked on this issue:
 
-- [Generate for impls for event enums]
+- [Generate From impls for event enums]
 
 To solve this last issue, I decided to learn how to write procedural macros. In
 the first half of GSoC, I had created a new `macro_rules!` macro, largely based
@@ -77,7 +77,7 @@ on a pre-existing one. As I had very little experience in writing macros, and
 zero experience in writing procedural ones, I decided to read a short series of
 [blog posts] to get myself up to speed. Once that was done, I got to work: I
 added the generation of `From` trait implementations inside the pre-existing
-`[proc-macro]` functions which generate the event enums. I also added a `Derive`
+proc-macro code which generate the event enums. I also added a derive
 macro for enums created manually. I really enjoyed working on this, which was my
 first foray into Rust's procedural macros.
 
@@ -104,7 +104,7 @@ first foray into Rust's procedural macros.
     \(commit `c556e1c5cb1894a6a357799557b07088deb6bea3`)
 - [Add secret storage]  
     \(commit `4eae28643036321c7ad86dc8d887b5790b68092b`)
-- [Generate for impls for event enums]
+- [Generate From impls for event enums]
 
 
 
@@ -114,7 +114,7 @@ first foray into Rust's procedural macros.
 [Invitation signing endpoint]: https://github.com/ruma/ruma/pull/626
 [Store invitation endpoint]: https://github.com/ruma/ruma/pull/631
 [3PID unbind endpoint]: https://github.com/ruma/ruma/pull/627
-[Add client secret and session identifier types]: eat
+[Add client secret and session identifier types]: https://github.com/ruma/ruma/pull/640
 [Add RoomName struct]: https://github.com/ruma/ruma/pull/645
 [Update endpoints for Blurhash implementation]: https://github.com/ruma/ruma/pull/650
 [Add "knock" feature from MSC2403]: https://github.com/ruma/ruma/pull/657
@@ -122,9 +122,10 @@ first foray into Rust's procedural macros.
 [MSC1946]: https://github.com/matrix-org/matrix-doc/blob/master/proposals/1946-secure_server-side_storage.md
 [MSC2785]: https://github.com/matrix-org/matrix-doc/blob/rav/proposals/notification_attributes/proposals/2785-notification-attributes.md
 [MSC2785: Event notification attributes and actions]: https://github.com/ruma/ruma/issues/509
-[Generate for impls for event enums]: https://github.com/ruma/ruma/pull/693
+[Generate From impls for event enums]: https://github.com/ruma/ruma/pull/693
 [Add support for MSC2785: Event notification attributes and actions]:https://github.com/ruma/ruma/pull/688
 [Add secret storage]: https://github.com/ruma/ruma/pull/687
 [blog posts]: https://blog.turbo.fish/proc-macro-basics/
 [`matrix-rust-sdk`]:https://github.com/matrix-org/matrix-rust-sdk/issues/296
-[PR]: https://github.com/ruma/ruma/issues/686
+[issue]: https://github.com/ruma/ruma/issues/686
+[the gossiping of cross signing keys]: https://github.com/matrix-org/matrix-rust-sdk/issues/296
