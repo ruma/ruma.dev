@@ -1,6 +1,5 @@
 +++
 title = "GSoC 2021: API Coverage Final Summary"
-date = 2021-08-22
 extra.author = "Adam Blanchet"
 +++
 
