@@ -25,6 +25,12 @@ Thank you to [@jplatte][] and [@iinuwa][] for all the help and encouragement!
 - [import-renaming][rust-lang/rust-clippy#7300] Lint to enforce import renaming
 - [disallow-types][rust-lang/rust-clippy#7315] Lint to ban specified types
 - [fix FP][rust-lang/rust-clippy#7431] Fix false positive in macro brace lint
+- [enabled non_exhaustive structs lint][ruma/ruma#639]
+  - [ruma/ruma#634]
+  - [ruma/ruma#635]
+  - [ruma/ruma#636]
+  - [ruma/ruma#637]
+  - [ruma/ruma#638]
 
 ## Second Half
 
@@ -36,6 +42,14 @@ request
 linter that could load third-party lints
 - [plugin lint discussions][lint/discussions] Very insightful experience into the open-source design
 process
+- [enabled non_exhaustive enums lint][ruma/ruma#658]
+  - [ruma/ruma#648]
+  - [ruma/ruma#649]
+  - [ruma/ruma#652]
+  - [ruma/ruma#654]
+  - [ruma/ruma#656]
+- [enabled all the new lints][ruma/ruma#676] This turns on all the Clippy lints that I added that
+were not enabled by default
 
 ## Progress on Automated Checks for Ruma
 
@@ -62,3 +76,19 @@ lints for a complex library like Ruma. I am excited to be involved!
 
 [@jplatte]: https://github.com/jplatte
 [@iinuwa]: https://github.com/iinuwa
+
+[ruma/ruma#634]: https://github.com/ruma/ruma/pull/634
+[ruma/ruma#635]: https://github.com/ruma/ruma/pull/635
+[ruma/ruma#636]: https://github.com/ruma/ruma/pull/636
+[ruma/ruma#637]: https://github.com/ruma/ruma/pull/637
+[ruma/ruma#638]: https://github.com/ruma/ruma/pull/638
+[ruma/ruma#639]: https://github.com/ruma/ruma/pull/639
+
+[ruma/ruma#648]: https://github.com/ruma/ruma/pull/648
+[ruma/ruma#649]: https://github.com/ruma/ruma/pull/649
+[ruma/ruma#652]: https://github.com/ruma/ruma/pull/652
+[ruma/ruma#654]: https://github.com/ruma/ruma/pull/654
+[ruma/ruma#656]: https://github.com/ruma/ruma/pull/656
+[ruma/ruma#658]: https://github.com/ruma/ruma/pull/658
+
+[ruma/ruma#676]: https://github.com/ruma/ruma/pull/676
