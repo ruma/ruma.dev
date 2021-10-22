@@ -12,14 +12,18 @@ libraries that make up Ruma, is available [here](/docs/crates/).*
 ## matrix-rust-sdk
 
 [matrix-rust-sdk] (or just `matrix-sdk` [on crates.io][matrix-sdk]) is a
-high-level client library on top of the Ruma libraries. There is a variety of
-client applications built with it:
+high-level client library on top of the Ruma libraries. There are a few client
+applications built with it:
 
 * [Fractal]: A GTK client (part of the GNOME project)
 * [RumaTui]: A command-line client
 * [retrix]: A lightweight client built with [iced]
 * [Weechat-Matrix]: A plugin for weechat that adds Matrix support to it
 * [matrix-send]: A non-interactive command-line client
+
+Additionally, some bots are also being built with it:
+
+* [hebbot]: A Matrix bot which can generate "This Week in X" like blog posts
 * [tenebrous-dicebot]: Matrix dice rolling bot with support for the Chronicles of Darkness 2E Storytelling System and Call of Cthulhu.
 * [MRSBFH]\: Matrix-Rust-SDK-Bot-Framework-Helper
 * [Timetracking-Bot by Famedly]: A bot for tracking work times, uses MRSBFH
@@ -29,10 +33,12 @@ client applications built with it:
 
 [Fractal]: https://wiki.gnome.org/Apps/Fractal
 [RumaTui]: https://github.com/DevinR528/RumaTui#readme
-[retrix]: https://git.nao.sh/amanda/retrix
+[retrix]: https://git.graven.dev/amanda/retrix
 [iced]: https://github.com/hecrj/iced#readme
 [Weechat-Matrix]: https://github.com/poljar/weechat-matrix-rs#readme
 [matrix-send]: https://github.com/tilosp/matrix-send-rs#readme
+
+[hebbot]: https://github.com/haecker-felix/hebbot
 [tenebrous-dicebot]: https://git.agnos.is/projectmoon/tenebrous-dicebot
 [MRSBFH]: https://github.com/MTRNord/mrsbfh#readme
 [Timetracking-Bot by Famedly]: https://gitlab.com/famedly/bots/timetracking
