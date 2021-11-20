@@ -46,11 +46,10 @@ Additionally, some bots are also being built with it:
 ## Conduit
 
 [Conduit] is a homeserver implementation built with Ruma. It implements most
-parts of the client-server API, the notable exception being
-notifications<sup>\*</sup>, and also has experimental support for
+parts of the client-server API, and also has partial support for
 federation<sup>\*</sup>. It tries to be easy to install, fast and robust.
 
-<sup>\*</sup> as of 2021-01-14
+<sup>\*</sup> as of 2021-11-20
 
 [Conduit]: https://conduit.rs/
 
