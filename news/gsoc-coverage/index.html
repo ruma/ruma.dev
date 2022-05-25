@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="alternate" type="application/atom+xml" href="/news/feed.xml" title="Ruma" />
+
+<meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'none';
+    style-src 'self' 'unsafe-inline';
+    frame-src 'none'">
+
+<title>GSoC 2021: API Coverage Final Summary | Ruma</title>
+
+<link rel="stylesheet" href="/normalize.css">
+<link rel="stylesheet" href="/site.css">
+
+<nav class="site-nav">
+    <ul>
+    
+        <li><a href="&#x2F;">Home</a></li>
+    
+        <li><a href="&#x2F;news&#x2F;">News</a></li>
+    
+        <li><a href="&#x2F;projects&#x2F;">Projects using Ruma</a></li>
+    
+        <li><a href="https:&#x2F;&#x2F;liberapay.com&#x2F;ruma&#x2F;">Donate on Liberapay</a></li>
+    
+        <li><a href="&#x2F;docs&#x2F;">Documentation</a></li>
+    
+    </ul>
+</nav>
+
+<div class="page">
+    
+
+<article class="content" itemscope itemtype="http://schema.org/BlogPosting">
+    
+<header class="post-header">
+    <h1 class="post-title">
+        <a href="https://www.ruma.io/news/gsoc-coverage/" itemprop="headline">
+            GSoC 2021: API Coverage Final Summary
+        </a>
+    </h1>
+    <small>
+        › published on
+        <time datetime="2021-08-22" itemprop="datePublished">2021-08-22</time>
+        by
+        <span class="author" itemprop="author">Adam Blanchet</span>
+    </small>
+</header>
+
+    <h2 id="time-flies">Time Flies</h2>
+<p>It's been 10 weeks already! This year's Google Summer of Code is coming to an
+end. I really enjoyed working on this project, which turned out to be very
+varied in what parts of Ruma I worked with: I've added endpoints, modified and
+added new event types, created new identifier types and worked on macros.</p>
+<p>This year for GSoC I had a project of extending Ruma's API coverage. More
+specifically, I would complete Ruma's coverage of Matrix's Identity Service API.
+On this front, I was successful, and now Ruma has 100% coverage of those
+endpoints! I also had plans to implement new MSCs, namely <a href="https://github.com/matrix-org/matrix-doc/blob/master/proposals/1946-secure_server-side_storage.md">MSC1946</a>: Secure
+Secret Storage and Sharing and <a href="https://github.com/matrix-org/matrix-doc/blob/rav/proposals/notification_attributes/proposals/2785-notification-attributes.md">MSC2785</a>: Event Notification Attributes and
+Actions. Along the way, I would also work on resolving a few issues here and
+there, which helped get myself better acquainted with Ruma's codebase.</p>
+<p>Working on Ruma was a good learning experience for me. I had an opportunity to
+do actual work on a project which is used in the real world. All the while, I
+was learning and practicing many skills. Working with git, coding against a
+formal specification (and dealing with the problems caused by this). Although I
+did learn a lot at University, this was a very useful hands-on experience. And
+as a bonus, I got to program in Rust for the whole Summer! Rust is a language I
+particularly enjoy using, but which I unfortunately rarely have the opportunity
+to use at school. </p>
+<h2 id="the-final-parts-of-the-project">The Final Parts of the Project</h2>
+<p>The end of my project did not turn out to be as smooth as planned. As mentioned
+in the previous blog post. I had originally planned to work on adding support
+for Secure Secret Storage and Sharing, introduced by <a href="https://github.com/matrix-org/matrix-doc/blob/master/proposals/1946-secure_server-side_storage.md">MSC1946</a>. Although the
+sharing part was possible to implement with the current macros available in
+Ruma, storage requires a major refactoring of these macros. This means that
+although I was able to do the groundwork for supporting <a href="https://github.com/matrix-org/matrix-doc/blob/master/proposals/1946-secure_server-side_storage.md">MSC1946</a>, secret
+storage will not be usable until those macros are reworked. </p>
+<p>The reason for all this trouble is that <a href="https://github.com/matrix-org/matrix-doc/blob/master/proposals/1946-secure_server-side_storage.md">MSC1946</a> introduces an event
+<code>m.secret_storage.profile.[key_ID]</code> where <code>[key_ID]</code> is a placeholder for the
+ID of a key to be stored. This means there could be any number of event types
+possible, instead of the until now predefined set of event types. I thus opened
+an <a href="https://github.com/ruma/ruma/issues/686">issue</a> for this to be supported in Ruma. </p>
+<p>Although secret storage will need to wait to be merged, secret sharing has
+already been merged. This part of <a href="https://github.com/matrix-org/matrix-doc/blob/master/proposals/1946-secure_server-side_storage.md">MSC1946</a>, as its name suggests, allows
+clients to share secrets between devices. As such, keys can be exchanged between
+devices using the  part of the Matrix Spec introduced by this MSC. In fact,
+<a href="https://github.com/matrix-org/matrix-rust-sdk/issues/296"><code>matrix-rust-sdk</code></a> has already implemented <a href="https://github.com/matrix-org/matrix-rust-sdk/issues/296">the gossiping of cross signing
+keys</a>, building on top of Ruma's implementation of Secret Sharing.</p>
+<p>As it wasn't realistic to include the major macro refactor in my GSoC project, I
+decided to move onto  <a href="https://github.com/ruma/ruma/issues/509">MSC2785: Event notification attributes and actions</a>. I
+had kept this as an extra goal for my project, and seemed to be a good fit for
+the situation. Unluckily though, when I read more into the MSC's text, I
+realized I would encounter the exact same problem as I had with Secret Storage.
+This MSC introduced the event type <code>m.notifications_profile.&lt;profile&gt;</code> where
+<code>&lt;profile&gt;</code> is the name of the profile to store. I still powered ahead,
+implementing the different endpoints and events, temporarily setting a fixed
+event type name for <code>m.notifications_profile.&lt;profile&gt;</code>.  This allowed the
+grunt of the work to be done, meaning it would be ready for when Ruma gets
+support for variable event names. Although the MSC isn't finalized as of yet,
+all the currently laid out endpoints and events have been implemented in a
+branch ready to be merged once possible.</p>
+<p>Thus there are a couple of pull requests which are blocked and that will be
+merged in the future, once variable event type names are supported:</p>
+<ul>
+<li><a href="https://github.com/ruma/ruma/pull/688">Add support for MSC2785: Event notification attributes and actions</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/687">Add secret storage</a></li>
+</ul>
+<p>Finally, I also worked on this issue:</p>
+<ul>
+<li><a href="https://github.com/ruma/ruma/pull/693">Generate From impls for event enums</a></li>
+</ul>
+<p>To solve this last issue, I decided to learn how to write procedural macros. In
+the first half of GSoC, I had created a new <code>macro_rules!</code> macro, largely based
+on a pre-existing one. As I had very little experience in writing macros, and
+zero experience in writing procedural ones, I decided to read a short series of
+<a href="https://blog.turbo.fish/proc-macro-basics/">blog posts</a> to get myself up to speed. Once that was done, I got to work: I
+added the generation of <code>From</code> trait implementations inside the pre-existing
+proc-macro code which generate the event enums. I also added a derive
+macro for enums created manually. I really enjoyed working on this, which was my
+first foray into Rust's procedural macros.</p>
+<h2 id="recap-of-prs-for-my-gsoc">Recap of PRs for my GSoC</h2>
+<h3 id="start-of-gsoc-with-the-identity-service-api">Start of GSoC with the Identity Service API</h3>
+<ul>
+<li><a href="https://github.com/ruma/ruma/pull/618">3PID validity endpoint</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/621">3PID bind endpoint</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/626">Invitation signing endpoint</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/631">Store invitation endpoint</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/627">3PID unbind endpoint</a>(finished at the end of GSoC)</li>
+</ul>
+<h3 id="middle-of-gsoc-implementing-mscs-and-adding-types">Middle of GSoc, implementing MSCs and adding types</h3>
+<ul>
+<li><a href="https://github.com/ruma/ruma/pull/640">Add client secret and session identifier types</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/645">Add RoomName struct</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/650">Update endpoints for Blurhash implementation</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/657">Add &quot;knock&quot; feature from MSC2403</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/663">Implement reasons for leaving a room</a></li>
+</ul>
+<h3 id="end-of-gsoc">End of GSoC</h3>
+<ul>
+<li><a href="https://github.com/ruma/ruma/pull/688">Add support for MSC2785: Event notification attributes and actions</a><br />
+(commit <code>c556e1c5cb1894a6a357799557b07088deb6bea3</code>)</li>
+<li><a href="https://github.com/ruma/ruma/pull/687">Add secret storage</a><br />
+(commit <code>4eae28643036321c7ad86dc8d887b5790b68092b</code>)</li>
+<li><a href="https://github.com/ruma/ruma/pull/693">Generate From impls for event enums</a></li>
+</ul>
+
+</article>
+
+
+
+
+</div>
+
+</html>

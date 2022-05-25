@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="alternate" type="application/atom+xml" href="/news/feed.xml" title="Ruma" />
+
+<meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'none';
+    style-src 'self' 'unsafe-inline';
+    frame-src 'none'">
+
+<title>GSoC 2021: Tooling Final Summary | Ruma</title>
+
+<link rel="stylesheet" href="/normalize.css">
+<link rel="stylesheet" href="/site.css">
+
+<nav class="site-nav">
+    <ul>
+    
+        <li><a href="&#x2F;">Home</a></li>
+    
+        <li><a href="&#x2F;news&#x2F;">News</a></li>
+    
+        <li><a href="&#x2F;projects&#x2F;">Projects using Ruma</a></li>
+    
+        <li><a href="https:&#x2F;&#x2F;liberapay.com&#x2F;ruma&#x2F;">Donate on Liberapay</a></li>
+    
+        <li><a href="&#x2F;docs&#x2F;">Documentation</a></li>
+    
+    </ul>
+</nav>
+
+<div class="page">
+    
+
+<article class="content" itemscope itemtype="http://schema.org/BlogPosting">
+    
+<header class="post-header">
+    <h1 class="post-title">
+        <a href="https://www.ruma.io/news/gsoc-tools/" itemprop="headline">
+            GSoC 2021: Tooling Final Summary
+        </a>
+    </h1>
+    <small>
+        › published on
+        <time datetime="2021-08-22" itemprop="datePublished">2021-08-22</time>
+        by
+        <span class="author" itemprop="author">Devin Ragotzy</span>
+    </small>
+</header>
+
+    <p>What a fun summer! I was hoping I would become more a part of the Rust community this year, and
+I think I have. I learned how to open an MCP (Major Change Proposal), which is a process that
+language and implementation changes not big enough for an RFC go through. I am involved in an
+effort to create a new plugin lint system similar to <a href="https://github.com/rust-lang/rust-clippy">Clippy</a>. I made a few more contributions
+to Clippy, fixing old lints and adding a new one. I am happy to become more involved in Ruma and
+Rust and plan to finish all my works in progress.</p>
+<p>Since I am working with more people than just my mentor, making progress seems to take longer.
+I am glad for the experience working with multiple people, learning how to follow directions from
+multiple people. You have to be able to write code in the &quot;voice&quot; of someone else or at least
+meet them halfway. I know that this is an invaluable skill that will serve me well in my career.
+Thank you to <a href="https://github.com/jplatte">@jplatte</a> and <a href="https://github.com/iinuwa">@iinuwa</a> for all the help and encouragement!</p>
+<h2 id="starting-on-automation">Starting on Automation</h2>
+<ul>
+<li><a href="https://github.com/DevinR528/cargo-sort">cargo-sort</a> Some of the work on this happened before GSoC started but not all
+(I'm proud of this crate)
+<ul>
+<li><a href="https://github.com/DevinR528/cargo-sort/compare/main@%7B2021-06-07%7D...main">cargo-sort work during GSoC</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/rust-lang/rust-clippy/pull/7299">nonstandard-macro-braces</a> Lint for consistent macro brace usage</li>
+<li><a href="https://github.com/rust-lang/rust-clippy/pull/7300">import-renaming</a> Lint to enforce import renaming</li>
+<li><a href="https://github.com/rust-lang/rust-clippy/pull/7315">disallow-types</a> Lint to ban specified types</li>
+<li><a href="https://github.com/rust-lang/rust-clippy/pull/7431">fix FP</a> Fix false positive in macro brace lint</li>
+<li><a href="https://github.com/ruma/ruma/pull/639">enabled non_exhaustive structs lint</a>
+<ul>
+<li><a href="https://github.com/ruma/ruma/pull/634">ruma/ruma#634</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/635">ruma/ruma#635</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/636">ruma/ruma#636</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/637">ruma/ruma#637</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/638">ruma/ruma#638</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="second-half">Second Half</h2>
+<ul>
+<li><a href="https://github.com/rust-lang/rust-clippy/pull/7543">module layout style</a> Clippy now has the ability to lint on the module
+layout chosen</li>
+<li><a href="https://github.com/rust-lang/rust/pull/86809">non_exhaustive reachable lint</a> I've been busy continuing work on this pull
+request</li>
+<li><a href="https://github.com/rust-linting/design">plugin lint design</a> I spent a few days working with a group of people designing a new 
+linter that could load third-party lints</li>
+<li><a href="https://github.com/rust-linting/design/discussions">plugin lint discussions</a> Very insightful experience into the open-source design
+process</li>
+<li><a href="https://github.com/ruma/ruma/pull/658">enabled non_exhaustive enums lint</a>
+<ul>
+<li><a href="https://github.com/ruma/ruma/pull/648">ruma/ruma#648</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/649">ruma/ruma#649</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/652">ruma/ruma#652</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/654">ruma/ruma#654</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/656">ruma/ruma#656</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/ruma/ruma/pull/676">enabled all the new lints</a> This turns on all the Clippy lints that I added that
+were not enabled by default</li>
+</ul>
+<h2 id="progress-on-automated-checks-for-ruma">Progress on Automated Checks for Ruma</h2>
+<ul>
+<li><a href="https://github.com/ruma/ruma/issues/221">ruma/ruma#221</a> Has almost been closed; only one item remains</li>
+</ul>
+<p>I think the work on the linter will be <strong>extremely</strong> valuable if we can get it working. The ability
+to write crate-specific lints will be a huge help to library writers and users. I can imagine many such
+lints for a complex library like Ruma. I am excited to be involved!</p>
+
+</article>
+
+
+
+
+</div>
+
+</html>

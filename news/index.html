@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="en">
+
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="alternate" type="application/atom+xml" href="/news/feed.xml" title="Ruma" />
+
+<meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'none';
+    style-src 'self' 'unsafe-inline';
+    frame-src 'none'">
+
+<title>News | Ruma</title>
+
+<link rel="stylesheet" href="/normalize.css">
+<link rel="stylesheet" href="/site.css">
+
+<nav class="site-nav">
+    <ul>
+    
+        <li><a href="&#x2F;">Home</a></li>
+    
+        <li><a href="&#x2F;news&#x2F;">News</a></li>
+    
+        <li><a href="&#x2F;projects&#x2F;">Projects using Ruma</a></li>
+    
+        <li><a href="https:&#x2F;&#x2F;liberapay.com&#x2F;ruma&#x2F;">Donate on Liberapay</a></li>
+    
+        <li><a href="&#x2F;docs&#x2F;">Documentation</a></li>
+    
+    </ul>
+</nav>
+
+<div class="page">
+    
+
+<main class="content">
+    <h1 class="section-title">
+        News
+        <a href="/news/feed.xml"><svg viewBox="0 0 1536 1536" width="26" height="26" xmlns="http://www.w3.org/2000/svg">
+    <title>News feed (Atom)</title>
+    <path d="M384 1344c0 106-86 192-192 192S0 1450 0 1344s86-192 192-192 192 86 192 192zm512 123c1 18-5 35-17 48-12 14-29 21-47 21H697c-33 0-60-25-63-58-29-305-271-547-576-576-33-3-58-30-58-63V704c0-18 7-35 21-47 11-11 27-17 43-17h5c213 17 414 110 565 262 152 151 245 352 262 565zm512 2c1 17-5 34-18 47-12 13-28 20-46 20h-143c-34 0-62-26-64-60C1104 895 641 432 60 398c-34-2-60-30-60-63V192c0-18 7-34 20-46 12-12 28-18 44-18h3c350 18 679 165 927 414 249 248 396 577 414 927z"/>
+</svg>
+</a> 
+    </h1>
+    
+
+    
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+            
+<header class="post-header">
+    <h1 class="post-title">
+        <a href="https://www.ruma.io/news/gsoc-coverage/" itemprop="headline">
+            GSoC 2021: API Coverage Final Summary
+        </a>
+    </h1>
+    <small>
+        › published on
+        <time datetime="2021-08-22" itemprop="datePublished">2021-08-22</time>
+        by
+        <span class="author" itemprop="author">Adam Blanchet</span>
+    </small>
+</header>
+
+            <h2 id="time-flies">Time Flies</h2>
+<p>It's been 10 weeks already! This year's Google Summer of Code is coming to an
+end. I really enjoyed working on this project, which turned out to be very
+varied in what parts of Ruma I worked with: I've added endpoints, modified and
+added new event types, created new identifier types and worked on macros.</p>
+<p>This year for GSoC I had a project of extending Ruma's API coverage. More
+specifically, I would complete Ruma's coverage of Matrix's Identity Service API.
+On this front, I was successful, and now Ruma has 100% coverage of those
+endpoints! I also had plans to implement new MSCs, namely <a href="https://github.com/matrix-org/matrix-doc/blob/master/proposals/1946-secure_server-side_storage.md">MSC1946</a>: Secure
+Secret Storage and Sharing and <a href="https://github.com/matrix-org/matrix-doc/blob/rav/proposals/notification_attributes/proposals/2785-notification-attributes.md">MSC2785</a>: Event Notification Attributes and
+Actions. Along the way, I would also work on resolving a few issues here and
+there, which helped get myself better acquainted with Ruma's codebase.</p>
+<p>Working on Ruma was a good learning experience for me. I had an opportunity to
+do actual work on a project which is used in the real world. All the while, I
+was learning and practicing many skills. Working with git, coding against a
+formal specification (and dealing with the problems caused by this). Although I
+did learn a lot at University, this was a very useful hands-on experience. And
+as a bonus, I got to program in Rust for the whole Summer! Rust is a language I
+particularly enjoy using, but which I unfortunately rarely have the opportunity
+to use at school. </p>
+<h2 id="the-final-parts-of-the-project">The Final Parts of the Project</h2>
+<p>The end of my project did not turn out to be as smooth as planned. As mentioned
+in the previous blog post. I had originally planned to work on adding support
+for Secure Secret Storage and Sharing, introduced by <a href="https://github.com/matrix-org/matrix-doc/blob/master/proposals/1946-secure_server-side_storage.md">MSC1946</a>. Although the
+sharing part was possible to implement with the current macros available in
+Ruma, storage requires a major refactoring of these macros. This means that
+although I was able to do the groundwork for supporting <a href="https://github.com/matrix-org/matrix-doc/blob/master/proposals/1946-secure_server-side_storage.md">MSC1946</a>, secret
+storage will not be usable until those macros are reworked. </p>
+<p>The reason for all this trouble is that <a href="https://github.com/matrix-org/matrix-doc/blob/master/proposals/1946-secure_server-side_storage.md">MSC1946</a> introduces an event
+<code>m.secret_storage.profile.[key_ID]</code> where <code>[key_ID]</code> is a placeholder for the
+ID of a key to be stored. This means there could be any number of event types
+possible, instead of the until now predefined set of event types. I thus opened
+an <a href="https://github.com/ruma/ruma/issues/686">issue</a> for this to be supported in Ruma. </p>
+<p>Although secret storage will need to wait to be merged, secret sharing has
+already been merged. This part of <a href="https://github.com/matrix-org/matrix-doc/blob/master/proposals/1946-secure_server-side_storage.md">MSC1946</a>, as its name suggests, allows
+clients to share secrets between devices. As such, keys can be exchanged between
+devices using the  part of the Matrix Spec introduced by this MSC. In fact,
+<a href="https://github.com/matrix-org/matrix-rust-sdk/issues/296"><code>matrix-rust-sdk</code></a> has already implemented <a href="https://github.com/matrix-org/matrix-rust-sdk/issues/296">the gossiping of cross signing
+keys</a>, building on top of Ruma's implementation of Secret Sharing.</p>
+<p>As it wasn't realistic to include the major macro refactor in my GSoC project, I
+decided to move onto  <a href="https://github.com/ruma/ruma/issues/509">MSC2785: Event notification attributes and actions</a>. I
+had kept this as an extra goal for my project, and seemed to be a good fit for
+the situation. Unluckily though, when I read more into the MSC's text, I
+realized I would encounter the exact same problem as I had with Secret Storage.
+This MSC introduced the event type <code>m.notifications_profile.&lt;profile&gt;</code> where
+<code>&lt;profile&gt;</code> is the name of the profile to store. I still powered ahead,
+implementing the different endpoints and events, temporarily setting a fixed
+event type name for <code>m.notifications_profile.&lt;profile&gt;</code>.  This allowed the
+grunt of the work to be done, meaning it would be ready for when Ruma gets
+support for variable event names. Although the MSC isn't finalized as of yet,
+all the currently laid out endpoints and events have been implemented in a
+branch ready to be merged once possible.</p>
+<p>Thus there are a couple of pull requests which are blocked and that will be
+merged in the future, once variable event type names are supported:</p>
+<ul>
+<li><a href="https://github.com/ruma/ruma/pull/688">Add support for MSC2785: Event notification attributes and actions</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/687">Add secret storage</a></li>
+</ul>
+<p>Finally, I also worked on this issue:</p>
+<ul>
+<li><a href="https://github.com/ruma/ruma/pull/693">Generate From impls for event enums</a></li>
+</ul>
+<p>To solve this last issue, I decided to learn how to write procedural macros. In
+the first half of GSoC, I had created a new <code>macro_rules!</code> macro, largely based
+on a pre-existing one. As I had very little experience in writing macros, and
+zero experience in writing procedural ones, I decided to read a short series of
+<a href="https://blog.turbo.fish/proc-macro-basics/">blog posts</a> to get myself up to speed. Once that was done, I got to work: I
+added the generation of <code>From</code> trait implementations inside the pre-existing
+proc-macro code which generate the event enums. I also added a derive
+macro for enums created manually. I really enjoyed working on this, which was my
+first foray into Rust's procedural macros.</p>
+<h2 id="recap-of-prs-for-my-gsoc">Recap of PRs for my GSoC</h2>
+<h3 id="start-of-gsoc-with-the-identity-service-api">Start of GSoC with the Identity Service API</h3>
+<ul>
+<li><a href="https://github.com/ruma/ruma/pull/618">3PID validity endpoint</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/621">3PID bind endpoint</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/626">Invitation signing endpoint</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/631">Store invitation endpoint</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/627">3PID unbind endpoint</a>(finished at the end of GSoC)</li>
+</ul>
+<h3 id="middle-of-gsoc-implementing-mscs-and-adding-types">Middle of GSoc, implementing MSCs and adding types</h3>
+<ul>
+<li><a href="https://github.com/ruma/ruma/pull/640">Add client secret and session identifier types</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/645">Add RoomName struct</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/650">Update endpoints for Blurhash implementation</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/657">Add &quot;knock&quot; feature from MSC2403</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/663">Implement reasons for leaving a room</a></li>
+</ul>
+<h3 id="end-of-gsoc">End of GSoC</h3>
+<ul>
+<li><a href="https://github.com/ruma/ruma/pull/688">Add support for MSC2785: Event notification attributes and actions</a><br />
+(commit <code>c556e1c5cb1894a6a357799557b07088deb6bea3</code>)</li>
+<li><a href="https://github.com/ruma/ruma/pull/687">Add secret storage</a><br />
+(commit <code>4eae28643036321c7ad86dc8d887b5790b68092b</code>)</li>
+<li><a href="https://github.com/ruma/ruma/pull/693">Generate From impls for event enums</a></li>
+</ul>
+
+        </article>
+    
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+            
+<header class="post-header">
+    <h1 class="post-title">
+        <a href="https://www.ruma.io/news/gsoc-tools/" itemprop="headline">
+            GSoC 2021: Tooling Final Summary
+        </a>
+    </h1>
+    <small>
+        › published on
+        <time datetime="2021-08-22" itemprop="datePublished">2021-08-22</time>
+        by
+        <span class="author" itemprop="author">Devin Ragotzy</span>
+    </small>
+</header>
+
+            <p>What a fun summer! I was hoping I would become more a part of the Rust community this year, and
+I think I have. I learned how to open an MCP (Major Change Proposal), which is a process that
+language and implementation changes not big enough for an RFC go through. I am involved in an
+effort to create a new plugin lint system similar to <a href="https://github.com/rust-lang/rust-clippy">Clippy</a>. I made a few more contributions
+to Clippy, fixing old lints and adding a new one. I am happy to become more involved in Ruma and
+Rust and plan to finish all my works in progress.</p>
+<p>Since I am working with more people than just my mentor, making progress seems to take longer.
+I am glad for the experience working with multiple people, learning how to follow directions from
+multiple people. You have to be able to write code in the &quot;voice&quot; of someone else or at least
+meet them halfway. I know that this is an invaluable skill that will serve me well in my career.
+Thank you to <a href="https://github.com/jplatte">@jplatte</a> and <a href="https://github.com/iinuwa">@iinuwa</a> for all the help and encouragement!</p>
+<h2 id="starting-on-automation">Starting on Automation</h2>
+<ul>
+<li><a href="https://github.com/DevinR528/cargo-sort">cargo-sort</a> Some of the work on this happened before GSoC started but not all
+(I'm proud of this crate)
+<ul>
+<li><a href="https://github.com/DevinR528/cargo-sort/compare/main@%7B2021-06-07%7D...main">cargo-sort work during GSoC</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/rust-lang/rust-clippy/pull/7299">nonstandard-macro-braces</a> Lint for consistent macro brace usage</li>
+<li><a href="https://github.com/rust-lang/rust-clippy/pull/7300">import-renaming</a> Lint to enforce import renaming</li>
+<li><a href="https://github.com/rust-lang/rust-clippy/pull/7315">disallow-types</a> Lint to ban specified types</li>
+<li><a href="https://github.com/rust-lang/rust-clippy/pull/7431">fix FP</a> Fix false positive in macro brace lint</li>
+<li><a href="https://github.com/ruma/ruma/pull/639">enabled non_exhaustive structs lint</a>
+<ul>
+<li><a href="https://github.com/ruma/ruma/pull/634">ruma/ruma#634</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/635">ruma/ruma#635</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/636">ruma/ruma#636</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/637">ruma/ruma#637</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/638">ruma/ruma#638</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="second-half">Second Half</h2>
+<ul>
+<li><a href="https://github.com/rust-lang/rust-clippy/pull/7543">module layout style</a> Clippy now has the ability to lint on the module
+layout chosen</li>
+<li><a href="https://github.com/rust-lang/rust/pull/86809">non_exhaustive reachable lint</a> I've been busy continuing work on this pull
+request</li>
+<li><a href="https://github.com/rust-linting/design">plugin lint design</a> I spent a few days working with a group of people designing a new 
+linter that could load third-party lints</li>
+<li><a href="https://github.com/rust-linting/design/discussions">plugin lint discussions</a> Very insightful experience into the open-source design
+process</li>
+<li><a href="https://github.com/ruma/ruma/pull/658">enabled non_exhaustive enums lint</a>
+<ul>
+<li><a href="https://github.com/ruma/ruma/pull/648">ruma/ruma#648</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/649">ruma/ruma#649</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/652">ruma/ruma#652</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/654">ruma/ruma#654</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/656">ruma/ruma#656</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/ruma/ruma/pull/676">enabled all the new lints</a> This turns on all the Clippy lints that I added that
+were not enabled by default</li>
+</ul>
+<h2 id="progress-on-automated-checks-for-ruma">Progress on Automated Checks for Ruma</h2>
+<ul>
+<li><a href="https://github.com/ruma/ruma/issues/221">ruma/ruma#221</a> Has almost been closed; only one item remains</li>
+</ul>
+<p>I think the work on the linter will be <strong>extremely</strong> valuable if we can get it working. The ability
+to write crate-specific lints will be a huge help to library writers and users. I can imagine many such
+lints for a complex library like Ruma. I am excited to be involved!</p>
+
+        </article>
+    
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+            
+<header class="post-header">
+    <h1 class="post-title">
+        <a href="https://www.ruma.io/news/gsoc-2021-intro/" itemprop="headline">
+            Google Summer of Code 2021 Intro
+        </a>
+    </h1>
+    <small>
+        › published on
+        <time datetime="2021-07-16" itemprop="datePublished">2021-07-16</time>
+        by
+        <span class="author" itemprop="author">Adam Blanchet and Devin Ragotzy</span>
+    </small>
+</header>
+
+            <p>Hello all! This year, Ruma has the pleasure of having two students for <a href="https://summerofcode.withgoogle.com/">Google
+Summer of Code (GSoC) 2021</a>: Devin (who worked on Ruma's proc-macro code during last year's GSoC) and Adam. We'll let them [re]introduce
+themselves.</p>
+<hr />
+<h1 id="ruma-api-coverage-gsoc">Ruma API Coverage GSoC</h1>
+<p>by Adam Blanchet</p>
+<p>This year for GSoC, Ruma has two students! I am the &quot;newer&quot; one of the two, and
+my name is Adam Blanchet. I've been at work adding support for more of the
+Matrix Spec in the past few weeks, and will be continuing on doing so for the
+remainder of GSoC.</p>
+<h2 id="identity-service-api">Identity Service API</h2>
+<p>Although I had made progress before the official coding period for GSoC had
+started, I continued with finishing the remaining unimplemented Identity Service
+API endpoints:</p>
+<ul>
+<li><a href="https://github.com/ruma/ruma/pull/618">3PID validity endpoint</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/621">3PID bind endpoint</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/626">invitation signing endpoint</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/631">store invitation endpoint</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/627">3PID unbind endpoint</a></li>
+</ul>
+<p>Apart from the <a href="https://github.com/ruma/ruma/pull/627">3PID unbind endpoint</a> which is currently blocked,
+this concludes the full coverage of the Identity Service API. This means that
+now projects built upon Ruma will be able to more easily integrate functionality
+with identity servers. This could also enable easier development of an identity
+server written in Rust!</p>
+<h2 id="implementing-mscs-and-adding-types">Implementing MSCs and adding types</h2>
+<p>I then moved on to a few other miscellaneous issues, to get accustomed to
+working on the other parts of the Ruma project:</p>
+<ul>
+<li>
+<p><a href="https://github.com/ruma/ruma/pull/640">Add client secret and session identifier types</a>:
+I found this PR to be more interesting than its title may indicate. Not only
+did I add two identifier types, but I added a new macro to create validated
+identifier types. The new macro was also used to greatly simplify the
+declaration of <code>ServerName</code> struct. I really enjoyed working on this PR. It
+was an occasion to create a new macro to simplify the creation of these and
+new types. I had never written macro code before, and it was a good occasion
+for me to learn something new!</p>
+</li>
+<li>
+<p><a href="https://github.com/ruma/ruma/pull/645">Add RoomName struct</a>:
+This one did not involve macro code, though similar in principle to the
+previous PR. It adds a <code>RoomName</code> struct to be used in an event, which
+enforces a maximum length.</p>
+</li>
+<li>
+<p><a href="https://github.com/ruma/ruma/pull/650">Update endpoints for Blurhash implementation</a>:
+<a href="https://github.com/matrix-org/matrix-doc/blob/anoa/blurhash/proposals/2448-blurhash-for-media.md#profile-endpoints">MSC2488</a> adds the use of Blurhashes to the Matrix Spec. Although
+some Blurhash support had been previously added to Ruma, I
+extended this to all endpoints and events specified in the MSC.</p>
+</li>
+<li>
+<p><a href="https://github.com/ruma/ruma/pull/657">Add &quot;knock&quot; feature from MSC2403</a>:
+This adds support for knocking on rooms, a feature which I'm looking forward
+to see implemented in clients. It was introduced in <a href="https://github.com/matrix-org/matrix-doc/blob/master/proposals/2403-knock.md">MSC2403</a>.</p>
+</li>
+<li>
+<p><a href="https://github.com/ruma/ruma/pull/663">Implement reasons for leaving a room</a>:
+Adding this feature, introduced in <a href="https://github.com/matrix-org/matrix-doc/blob/master/proposals/1983-leave-reasons.md">MSC1983</a>, seemed rather straightforward.
+However, I bumped into an issue with a conditionally compiled field with a
+lifetime annotation. Thankfully, <a href="https://github.com/DevinR528">@DevinR528</a> helped diagnose the problem
+which was some macro code, for which they think they have found <a href="https://github.com/ruma/ruma/pull/664">a
+solution</a> along with <a href="https://github.com/jplatte">@jplatte</a>.</p>
+<p>Once that fix is implemented, we will also be able to merge my PR.</p>
+</li>
+</ul>
+<h2 id="what-s-next">What's next?</h2>
+<p>I'm looking forward to implementing the MSC for <a href="https://github.com/matrix-org/matrix-doc/blob/master/proposals/1946-secure_server-side_storage.md">Secure Secret Storage and
+Sharing</a>. This is the second large part of my project, it will involve
+adding a number of events to support storing and sharing both keys and secrets.
+To achieve full support, I would also need to implement crypto routines. I
+expect that adding these will require more effort than adding the events, though
+I look forward to the challenge.</p>
+<p>I found my first half of GSoC to be very enriching. I really enjoyed working on
+this project: I got to learn how to read and apply a specification, and I
+learned the rigor required for a project such as Ruma. I have sometimes been
+caught off-guard: sometimes I miss extraneous newlines, sometimes (often) I
+forget to add a changelog entry, and other similar more stylistic rather than
+functional issues. Ruma is a big project with many crates, yet it maintains
+consistency throughout, a quality I greatly appreciate. I now know that this
+consistency comes from the thoroughness with which each change is checked, and I
+hope to improve my own rigor when it comes to each of my pull requests.</p>
+<hr />
+<h1 id="ruma-tooling-gsoc">Ruma Tooling GSoC</h1>
+<p>by Devin Ragotzy</p>
+<p>It's been a busy few weeks! I have started the process of checking four todo
+items off of <a href="https://github.com/ruma/ruma/issues/221">Ruma's automated checks</a> issue by contributing
+lints to the <a href="https://github.com/rust-lang/rust-clippy">Clippy</a> project.</p>
+<ul>
+<li><a href="https://github.com/rust-lang/rust-clippy/pull/7299">check macro brace usage</a></li>
+<li><a href="https://github.com/rust-lang/rust-clippy/pull/7300">check import rename</a></li>
+<li><a href="https://github.com/rust-lang/rust-clippy/pull/7315">check for disallowed types</a></li>
+</ul>
+<p>I <a href="https://github.com/rust-lang/rust-clippy/issues/7434">temporarily broke Clippy</a>, Oh No! Luckily, the
+fix seems to have worked.</p>
+<ul>
+<li><a href="https://github.com/rust-lang/rust-clippy/pull/7431">fix the macro braces check</a></li>
+</ul>
+<p>I've spent a lot of time familiarizing myself with the rustc <a href="https://github.com/rust-lang/rust/blob/master/compiler/rustc_mir_build/src/thir/pattern/usefulness.rs#L1205">usefulness</a>
+checker. The is how the Rust compiler determines if you have a match for all
+possible patterns and checks if any of the patterns are useless.</p>
+<pre style="background-color:#f5f5f5;">
+<code class="language-rust" data-lang="rust"><span style="color:#668f14;">let</span><span style="color:#1f1f1f;"> x </span><span style="color:#72ab00;">= </span><span style="color:#b3933a;">true</span><span style="color:#1f1f1f;">;
+</span><span style="color:#72ab00;">match</span><span style="color:#1f1f1f;"> x { </span><span style="color:#7f8989;">// `x` is matched exhaustively (all match patterns are useful)
+    </span><span style="color:#b3933a;">true </span><span style="color:#72ab00;">=&gt; </span><span style="color:#1f1f1f;">{},
+    </span><span style="color:#b3933a;">false </span><span style="color:#72ab00;">=&gt; </span><span style="color:#1f1f1f;">{},
+    </span><span style="color:#7f8989;">// true =&gt; {}, would be un-useful
+</span><span style="color:#1f1f1f;">}
+</span></code></pre>
+<p>This is where I now plan to add a lint to check for missed patterns on structs
+and enums that are marked <code>non_exhaustive</code> (<a href="https://github.com/rust-lang/rust/issues/84332">see issue</a>).
+This is helpful to Ruma because all of our public types are marked in this way,
+allowing us to update our types in a non-breaking way while still informing
+users of the change. Also, for anyone interested, I saw an interesting <a href="https://niedzejkob.p4.team/rust-np/">blog
+post</a> about usefulness checking.</p>
+<ul>
+<li><a href="https://github.com/rust-lang/rust/pull/86809">rustc reachable lint PR</a></li>
+</ul>
+<p>For the last few days, I have been working with my mentor <a href="https://github.com/jplatte">@jplatte</a> to find
+and fix a very sneaky issue with conditionally compiled fields and lifetime
+annotations. This was found by my fellow GSoC participant in <a href="https://github.com/ruma/ruma/pull/663">this
+PR</a>. I think we have finally found a solution, fingers crossed.</p>
+<ul>
+<li><a href="https://github.com/ruma/ruma/pull/664">here is a WIP PR to fix the issue</a></li>
+</ul>
+<p>I have thoroughly enjoyed the first half of this year's GSoC! I'm excited to
+contribute to back the compiler for the language we all love so much ;). In the
+second half of GSoC I hope to get <a href="https://github.com/DevinR528/ruma-check"><code>ruma-check</code></a> to a
+usable state adding the few checks left from <a href="https://github.com/ruma/ruma/issues/221">Ruma's automated
+checks</a>.</p>
+<hr />
+<p>Devin and Adam have already made it through the first half of GSoC and have made
+good progress. We're looking forward to the rest of the summer with these two!</p>
+
+        </article>
+    
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+            
+<header class="post-header">
+    <h1 class="post-title">
+        <a href="https://www.ruma.io/news/gsoc-ends-2020/" itemprop="headline">
+            Google Summer of Code Wrap-up
+        </a>
+    </h1>
+    <small>
+        › published on
+        <time datetime="2020-08-28" itemprop="datePublished">2020-08-28</time>
+        by
+        <span class="author" itemprop="author">Devin Ragotzy</span>
+    </small>
+</header>
+
+            <p>Wow the summer has flown by, it feels like just yesterday I was learning how to
+rebase and what exactly it is Ruma does. I exaggerate slightly, but it is a big
+library with lots of public API surface. I have learned more in the last few
+months than in two years of school. I have been able to observe and participate
+in a project with a community growing around it, been a part of discussions
+about design and best practices, given and received numerous code reviews as
+well as learned the process of addressing the feedback, and working from a
+specification. In short, this has been an amazing opportunity to gain 
+experience in all the things that are hard to obtain in a classroom.</p>
+<p>My project goal was to improve the existing macros in ruma-events-macros and
+ruma-api-macros. It became clear early on that this would include some major
+API changes and that improving the macros as they were was pointless without
+also moving to a new public API. While improving the durability and
+readability of the macro code I also rewrote entire sections to accommodate
+the new design.</p>
+<p>A quick overview of the Matrix protocol for reference: a client sends content
+that is interpreted by the server as events. The server distributes those
+events out to other clients and other servers (the server case is known as
+federation). Ruma groups these events by kind Message, State, Ephemeral,
+ToDevice and Basic which are represented as generic structs (<code>StateEvent&lt;C&gt;</code>).
+Each event kind needs to be able to hold many different content types, for
+state events there is room creation, room name, and membership events to name a
+few. Using the macros, enums are generated to represent all state event
+possibilities, so a variant for membership, room name, etc. These types exist
+to support the core API request and response types for each endpoint that is
+defined by the Matrix specification.</p>
+<h2 id="gsoc-starts-and-i-start-with-ruma-events">GSoC Starts and I start with ruma-events</h2>
+<ul>
+<li><a href="https://github.com/ruma/ruma-events/pull/85">remove old ruma-events macros</a></li>
+<li><a href="https://github.com/ruma/ruma-events/pull/86">start work for event content derive, move to generic <code>Event</code> structs</a></li>
+<li><a href="https://github.com/ruma/ruma-events/pull/101">collect all content types into enum</a></li>
+<li><a href="https://github.com/ruma/ruma-events/pull/107">add more types, making sure the macro works</a></li>
+<li><a href="https://github.com/ruma/ruma-events/pull/108">work on <code>Event</code> custom macro derive</a></li>
+<li><a href="https://github.com/ruma/ruma-events/pull/111">remove <code>raw</code> modules and <code>FromRaw</code> trait</a></li>
+<li><a href="https://github.com/ruma/ruma-events/pull/119">add each events enum</a></li>
+<li><a href="https://github.com/ruma/ruma-events/pull/122">add trybuild tests for <code>ruma-events</code></a></li>
+</ul>
+<h2 id="more-work-on-ruma-events-now-a-part-of-the-new-mono-repo">More work on ruma-events, now a part of the new mono-repo</h2>
+<ul>
+<li><a href="https://github.com/ruma/ruma/pull/52">deserialization optimization for Any*Event, and benchmarking to verify</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/68">reverting the removal of enum_enum macro, learning a lot of git along the way</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/69">it took me awhile but I got the hang of it, only one review issue!</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/97">add accessor methods to the enums, making them much nicer to use</a></li>
+</ul>
+<h2 id="work-on-ruma-client-api">Work on ruma-client-api</h2>
+<ul>
+<li><a href="https://github.com/ruma/ruma/pull/104">refactoring the <code>Api::to_tokens</code> code helped me get my head around this crate</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/105">notice my commit messages are starting to looking better</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/108">not everything works out...</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/109">but you get it eventually</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/111">deep dive into rust features, I learned a lot about them</a></li>
+</ul>
+<h2 id="back-to-ruma-events">Back to ruma-events</h2>
+<ul>
+<li><a href="https://github.com/ruma/ruma/pull/130">a ruma events and client-api rename</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/138">add code to generate <code>redact</code> method in event_enum!</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/139">adding to existing code without breaking everything is hard</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/155">converting to and from the rusty way</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/179">I love writing proc_macros, this was a fun one! Adding lifetimes in the req/resp macro</a></li>
+</ul>
+<h2 id="continuing-maintenance">Continuing maintenance</h2>
+<ul>
+<li><a href="https://github.com/ruma/ruma/pull/190">quality of life stuff, the day to day work of a maintainer</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/201">allow the internal macros to be used outside of the ruma crate more easily</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/213">adding small needed features to the macros</a></li>
+<li><a href="https://github.com/ruma/ruma/pull/234">good ol' fashioned closing issues!</a></li>
+</ul>
+<p>One of my personal goals was to become more familiar with git. With the help
+of my mentor I now feel more confident using this tool that is so essential to
+developers. I became fairly adept at merging, rebasing, and navigating all the
+headaches that come with that. I learned plenty of new commands. A few
+highlights: <code>cherry-pick</code> and specific uses of <code>reset</code> to avoid copy-pasting
+fixes and adding more commits. I used the <code>reset</code> command to craft good
+commits, splitting work into appropriate chunks. I am glad that I had the
+opportunity to hone my git skills. I feel like I have accomplished my goal and
+then some!</p>
+<p>I am proud of the work that I have done: Being part of moving ruma-events much
+closer to the <code>0.22</code> release and creating macros to generate types specific to
+the Matrix specification. Working with the community that has grown around Ruma
+has been rewarding and I plan on sticking around.</p>
+
+        </article>
+    
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+            
+<header class="post-header">
+    <h1 class="post-title">
+        <a href="https://www.ruma.io/news/gsoc-update4-2020/" itemprop="headline">
+            The End is Nigh
+        </a>
+    </h1>
+    <small>
+        › published on
+        <time datetime="2020-07-16" itemprop="datePublished">2020-07-16</time>
+        by
+        <span class="author" itemprop="author">Devin Ragotzy</span>
+    </small>
+</header>
+
+            <p>This week in the ruma/matrix Google Summer of Code project, I worked on refactoring both <code>ruma-api</code> and <code>ruma-events</code>. After moving some of the larger chunks of the <code>ruma_api_macro::api::Api::to_tokens</code> method to helper functions, I spent time removing repetition from the <a href="https://github.com/ruma/ruma/pull/109"><code>Request/Response</code></a> code generated by the <code>ruma_api!</code> macro. For <code>ruma-events</code>, the <a href="https://github.com/ruma/ruma/pull/121">input parsing</a> was changed to only allow valid names for the <code>Any*Event</code> enums. Altering the input parsing had the added benefit of replacing all of the string comparison and manipulation with strongly typed comparison and manipulation.</p>
+<p>The final few issues to be resolved before the next crates.io release for <code>ruma-events</code> can happen are related to redacted events. Support for <a href="https://github.com/ruma/ruma/pull/114">redacted events</a> was added to the <code>Any*Event</code> enums, they now have redacted variants of each event kind. A few follow-up PR's have been merged to fully integrate redacted events into <code>ruma-events</code>, fixing specific event <a href="https://github.com/ruma/ruma/pull/128">deserialization issues</a> and splitting the <a href="https://github.com/ruma/ruma/pull/135"><code>UnsignedData</code></a> struct into <code>Unsigned</code> and <code>RedactedUnsigned</code>.</p>
+
+        </article>
+    
+</main>
+
+<nav class="pagination">
+    <div class="prev">
+        
+    </div>
+    <span class="page-number">1 / 11</span>
+    <div class="next">
+        
+        <a href="https:&#x2F;&#x2F;www.ruma.io&#x2F;news&#x2F;page&#x2F;2&#x2F;">Older entries <span aria-hidden="true">&rarr;</span></a>
+        
+    </div>
+</nav>
+
+
+
+</div>
+
+</html>

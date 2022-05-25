@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="alternate" type="application/atom+xml" href="/news/feed.xml" title="Ruma" />
+
+<meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'none';
+    style-src 'self' 'unsafe-inline';
+    frame-src 'none'">
+
+<title>News | Ruma</title>
+
+<link rel="stylesheet" href="/normalize.css">
+<link rel="stylesheet" href="/site.css">
+
+<nav class="site-nav">
+    <ul>
+    
+        <li><a href="&#x2F;">Home</a></li>
+    
+        <li><a href="&#x2F;news&#x2F;">News</a></li>
+    
+        <li><a href="&#x2F;projects&#x2F;">Projects using Ruma</a></li>
+    
+        <li><a href="https:&#x2F;&#x2F;liberapay.com&#x2F;ruma&#x2F;">Donate on Liberapay</a></li>
+    
+        <li><a href="&#x2F;docs&#x2F;">Documentation</a></li>
+    
+    </ul>
+</nav>
+
+<div class="page">
+    
+
+<main class="content">
+    <h1 class="section-title">
+        News
+        <a href="/news/feed.xml"><svg viewBox="0 0 1536 1536" width="26" height="26" xmlns="http://www.w3.org/2000/svg">
+    <title>News feed (Atom)</title>
+    <path d="M384 1344c0 106-86 192-192 192S0 1450 0 1344s86-192 192-192 192 86 192 192zm512 123c1 18-5 35-17 48-12 14-29 21-47 21H697c-33 0-60-25-63-58-29-305-271-547-576-576-33-3-58-30-58-63V704c0-18 7-35 21-47 11-11 27-17 43-17h5c213 17 414 110 565 262 152 151 245 352 262 565zm512 2c1 17-5 34-18 47-12 13-28 20-46 20h-143c-34 0-62-26-64-60C1104 895 641 432 60 398c-34-2-60-30-60-63V192c0-18 7-34 20-46 12-12 28-18 44-18h3c350 18 679 165 927 414 249 248 396 577 414 927z"/>
+</svg>
+</a> 
+    </h1>
+    
+
+    
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+            
+<header class="post-header">
+    <h1 class="post-title">
+        <a href="https://www.ruma.io/news/this-week-in-ruma-2019-07-14/" itemprop="headline">
+            This Week in Ruma
+        </a>
+    </h1>
+    <small>
+        › published on
+        <time datetime="2019-07-14" itemprop="datePublished">2019-07-14</time>
+        by
+        <span class="author" itemprop="author">Jimmy Cuadra</span>
+    </small>
+</header>
+
+            <h2 id="from-the-editor">From the editor</h2>
+<p>In the <a href="/news/this-week-in-ruma-2019-07-07/">last update</a>, I mentioned that the ongoing ruma-events revamp was impeded by an issue with types from <em>ring</em> which don't implement <code>Clone</code> and <code>PartialEq</code>.
+It turns out that there is <a href="https://github.com/briansmith/ring/pull/727">a reasonable explanation for this</a>, and so it was decided to work around it.
+I restructured the ruma-signatures types in question so that they don't contain <em>ring</em> types, but simply construct them and use them as-needed in the relevant methods.</p>
+<p>While I was working on ruma-signatures, I decided to fill in the missing functionality—signing and verifying events.
+In the process of doing that, I ended up with a significantly revised API for the crate, which has now been released as <a href="https://github.com/ruma/ruma-signatures/releases/tag/0.5.0">version 0.5.0</a>.
+In a somewhat amusing development, the new ruma-signatures API doesn't include the <code>Signatures</code> and <code>SignatureSet</code> types that were causing the issue in ruma-events in the first place.
+As a result, ruma-events is not only unblocked, but doesn't have depend on ruma-signatures at all.</p>
+<p>I made a little bit more progress on ruma-events.
+There is only one module remaining to be updated to the new API, so we're on the home stretch for a new ruma-events release.</p>
+
+        </article>
+    
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+            
+<header class="post-header">
+    <h1 class="post-title">
+        <a href="https://www.ruma.io/news/this-week-in-ruma-2019-07-07/" itemprop="headline">
+            This Week in Ruma
+        </a>
+    </h1>
+    <small>
+        › published on
+        <time datetime="2019-07-07" itemprop="datePublished">2019-07-07</time>
+        by
+        <span class="author" itemprop="author">Jimmy Cuadra</span>
+    </small>
+</header>
+
+            <h2 id="from-the-editor">From the editor</h2>
+<p>Work continues on the major revamp of ruma-events <a href="/news/this-week-in-ruma-2019-06-23/">mentioned in the last update</a>.
+Only a few modules remain to be converted to the new API.
+It's not hard work, but it's a bit tedious, so I've been dragging on getting it done.
+There are also a few modules that are somewhat blocked on <a href="https://github.com/briansmith/ring/issues/859">an issue in <em>ring</em></a>.
+Some of the types in ruma-events contain types from ruma-signatures which don't implement <code>Clone</code> and <code>PartialEq</code> because they contain types from <em>ring</em> which don't.
+I want all event types in ruma-events to implement these traits.
+I say this issue is &quot;somewhat blocked&quot; because I could always just modify ruma-events-macros to derive these traits conditionally and then just leave them out for the few types in question, but this would be an unfortunate workaround, so I'd prefer to have the issue solved upstream.
+Unfortunately, the issue hasn't received a reply from any maintainers since I opened it a few weeks ago.
+No hard feelings—that's how open source works sometimes.</p>
+<h2 id="rust-at-large">Rust at large</h2>
+<p>The big news in Rust since the last update is that <a href="https://blog.rust-lang.org/2019/07/04/Rust-1.36.0.html">Rust 1.36 was released</a>, and it includes stabilization of the <code>Future</code> trait, one of the long-awaited building blocks for first-class async support in Rust.
+As readers probably already know, the biggest reason for Ruma's development hiatus is waiting for async networking in Rust to mature, and this is one of the final pieces of foundational support we've been waiting for.
+The remaining pieces are <code>async</code>/<code>await</code> syntax, which is expected in either the next version or the one following it, and finally, waiting for important libraries like Hyper and Tokio, as well as web frameworks, to adopt the new stuff.
+I also consider <a href="https://github.com/rust-lang/rfcs/pull/2071">support for <code>impl Trait</code> in traits</a> to be an important feature that is not yet supported, but at this point Ruma doesn't seem to need this, so while it's a major missing component of Rust's async support, it doesn't seem likely to block Ruma development.</p>
+
+        </article>
+    
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+            
+<header class="post-header">
+    <h1 class="post-title">
+        <a href="https://www.ruma.io/news/this-week-in-ruma-2019-06-23/" itemprop="headline">
+            This Week in Ruma
+        </a>
+    </h1>
+    <small>
+        › published on
+        <time datetime="2019-06-23" itemprop="datePublished">2019-06-23</time>
+        by
+        <span class="author" itemprop="author">Jimmy Cuadra</span>
+    </small>
+</header>
+
+            <h2 id="from-the-editor">From the editor</h2>
+<p>This week was spent working on a big revamp of <a href="https://github.com/ruma/ruma-events">ruma-events</a>, the library that defines Rust types for the &quot;events&quot; used in Matrix.
+The previous week, I did a pass through the entire library to bring it up to date with version r0.5.0 of the Matrix specification.</p>
+<p>After some discussion in <a href="https://matrix.to/#/#ruma:matrix.org">#ruma:matrix.org</a>, I decided to make a move towards treating ruma-events as a higher-level library.
+Previously, ruma-events has more or less offered Rust types that are exact representations of the JSON structures used by Matrix.
+However, by representing events this way, it would be possible for users to easily create values that, while valid JSON, would be invalid events according to the specification.</p>
+<p>The way we're approaching this problem is by separating serialization/deserialization of JSON from validation of events.
+Rather than directly implementing <code>serde::Deserialize</code>, event types will be converted from a string of JSON data using <code>std::str::FromStr</code>.
+This implementation will deserialize the data internally and then validate it, returning either a valid event, or a raw <code>serde_json::Value</code> along with an error message about why the event was invalid.
+The latter form is necessary because invalid events will always be present in the Matrix system, created via bugs or other problems in homeserver implementations.
+Once an event is in the event graph, other servers will receive these invalid events over federation, and must still persist them and deal with them as they are.</p>
+<p>Similar to the new interface around deserialization, the serialized form of an event created by ruma-events may not directly match the structure of the Rust type.
+ruma-events will instead expose variants of each event to ensure they can only be created in valid states.</p>
+<p>To reduce the boilerplate that this approach necessarily causes (because for many events there will now be two structures: the public one and the private one used for converting to and from JSON), I started a new procedural macro, <a href="https://github.com/ruma/ruma-events-macros">ruma-events-macros</a>, to make the most common cases require minimal code in ruma-events.
+It's been a lot of work, and there's still probably another week or more to go to finish implementing ruma-events using the new approach.
+But when it's done, the result will be a Rust library for Matrix events that leaves less room for users to accidentally do the wrong thing, while also supporting interoperation with other Matrix software that isn't so strict.</p>
+
+        </article>
+    
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+            
+<header class="post-header">
+    <h1 class="post-title">
+        <a href="https://www.ruma.io/news/this-week-in-ruma-2019-06-16/" itemprop="headline">
+            This Week in Ruma
+        </a>
+    </h1>
+    <small>
+        › published on
+        <time datetime="2019-06-16" itemprop="datePublished">2019-06-16</time>
+        by
+        <span class="author" itemprop="author">Jimmy Cuadra</span>
+    </small>
+</header>
+
+            <h2 id="from-the-editor">From the editor</h2>
+<p>Work is underway to bring Ruma up to date with <a href="https://matrix.org/docs/spec/client_server/r0.5.0">version r0.5.0</a> of the Matrix specification.
+Starting with the most foundational libraries and working up towards the higher-level ruma-client, this work should be done in the next week or two.
+The bulk of the work since the last update has been on <a href="https://github.com/ruma/ruma-events">ruma-events</a>, adding all of the events that were previously missing, and doing a full pass through existing events to make sure our definitions match the specification.</p>
+<p>In addition, community members Florian and Luca identified <a href="https://github.com/ruma/ruma-events/issues/27">an issue</a> regarding the use of Rust's <code>u64</code> and <code>i64</code> for numeric values and potential interoperability problems with JavaScript.
+After some discussion, Ruma team member jplatte created a new crate called <a href="https://github.com/jplatte/js_int">js_int</a> to address this.
+It has already been integrated with ruma-client-api and ruma-events, and will be used for all integer values in Ruma from now on.</p>
+<h2 id="notable-changes-to-ruma-api">Notable changes to <a href="https://github.com/ruma/ruma-api">ruma-api</a></h2>
+<ul>
+<li>Released <a href="https://github.com/ruma/ruma-api/releases/tag/0.8.0">version 0.8.0</a>.
+<ul>
+<li>Simplified the <code>Error</code> type.</li>
+<li>Updated to the latest ruma-identifiers (0.13).</li>
+</ul>
+</li>
+</ul>
+<h2 id="notable-changes-to-ruma-api-macros">Notable changes to <a href="https://github.com/ruma/ruma-api-macros">ruma-api-macros</a></h2>
+<ul>
+<li>Released <a href="https://github.com/ruma/ruma-api-macros">version 0.5.0</a>
+<ul>
+<li>Generated documentation now includes the names and descriptions of API endpoints.</li>
+<li>Updated to the latest ruma-api (0.5).</li>
+</ul>
+</li>
+</ul>
+<h2 id="notable-changes-to-ruma-client-api">Notable changes to <a href="https://github.com/ruma/ruma-client-api">ruma-client-api</a></h2>
+<ul>
+<li>Integrated the new <a href="https://github.com/jplatte/js_int">js_int</a> crate to ensure numeric types conform to the requirements stated in the specification.</li>
+</ul>
+<h2 id="notable-changes-to-ruma-events">Notable changes to <a href="https://github.com/ruma/ruma-events">ruma-events</a></h2>
+<ul>
+<li>Added new events and updated existing events to cover everything in version r0.5.0 of the client-server specification.
+Notably, this includes events for end-to-end encryption and push notifications.</li>
+<li>Integrated the new <a href="https://github.com/jplatte/js_int">js_int</a> crate to ensure numeric types conform to the requirements stated in the specification.</li>
+</ul>
+<h2 id="notable-changes-to-ruma-identifiers">Notable changes to <a href="https://github.com/ruma/ruma-identifiers">ruma-identifiers</a></h2>
+<ul>
+<li>Released <a href="https://github.com/ruma/ruma-identifiers/releases/tag/0.13.0">version 0.13.0</a>
+<ul>
+<li><code>EventId::hostname</code> and <code>EventId::port</code> now return <code>Option</code> because they are only applicable for the original event ID format.</li>
+<li>All methods named <code>opaque_id</code> are now named <code>localpart</code>.</li>
+<li><code>EventId</code> now supports multiple formats according to the different <a href="https://matrix.org/docs/spec/#room-versions">room versions</a>.</li>
+<li><code>RoomVersionId</code> was added.</li>
+<li><code>DeviceId</code> and a function for generating a <code>DeviceId</code> were added.</li>
+</ul>
+</li>
+<li>Released <a href="https://github.com/ruma/ruma-identifiers/releases/tag/0.13.1">version 0.13.1</a>
+<ul>
+<li>Added support for room version 5 with <code>RoomVersionId::version_5</code> and <code>RoomVersionId::is_version_5</code>.</li>
+</ul>
+</li>
+</ul>
+<h2 id="matrix-at-large">Matrix at large</h2>
+<p>In the last post I mentioned that Matrix 1.0 was coming soon, and it has now happened!
+A hearty congratulations to everyone who works on Matrix!
+This is a huge milestone.
+You can read the details about Matrix 1.0, as well as the new Matrix.org Foundation, over on the Matrix blog: <a href="https://matrix.org/blog/2019/06/11/introducing-matrix-1-0-and-the-matrix-org-foundation">Introducing Matrix 1.0 and the Matrix.org Foundation</a>.</p>
+
+        </article>
+    
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+            
+<header class="post-header">
+    <h1 class="post-title">
+        <a href="https://www.ruma.io/news/this-week-in-ruma-2019-06-02/" itemprop="headline">
+            This Week in Ruma
+        </a>
+    </h1>
+    <small>
+        › published on
+        <time datetime="2019-06-02" itemprop="datePublished">2019-06-02</time>
+        by
+        <span class="author" itemprop="author">Jimmy Cuadra</span>
+    </small>
+</header>
+
+            <h2 id="from-the-editor">From the editor</h2>
+<p>Ruma has largely been on hiatus while we wait for async networking in Rust to mature.
+We now have a <a href="https://www.ruma.io/status/">project status page</a> which gives the full story.
+Please refer people here if they wonder about the project's activity.</p>
+<p>The stabilization of async/await syntax is now on the horizon, so this week I worked on bringing the Ruma homeserver up to date.
+I updated all its dependencies to their latest versions, which took a bit of work, primarily due to updating from pre-1.0 Diesel to Diesel 1.4, as well as some breaking changes in ruma-events.
+The good news is that the homeserver is now a Rust 2018 edition crate and compiles on stable Rust!
+That means that the entire Ruma project is now running on stable Rust.</p>
+<p>I made some other relatively minor updates to the other Ruma libraries, adding rustfmt and clippy to their builds and addressing lots of clippy warnings.
+Several of the Ruma libraries now have substantially more internal documentation, which should help anyone who wants to work on them in the future.
+ruma-client also has some new crate-level documentation which should make it much more friendly to new users.</p>
+<h2 id="matrix-at-large">Matrix at large</h2>
+<p>The Matrix team is getting ready to release 1.0 versions of the Matrix specifications.
+This is great news, as it means things are going to stabilize.
+When this happens, we'll be able to bring the various Ruma libraries up to date without having to worry about any more major changes.
+We'll also begin implementing the other APIs (e.g. federation) after the 1.0 specs are released.</p>
+<h2 id="rust-at-large">Rust at large</h2>
+<p>As noted above, there is now an expected date for the stabilization of async/await syntax.
+It's expected to become stable with the release of Rust 1.37 in August.
+Once this happens, the Rust ecosystem will begin to adopt the new syntax, as well as the new version of futures provided by the standard library.
+Eventually, the dust will settle, and we'll be in a good position to choose a new web framework to replace Iron, which is what the Ruma homeserver currently uses but is no longer an active project.</p>
+<h2 id="new-contributors">New contributors</h2>
+<ul>
+<li><a href="https://github.com/aledomu">Alejandro Domínguez</a></li>
+</ul>
+
+        </article>
+    
+</main>
+
+<nav class="pagination">
+    <div class="prev">
+        
+        <a href="https:&#x2F;&#x2F;www.ruma.io&#x2F;news&#x2F;page&#x2F;3&#x2F;"><span aria-hidden="true">&larr;</span> Newer entries</a>
+        
+    </div>
+    <span class="page-number">4 / 11</span>
+    <div class="next">
+        
+        <a href="https:&#x2F;&#x2F;www.ruma.io&#x2F;news&#x2F;page&#x2F;5&#x2F;">Older entries <span aria-hidden="true">&rarr;</span></a>
+        
+    </div>
+</nav>
+
+
+
+</div>
+
+</html>

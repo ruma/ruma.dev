@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="alternate" type="application/atom+xml" href="/news/feed.xml" title="Ruma" />
+
+<meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'none';
+    style-src 'self' 'unsafe-inline';
+    frame-src 'none'">
+
+<title>News | Ruma</title>
+
+<link rel="stylesheet" href="/normalize.css">
+<link rel="stylesheet" href="/site.css">
+
+<nav class="site-nav">
+    <ul>
+    
+        <li><a href="&#x2F;">Home</a></li>
+    
+        <li><a href="&#x2F;news&#x2F;">News</a></li>
+    
+        <li><a href="&#x2F;projects&#x2F;">Projects using Ruma</a></li>
+    
+        <li><a href="https:&#x2F;&#x2F;liberapay.com&#x2F;ruma&#x2F;">Donate on Liberapay</a></li>
+    
+        <li><a href="&#x2F;docs&#x2F;">Documentation</a></li>
+    
+    </ul>
+</nav>
+
+<div class="page">
+    
+
+<main class="content">
+    <h1 class="section-title">
+        News
+        <a href="/news/feed.xml"><svg viewBox="0 0 1536 1536" width="26" height="26" xmlns="http://www.w3.org/2000/svg">
+    <title>News feed (Atom)</title>
+    <path d="M384 1344c0 106-86 192-192 192S0 1450 0 1344s86-192 192-192 192 86 192 192zm512 123c1 18-5 35-17 48-12 14-29 21-47 21H697c-33 0-60-25-63-58-29-305-271-547-576-576-33-3-58-30-58-63V704c0-18 7-35 21-47 11-11 27-17 43-17h5c213 17 414 110 565 262 152 151 245 352 262 565zm512 2c1 17-5 34-18 47-12 13-28 20-46 20h-143c-34 0-62-26-64-60C1104 895 641 432 60 398c-34-2-60-30-60-63V192c0-18 7-34 20-46 12-12 28-18 44-18h3c350 18 679 165 927 414 249 248 396 577 414 927z"/>
+</svg>
+</a> 
+    </h1>
+    
+
+    
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+            
+<header class="post-header">
+    <h1 class="post-title">
+        <a href="https://www.ruma.io/news/gsoc-update3-2020/" itemprop="headline">
+            Successful Updates
+        </a>
+    </h1>
+    <small>
+        › published on
+        <time datetime="2020-06-26" itemprop="datePublished">2020-06-26</time>
+        by
+        <span class="author" itemprop="author">Devin Ragotzy</span>
+    </small>
+</header>
+
+            <p>This week in the ruma/matrix Google Summer of Code project, ruma-events was made ready for use! After adding stripped and sync event generation to the <a href="https://github.com/ruma/ruma/commit/fdf87a38a219933ffe99b17baf87841a79702f28"><code>event_enum!</code> macro</a> there were only a few small tweaks needed to try it out in some dependent rust crates. I spent a few days converting <a href="https://github.com/matrix-org/matrix-rust-sdk/pull/63">matrix-rust-sdk</a> to use the ruma-monorepo. Since ruma is used on both client and server-side, I also opened a PR to update <a href="https://git.koesters.xyz/timo/conduit/pulls/133">Conduit</a>, a homeserver implementation written in Rust. To test that everything worked together, I updated <a href="https://github.com/DevinR528/rumatui/commit/1ae8776f9a59c297c8c9b2287f7c830ab67302b1">rumatui</a>, my command-line client written in rust.</p>
+<p>Then I could test that Conduit sent, and matrix-rust-sdk received the new ruma events successfully. While updating, I felt the pain of not having accessor methods for the <code>Any*Event</code> enums to get at the event fields held within. I have opened a <a href="https://github.com/ruma/ruma/pull/97">pull request</a> to add the generation of these methods to the <code>event_enums!</code> macro. Hopefully, the Conduit and matrix-sdk PR's will be merged and the ruma monorepo can be tested in the wild!</p>
+
+        </article>
+    
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+            
+<header class="post-header">
+    <h1 class="post-title">
+        <a href="https://www.ruma.io/news/gsoc-update2-2020/" itemprop="headline">
+            Oops, Now Revert
+        </a>
+    </h1>
+    <small>
+        › published on
+        <time datetime="2020-06-19" itemprop="datePublished">2020-06-19</time>
+        by
+        <span class="author" itemprop="author">Devin Ragotzy</span>
+    </small>
+</header>
+
+            <p>This week in ruma-events' Google Summer of Code project, after trying out the new <code>Any*Event</code> enums <a href="https://github.com/DevinR528/matrix-rust-sdk/pull/2"><code>matrix-rust-sdk</code></a>, we found a few big flaws. There was no easy way to go from <code>StateEvent&lt;AnyStateEventContent&gt;</code> to <code>StateEvent&lt;SpecificEventContent&gt;</code>, the other issue was one could create a <code>StateEvent</code> with differing <code>content</code> and <code>prev_content</code> fields using the <code>AnyStateEventContent</code> enum. The <a href="https://github.com/ruma/ruma/pull/68">0.22 ruma-events</a> will be similar to the existing API; each event type has a corresponding event enum variant.</p>
+<pre style="background-color:#f5f5f5;">
+<code class="language-rust" data-lang="rust"><span style="color:#668f14;">pub enum </span><span style="color:#c23f31;">AnyStateEvent </span><span style="color:#1f1f1f;">{
+    RoomMember(StateEvent&lt;MemberEventContent&gt;),
+    RoomAliases(StateEvent&lt;AliasesEventContent&gt;),
+    </span><span style="color:#7f8989;">// ...
+</span><span style="color:#1f1f1f;">}
+</span></code></pre>
+<p>There were a few minor fixes during the week also. Unknown field deserialization is <a href="https://github.com/ruma/ruma/pull/57">fixed</a>, allowing deserialization of a JSON blob that has extra fields which are ignored. <a href="https://github.com/ruma/ruma/pull/59">Custom events</a> are now present in the <code>Any*EventContent</code> enums, although now they have to be moved up to be included in <code>Any*Event</code> enums. <a href="https://github.com/ruma/ruma/pull/52">Benchmarks</a> for deserialization have been added and used to increase performance.</p>
+
+        </article>
+    
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+            
+<header class="post-header">
+    <h1 class="post-title">
+        <a href="https://www.ruma.io/news/gsoc-update-2020/" itemprop="headline">
+            Breaking ruma-events
+        </a>
+    </h1>
+    <small>
+        › published on
+        <time datetime="2020-06-11" itemprop="datePublished">2020-06-11</time>
+        by
+        <span class="author" itemprop="author">Devin Ragotzy</span>
+    </small>
+</header>
+
+            <p>This week in ruma-events' Google Summer of Code project, I was able to finish the macros needed to generate the event content enums and trait implementations required for events. I started by defining the <a href="https://github.com/ruma/ruma-events/pull/107">generic event structs</a> (state, message, etc.) and manually writing the <code>Serialize</code> and <code>Deserialize</code> implementations. Over the next few days, this was moved into a custom derive macro called <a href="https://github.com/ruma/ruma-events/pull/108"><code>Event</code></a>. The derive now implements all necessary traits with appropriate bounds, so a <code>StateEvent&lt;C&gt;</code> can not contain any ephemeral event content and so forth. I have removed the <a href="https://github.com/ruma/ruma-events/pull/111"><code>raw</code></a> mod and related <code>FromRaw</code> and <code>TryFromRaw</code> traits, moving the validation into the deserialization and constructor for the few types that needed it. On the <a href="https://github.com/ruma/ruma-events/pull/106">event content</a> side of things, a function like procedural macro was used to allow declaring the enum using Matrix event type identifiers.</p>
+<pre style="background-color:#f5f5f5;">
+<code class="language-rust" data-lang="rust"><span style="color:#a2a001;">event_content_enum! </span><span style="color:#1f1f1f;">{
+    </span><span style="color:#7f8989;">/// Any message event.
+</span><span style="color:#1f1f1f;">    name: AnyMessageEventContent,
+    events: [
+        </span><span style="color:#d07711;">&quot;m.call.answer&quot;</span><span style="color:#1f1f1f;">,
+        </span><span style="color:#d07711;">&quot;m.room.message&quot;</span><span style="color:#1f1f1f;">,
+        </span><span style="color:#7f8989;">// ...
+    </span><span style="color:#1f1f1f;">]
+}
+</span><span style="color:#7f8989;">// Produces
+</span><span style="color:#668f14;">pub enum </span><span style="color:#c23f31;">AnyMessageEventContent </span><span style="color:#1f1f1f;">{
+    CallAnswer(CallAnswerEventContent),
+    RoomMessage(MessageEventContent),
+}
+</span></code></pre>
+        </article>
+    
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+            
+<header class="post-header">
+    <h1 class="post-title">
+        <a href="https://www.ruma.io/news/gsoc-begins-2020/" itemprop="headline">
+            Ruma gets in on Google Summer of Code
+        </a>
+    </h1>
+    <small>
+        › published on
+        <time datetime="2020-06-01" itemprop="datePublished">2020-06-01</time>
+        by
+        <span class="author" itemprop="author">Devin Ragotzy</span>
+    </small>
+</header>
+
+            <p>Thanks to GSoC and the continued help of Jonas Platte, Ruma's GSoC mentor, there is a new contributor... me! My name is Devin Ragotzy, a University student from Michigan. I was chosen to help contribute to the macro code of ruma-events and ruma-api.</p>
+<h2 id="ruma-community-bonding">Ruma Community Bonding</h2>
+<p>Before the official coding period began on June 1st, a large breaking change started taking shape for the upcoming release of ruma-events <a href="https://github.com/ruma/ruma-events/issues/82">0.22.0</a>. Jonas, I, and others have been hard at work, replacing the previous event declaration macro with a set of derive macros and generic event types, as well as getting rid of the boilerplate required for event enums (the types currently found under <code>ruma_events::collections</code>). The new types will be able to express JSON events from a Matrix server with more accuracy.</p>
+<h2 id="planned-work-for-ruma-api">Planned work for ruma-api</h2>
+<p>Once the macros in ruma-events are implemented, I will switch gears to work on ruma-api.</p>
+<ul>
+<li>First, add a few tests to ensure the changes I make do not break important functionality
+<ul>
+<li>Test macro code using <code>macrotest</code> and/or <code>trybuild</code> which test errors or expansions respectively</li>
+</ul>
+</li>
+<li>Allow more code sharing between <code>Request</code> and <code>Response</code> processing inside the macro</li>
+<li>Refactor <code>ruma_api!</code>, breaking up the large block of code in <code>Api::to_tokens</code></li>
+<li>Document any refactored or new code as I work</li>
+</ul>
+
+        </article>
+    
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+            
+<header class="post-header">
+    <h1 class="post-title">
+        <a href="https://www.ruma.io/news/ruma-is-dead-long-live-ruma-2020-04-10/" itemprop="headline">
+            Ruma is dead, long live Ruma!
+        </a>
+    </h1>
+    <small>
+        › published on
+        <time datetime="2020-04-10" itemprop="datePublished">2020-04-10</time>
+        by
+        <span class="author" itemprop="author">Jonas Platte</span>
+    </small>
+</header>
+
+            <p>Today, I have a bit of a sad announcement to make:</p>
+<h2 id="ruma-the-homeserver-won-t-be-developed-anymore">Ruma, the homeserver, won't be developed anymore</h2>
+<p>To those who have actively been following the project, this probably won't be a
+big surprise, given the homeserver's readme file was already update do note the
+missing maintenance and people interested in contributing to the homeserver have
+now gathered around a new homeserver project by the name of <a href="https://conduit.rs/">Conduit</a>.</p>
+<p>The main reason for ending homeserver development is that nobody who has
+previously worked on its codebase is currently able to guide and review work on
+it. The codebase has also bit-rotted a lot, with the web framework it uses being
+almost un-maintained and a number of its other dependencies having seen major
+new releases since the most recent commit; it also doesn't build on
+ruma-client-api, for the simple reason that ruma-client-api simply didn't exist
+yet when most of the homeserver work happened.</p>
+<p>However, the end of the homeserver does not at all mean the end of Ruma, the
+overall project.</p>
+<h2 id="the-future-of-ruma-the-project">The future of Ruma, the project</h2>
+<p>We will be continuing work on our library crates, making sure they are usable
+for all kinds of applications, including homeservers. The new homeserver project
+mentioned at the beginning is based on them and some other folks are currently
+working on <a href="https://github.com/matrix-org/matrix-rust-sdk">a highlevel client library</a>, also using many of
+Ruma's library crates.</p>
+<p>I am planning to replace the current website with a new one, mostly for
+technical reasons, but the new one will also reflect our changed focus. This
+work hasn't started yet, but in the interim I will likely update parts of the
+current site. Other than that, nothing will really be different compared to last
+year.</p>
+<h2 id="if-you-are-still-interested-in-a-rust-homeserver">If you are still interested in a Rust homeserver</h2>
+<p>… then check out <a href="https://conduit.rs/">Conduit</a>. It is a Matrix homeserver, written in Rust using
+Ruma's library crates. It is focused on experimenting with new ideas to achieve
+better performance, for example by using <a href="https://sled.rs/">sled</a> as its database. The goal is
+to make it as easy as possible to set up your own homeserver.</p>
+
+        </article>
+    
+</main>
+
+<nav class="pagination">
+    <div class="prev">
+        
+        <a href="https:&#x2F;&#x2F;www.ruma.io&#x2F;news&#x2F;"><span aria-hidden="true">&larr;</span> Newer entries</a>
+        
+    </div>
+    <span class="page-number">2 / 11</span>
+    <div class="next">
+        
+        <a href="https:&#x2F;&#x2F;www.ruma.io&#x2F;news&#x2F;page&#x2F;3&#x2F;">Older entries <span aria-hidden="true">&rarr;</span></a>
+        
+    </div>
+</nav>
+
+
+
+</div>
+
+</html>
