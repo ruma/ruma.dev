@@ -23,7 +23,7 @@ I'm really excited to launch this new documentation site because I think it's go
 * Add support for configuration files in TOML and YAML formats.
 * Add CONTRIUBTING and STATUS documents as well as revised README content.
 
-## Notable changes to `www.ruma.io`
+## Notable changes to `ruma.dev`
 
 * Revised the website's style in preparation for the documenation sub-site.
 

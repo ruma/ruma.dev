@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>This Week in Ruma</title>
-  <id>https://www.ruma.io/news</id>
-  <link href="https://www.ruma.io/news"/>
-  <link href="https://www.ruma.io/news/feed.atom" rel="self"/>
+  <id>https://ruma.dev/news</id>
+  <link href="https://ruma.dev/news"/>
+  <link href="https://ruma.dev/news/feed.atom" rel="self"/>
   <updated>2020-04-10T17:50:00Z</updated>
   <entry>
     <title>This feed has moved.</title>
-    <id>https://www.ruma.io/news/feed.atom.tombstone</id>
+    <id>https://ruma.dev/news/feed.atom.tombstone</id>
     <published>2020-05-30T00:00:00T</published>
     <updated>2020-05-30T00:00:00T</updated>
     <author>Jonas Platte</author>
     <content type="html">
       &lt;p&gt;This feed has moved. Please re-subscribe:&lt;/p&gt;
-      &lt;p&gt;&lt;a href="https://www.ruma.io/news/feed.xml"&gt;https://wwww.ruma.io/news/feed.xml&lt;/a&gt;&lt;/p&gt;
+      &lt;p&gt;&lt;a href="https://ruma.dev/news/feed.xml"&gt;https://wruma.dev/news/feed.xml&lt;/a&gt;&lt;/p&gt;
     </content>
   </entry>
   <entry>
     <title>Ruma is dead, long live Ruma!</title>
-    <link rel="alternate" href="https://www.ruma.io/news/ruma-is-dead-long-live-ruma-2020-04-10/"/>
-    <id>https://www.ruma.io/news/ruma-is-dead-long-live-ruma-2020-04-10/</id>
+    <link rel="alternate" href="https://ruma.dev/news/ruma-is-dead-long-live-ruma-2020-04-10/"/>
+    <id>https://ruma.dev/news/ruma-is-dead-long-live-ruma-2020-04-10/</id>
     <published>2020-04-10T17:50:00Z</published>
     <updated>2020-04-10T17:50:00Z</updated>
     <author>
@@ -70,8 +70,8 @@ to make it as easy as possible to set up your own homeserver.&lt;/p&gt;
   </entry>
   <entry>
     <title>These Weeks in Ruma</title>
-    <link rel="alternate" href="https://www.ruma.io/news/these-weeks-in-ruma-2019-12-14/"/>
-    <id>https://www.ruma.io/news/these-weeks-in-ruma-2019-12-14/</id>
+    <link rel="alternate" href="https://ruma.dev/news/these-weeks-in-ruma-2019-12-14/"/>
+    <id>https://ruma.dev/news/these-weeks-in-ruma-2019-12-14/</id>
     <published>2019-12-14T17:30:00Z</published>
     <updated>2019-12-14T17:30:00Z</updated>
     <author>
@@ -119,8 +119,8 @@ derive macro&lt;/a&gt;.&lt;/p&gt;
   </entry>
   <entry>
     <title>New releases</title>
-    <link rel="alternate" href="https://www.ruma.io/news/new-releases-2019-11-05/"/>
-    <id>https://www.ruma.io/news/new-releases-2019-11-05/</id>
+    <link rel="alternate" href="https://ruma.dev/news/new-releases-2019-11-05/"/>
+    <id>https://ruma.dev/news/new-releases-2019-11-05/</id>
     <published>2019-11-05T22:40:00Z</published>
     <updated>2019-11-05T22:40:00Z</updated>
     <author>
@@ -172,8 +172,8 @@ derive macro&lt;/a&gt;.&lt;/p&gt;
   </entry>
   <entry>
     <title>This Week in Ruma</title>
-    <link rel="alternate" href="https://www.ruma.io/news/this-week-in-ruma-2019-08-11/"/>
-    <id>https://www.ruma.io/news/this-week-in-ruma-2019-08-11/</id>
+    <link rel="alternate" href="https://ruma.dev/news/this-week-in-ruma-2019-08-11/"/>
+    <id>https://ruma.dev/news/this-week-in-ruma-2019-08-11/</id>
     <published>2019-08-11T00:00:00Z</published>
     <updated>2019-08-11T00:00:00Z</updated>
     <author>
@@ -196,8 +196,8 @@ It was a good time, and I hope it gets some new people interested in Matrix and/
   </entry>
   <entry>
     <title>This Week in Ruma</title>
-    <link rel="alternate" href="https://www.ruma.io/news/this-week-in-ruma-2019-08-04/"/>
-    <id>https://www.ruma.io/news/this-week-in-ruma-2019-08-04/</id>
+    <link rel="alternate" href="https://ruma.dev/news/this-week-in-ruma-2019-08-04/"/>
+    <id>https://ruma.dev/news/this-week-in-ruma-2019-08-04/</id>
     <published>2019-08-04T00:00:00Z</published>
     <updated>2019-08-04T00:00:00Z</updated>
     <author>
@@ -234,8 +234,8 @@ I thought it wouldn't hurt to mention again in case anyone missed it. :}&lt;/p&g
   </entry>
   <entry>
     <title>This Week in Ruma</title>
-    <link rel="alternate" href="https://www.ruma.io/news/this-week-in-ruma-2019-07-21/"/>
-    <id>https://www.ruma.io/news/this-week-in-ruma-2019-07-21/</id>
+    <link rel="alternate" href="https://ruma.dev/news/this-week-in-ruma-2019-07-21/"/>
+    <id>https://ruma.dev/news/this-week-in-ruma-2019-07-21/</id>
     <published>2019-07-21T00:00:00Z</published>
     <updated>2019-07-21T00:00:00Z</updated>
     <author>

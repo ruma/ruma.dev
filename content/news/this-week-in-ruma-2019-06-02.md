@@ -7,7 +7,7 @@ extra.author = "Jimmy Cuadra"
 ## From the editor
 
 Ruma has largely been on hiatus while we wait for async networking in Rust to mature.
-We now have a [project status page](https://www.ruma.io/status/) which gives the full story.
+We now have a [project status page](https://ruma.dev/status/) which gives the full story.
 Please refer people here if they wonder about the project's activity.
 
 The stabilization of async/await syntax is now on the horizon, so this week I worked on bringing the Ruma homeserver up to date.

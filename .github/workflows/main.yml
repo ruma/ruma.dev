@@ -1,4 +1,4 @@
-name: Build www.ruma.io
+name: Build
 on:
   push:
     branches:
@@ -35,7 +35,7 @@ jobs:
         echo 'Host *' >> ~/.ssh/config
         echo '    StrictHostKeyChecking=no' >> ~/.ssh/config
 
-        git config --global user.email "noreply@ruma.io"
+        git config --global user.email "noreply@ruma.dev"
         git config --global user.name "CI"
         git init -b built
         git add -A

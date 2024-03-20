@@ -9,7 +9,7 @@ Three major milestones happened for Ruma this week!
 1.  Support for events, the basic unit of data in Matrix, landed on the master branch.
     This is very important, because it's the foundation for almost all the core functionality of the homeserver.
     The initial implementation of events does not support federation, to keep the scope small, and because the details of federation are still not well specified.
-2.  Ruma's [documentation website](https://www.ruma.io/docs/) was launched, with its first guide, the [Introduction to Matrix](https://www.ruma.io/docs/matrix/), which provides a great explanation of Matrix targeted at non-technical users.
+2.  Ruma's [documentation website](https://ruma.dev/docs/) was launched, with its first guide, the [Introduction to Matrix](https://ruma.dev/docs/matrix/), which provides a great explanation of Matrix targeted at non-technical users.
 3.  Ruma [reached the top of the Hacker News front page](https://twitter.com/ruma_io/status/749834912077713409).
     Be sure to read the [comment thread](https://news.ycombinator.com/item?id=12028475).
 
@@ -26,7 +26,7 @@ Three major milestones happened for Ruma this week!
 * Remove the `EventKind` trait.
 * Add support for custom event types.
 
-## Notable changes to `www.ruma.io`
+## Notable changes to `ruma.dev`
 
 * Add new documentation site and Introduction to Matrix guide. (Contributed in part by Leah Scampoli.)
 

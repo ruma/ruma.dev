@@ -1,4 +1,4 @@
-# www.ruma.io
+# ruma.dev
 
 This repository contains the source code for the Ruma website.
 

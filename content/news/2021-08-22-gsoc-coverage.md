@@ -111,7 +111,7 @@ first foray into Rust's procedural macros.
 
 
 
-[previous blog post]: https://www.ruma.io/news/gsoc-2021-intro/
+[previous blog post]: https://ruma.dev/news/gsoc-2021-intro/
 [3PID validity endpoint]: https://github.com/ruma/ruma/pull/618
 [3PID bind endpoint]: https://github.com/ruma/ruma/pull/621
 [Invitation signing endpoint]: https://github.com/ruma/ruma/pull/626

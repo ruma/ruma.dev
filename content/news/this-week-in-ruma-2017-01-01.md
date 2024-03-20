@@ -49,7 +49,7 @@ We recently launched a new [projects page](/projects/) on the website that expla
 
 * Created and published this small crate which contains core types that will be used by all Ruma crates that implement request and response types for the various Matrix APIs.
 
-## Notable changes to [www.ruma.io](https://github.com/ruma/ruma.github.io)
+## Notable changes to [ruma.dev](https://github.com/ruma/ruma.github.io)
 
 * Added a new [projects page](/projects/).
 * Added a script to determine new contributors to the project across all repositories.
