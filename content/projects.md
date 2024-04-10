@@ -16,6 +16,7 @@ high-level client library on top of the Ruma libraries. There are a few client
 applications built with it:
 
 * [Fractal]: A client for GNOME
+* [iamb]: A terminal-based client with Vim keybindings
 * [RumaTui]: A command-line client
 * [retrix]: A lightweight client built with [iced]
 * [Weechat-Matrix]: A plugin for weechat that adds Matrix support to it
@@ -32,6 +33,7 @@ Additionally, some bots are also being built with it:
 [matrix-sdk]: https://crates.io/crates/matrix-sdk
 
 [Fractal]: https://gitlab.gnome.org/World/fractal
+[iamb]: https://iamb.chat
 [RumaTui]: https://github.com/DevinR528/RumaTui#readme
 [retrix]: https://git.graven.dev/amanda/retrix
 [iced]: https://github.com/hecrj/iced#readme
