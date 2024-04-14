@@ -64,9 +64,12 @@ various reasons:
 * [DSN Traveller]: A bot that joins all rooms it can find through public room
   lists and room (alias) links posted in messages to allow analyses of the
   network at large
+* [Rumraisin]: A small appservice for tracking your favourite RSS/Atom feeds
+  using Matrix.
 
 [sparky8251/matrix-bot]: https://github.com/sparky8251/matrix-bot#readme
 [DSN Traveller]: https://dsn.tm.kit.edu/matrix/traveller/explained.html
+[Rumraisin]: https://zluudg.gitlab.io/rumraisin/
 
 ## Incomplete
 
